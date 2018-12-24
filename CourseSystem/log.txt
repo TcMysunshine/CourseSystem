@@ -1,0 +1,54 @@
+2018-12-24 20:59:44,428 [main] [druid.sql.Connection] [DEBUG] - {conn-10001} connected
+2018-12-24 20:59:44,435 [main] [druid.sql.Statement] [DEBUG] - {conn-10001, stmt-20000} created
+2018-12-24 20:59:44,532 [main] [druid.sql.Statement] [DEBUG] - {conn-10001, stmt-20000, rs-50000} query executed. 93.797727 millis. 
+SELECT 1 FROM DUAL
+2018-12-24 20:59:44,532 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10001, stmt-20000, rs-50000} open
+2018-12-24 20:59:44,537 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10001, stmt-20000, rs-50000} Header: [1]
+2018-12-24 20:59:44,539 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10001, stmt-20000, rs-50000} Result: [1]
+2018-12-24 20:59:44,540 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10001, stmt-20000, rs-50000} closed
+2018-12-24 20:59:44,543 [main] [druid.sql.Statement] [DEBUG] - {conn-10001, stmt-20000} closed
+2018-12-24 20:59:44,923 [main] [druid.sql.Connection] [DEBUG] - {conn-10002} connected
+2018-12-24 20:59:44,924 [main] [druid.sql.Statement] [DEBUG] - {conn-10002, stmt-20001} created
+2018-12-24 20:59:44,967 [main] [druid.sql.Statement] [DEBUG] - {conn-10002, stmt-20001, rs-50001} query executed. 42.704949 millis. 
+SELECT 1 FROM DUAL
+2018-12-24 20:59:44,968 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10002, stmt-20001, rs-50001} open
+2018-12-24 20:59:44,968 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10002, stmt-20001, rs-50001} Header: [1]
+2018-12-24 20:59:44,969 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10002, stmt-20001, rs-50001} Result: [1]
+2018-12-24 20:59:44,969 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10002, stmt-20001, rs-50001} closed
+2018-12-24 20:59:44,970 [main] [druid.sql.Statement] [DEBUG] - {conn-10002, stmt-20001} closed
+2018-12-24 20:59:45,345 [main] [druid.sql.Connection] [DEBUG] - {conn-10003} connected
+2018-12-24 20:59:45,346 [main] [druid.sql.Statement] [DEBUG] - {conn-10003, stmt-20002} created
+2018-12-24 20:59:45,388 [main] [druid.sql.Statement] [DEBUG] - {conn-10003, stmt-20002, rs-50002} query executed. 41.137588 millis. 
+SELECT 1 FROM DUAL
+2018-12-24 20:59:45,388 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10003, stmt-20002, rs-50002} open
+2018-12-24 20:59:45,388 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10003, stmt-20002, rs-50002} Header: [1]
+2018-12-24 20:59:45,389 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10003, stmt-20002, rs-50002} Result: [1]
+2018-12-24 20:59:45,389 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10003, stmt-20002, rs-50002} closed
+2018-12-24 20:59:45,389 [main] [druid.sql.Statement] [DEBUG] - {conn-10003, stmt-20002} closed
+2018-12-24 20:59:45,749 [main] [druid.sql.Connection] [DEBUG] - {conn-10004} connected
+2018-12-24 20:59:45,750 [main] [druid.sql.Statement] [DEBUG] - {conn-10004, stmt-20003} created
+2018-12-24 20:59:45,791 [main] [druid.sql.Statement] [DEBUG] - {conn-10004, stmt-20003, rs-50003} query executed. 40.096084 millis. 
+SELECT 1 FROM DUAL
+2018-12-24 20:59:45,791 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10004, stmt-20003, rs-50003} open
+2018-12-24 20:59:45,792 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10004, stmt-20003, rs-50003} Header: [1]
+2018-12-24 20:59:45,792 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10004, stmt-20003, rs-50003} Result: [1]
+2018-12-24 20:59:45,793 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10004, stmt-20003, rs-50003} closed
+2018-12-24 20:59:45,793 [main] [druid.sql.Statement] [DEBUG] - {conn-10004, stmt-20003} closed
+2018-12-24 20:59:46,168 [main] [druid.sql.Connection] [DEBUG] - {conn-10005} connected
+2018-12-24 20:59:46,169 [main] [druid.sql.Statement] [DEBUG] - {conn-10005, stmt-20004} created
+2018-12-24 20:59:46,211 [main] [druid.sql.Statement] [DEBUG] - {conn-10005, stmt-20004, rs-50004} query executed. 41.517941 millis. 
+SELECT 1 FROM DUAL
+2018-12-24 20:59:46,211 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10005, stmt-20004, rs-50004} open
+2018-12-24 20:59:46,212 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10005, stmt-20004, rs-50004} Header: [1]
+2018-12-24 20:59:46,212 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10005, stmt-20004, rs-50004} Result: [1]
+2018-12-24 20:59:46,212 [main] [druid.sql.ResultSet] [DEBUG] - {conn-10005, stmt-20004, rs-50004} closed
+2018-12-24 20:59:46,212 [main] [druid.sql.Statement] [DEBUG] - {conn-10005, stmt-20004} closed
+2018-12-24 20:59:46,294 [main] [com.alibaba.druid.pool.DruidDataSource] [INFO] - {dataSource-1} inited
+2018-12-24 20:59:46,295 [main] [druid.sql.Connection] [DEBUG] - {conn-10005} pool-connect
+2018-12-24 20:59:46,296 [main] [druid.sql.Connection] [DEBUG] - {conn-10005} pool-recycle
+2018-12-24 20:59:46,301 [main] [druid.sql.Connection] [DEBUG] - {conn-10005} pool-connect
+2018-12-24 20:59:46,305 [main] [druid.sql.Connection] [DEBUG] - {conn-10005} pool-recycle
+2018-12-24 20:59:46,665 [main] [druid.sql.Connection] [DEBUG] - {conn-10005} pool-connect
+2018-12-24 20:59:46,704 [main] [druid.sql.Connection] [DEBUG] - {conn-10005} pool-recycle
+2018-12-24 20:59:46,816 [main] [druid.sql.Connection] [DEBUG] - {conn-10005} pool-connect
+2018-12-24 20:59:46,816 [main] [druid.sql.Connection] [DEBUG] - {conn-10005} pool-recycle
