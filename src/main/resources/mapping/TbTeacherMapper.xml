@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nju.dao.mapper.TbTeacherMapper" >
+  <resultMap id="BaseResultMap" type="com.nju.entity.TbTeacher" >
+    <id column="teacher_id" property="teacherId" jdbcType="INTEGER" />
+    <result column="teacher_account" property="teacherAccount" jdbcType="VARCHAR" />
+    <result column="teacher_password" property="teacherPassword" jdbcType="VARCHAR" />
+    <result column="teacher_professional_title" property="teacherProfessionalTitle" jdbcType="VARCHAR" />
+    <result column="teacher_degree" property="teacherDegree" jdbcType="VARCHAR" />
+    <result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />
+    <result column="teacher_address" property="teacherAddress" jdbcType="INTEGER" />
+    <result column="teacher_sex" property="teacherSex" jdbcType="INTEGER" />
+    <result column="teacher_age" property="teacherAge" jdbcType="INTEGER" />
+    <result column="teacher_phone" property="teacherPhone" jdbcType="VARCHAR" />
+    <result column="teacher_email" property="teacherEmail" jdbcType="VARCHAR" />
+    <result column="teacher_nationality" property="teacherNationality" jdbcType="VARCHAR" />
+    <result column="teacher_createTime" property="teacherCreatetime" jdbcType="TIMESTAMP" />
+    <result column="teacher_lasteditTime" property="teacherLastedittime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    teacher_id, teacher_account, teacher_password, teacher_professional_title, teacher_degree, 
+    teacher_name, teacher_address, teacher_sex, teacher_age, teacher_phone, teacher_email, 
+    teacher_nationality, teacher_createTime, teacher_lasteditTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nju.entity.TbTeacherExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_teacher
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_teacher
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_teacher
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.nju.entity.TbTeacherExample" >
+    delete from tb_teacher
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.nju.entity.TbTeacher" >
+    insert into tb_teacher (teacher_id, teacher_account, teacher_password, 
+      teacher_professional_title, teacher_degree, 
+      teacher_name, teacher_address, teacher_sex, 
+      teacher_age, teacher_phone, teacher_email, 
+      teacher_nationality, teacher_createTime, 
+      teacher_lasteditTime)
+    values (#{teacherId,jdbcType=INTEGER}, #{teacherAccount,jdbcType=VARCHAR}, #{teacherPassword,jdbcType=VARCHAR}, 
+      #{teacherProfessionalTitle,jdbcType=VARCHAR}, #{teacherDegree,jdbcType=VARCHAR}, 
+      #{teacherName,jdbcType=VARCHAR}, #{teacherAddress,jdbcType=INTEGER}, #{teacherSex,jdbcType=INTEGER}, 
+      #{teacherAge,jdbcType=INTEGER}, #{teacherPhone,jdbcType=VARCHAR}, #{teacherEmail,jdbcType=VARCHAR}, 
+      #{teacherNationality,jdbcType=VARCHAR}, #{teacherCreatetime,jdbcType=TIMESTAMP}, 
+      #{teacherLastedittime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nju.entity.TbTeacher" >
+    insert into tb_teacher
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="teacherId != null" >
+        teacher_id,
+      </if>
+      <if test="teacherAccount != null" >
+        teacher_account,
+      </if>
+      <if test="teacherPassword != null" >
+        teacher_password,
+      </if>
+      <if test="teacherProfessionalTitle != null" >
+        teacher_professional_title,
+      </if>
+      <if test="teacherDegree != null" >
+        teacher_degree,
+      </if>
+      <if test="teacherName != null" >
+        teacher_name,
+      </if>
+      <if test="teacherAddress != null" >
+        teacher_address,
+      </if>
+      <if test="teacherSex != null" >
+        teacher_sex,
+      </if>
+      <if test="teacherAge != null" >
+        teacher_age,
+      </if>
+      <if test="teacherPhone != null" >
+        teacher_phone,
+      </if>
+      <if test="teacherEmail != null" >
+        teacher_email,
+      </if>
+      <if test="teacherNationality != null" >
+        teacher_nationality,
+      </if>
+      <if test="teacherCreatetime != null" >
+        teacher_createTime,
+      </if>
+      <if test="teacherLastedittime != null" >
+        teacher_lasteditTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="teacherId != null" >
+        #{teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherAccount != null" >
+        #{teacherAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherPassword != null" >
+        #{teacherPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherProfessionalTitle != null" >
+        #{teacherProfessionalTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherDegree != null" >
+        #{teacherDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherName != null" >
+        #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherAddress != null" >
+        #{teacherAddress,jdbcType=INTEGER},
+      </if>
+      <if test="teacherSex != null" >
+        #{teacherSex,jdbcType=INTEGER},
+      </if>
+      <if test="teacherAge != null" >
+        #{teacherAge,jdbcType=INTEGER},
+      </if>
+      <if test="teacherPhone != null" >
+        #{teacherPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherEmail != null" >
+        #{teacherEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherNationality != null" >
+        #{teacherNationality,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherCreatetime != null" >
+        #{teacherCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherLastedittime != null" >
+        #{teacherLastedittime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.nju.entity.TbTeacherExample" resultType="java.lang.Integer" >
+    select count(*) from tb_teacher
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_teacher
+    <set >
+      <if test="record.teacherId != null" >
+        teacher_id = #{record.teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="record.teacherAccount != null" >
+        teacher_account = #{record.teacherAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherPassword != null" >
+        teacher_password = #{record.teacherPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherProfessionalTitle != null" >
+        teacher_professional_title = #{record.teacherProfessionalTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherDegree != null" >
+        teacher_degree = #{record.teacherDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherName != null" >
+        teacher_name = #{record.teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherAddress != null" >
+        teacher_address = #{record.teacherAddress,jdbcType=INTEGER},
+      </if>
+      <if test="record.teacherSex != null" >
+        teacher_sex = #{record.teacherSex,jdbcType=INTEGER},
+      </if>
+      <if test="record.teacherAge != null" >
+        teacher_age = #{record.teacherAge,jdbcType=INTEGER},
+      </if>
+      <if test="record.teacherPhone != null" >
+        teacher_phone = #{record.teacherPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherEmail != null" >
+        teacher_email = #{record.teacherEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherNationality != null" >
+        teacher_nationality = #{record.teacherNationality,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacherCreatetime != null" >
+        teacher_createTime = #{record.teacherCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.teacherLastedittime != null" >
+        teacher_lasteditTime = #{record.teacherLastedittime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_teacher
+    set teacher_id = #{record.teacherId,jdbcType=INTEGER},
+      teacher_account = #{record.teacherAccount,jdbcType=VARCHAR},
+      teacher_password = #{record.teacherPassword,jdbcType=VARCHAR},
+      teacher_professional_title = #{record.teacherProfessionalTitle,jdbcType=VARCHAR},
+      teacher_degree = #{record.teacherDegree,jdbcType=VARCHAR},
+      teacher_name = #{record.teacherName,jdbcType=VARCHAR},
+      teacher_address = #{record.teacherAddress,jdbcType=INTEGER},
+      teacher_sex = #{record.teacherSex,jdbcType=INTEGER},
+      teacher_age = #{record.teacherAge,jdbcType=INTEGER},
+      teacher_phone = #{record.teacherPhone,jdbcType=VARCHAR},
+      teacher_email = #{record.teacherEmail,jdbcType=VARCHAR},
+      teacher_nationality = #{record.teacherNationality,jdbcType=VARCHAR},
+      teacher_createTime = #{record.teacherCreatetime,jdbcType=TIMESTAMP},
+      teacher_lasteditTime = #{record.teacherLastedittime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nju.entity.TbTeacher" >
+    update tb_teacher
+    <set >
+      <if test="teacherAccount != null" >
+        teacher_account = #{teacherAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherPassword != null" >
+        teacher_password = #{teacherPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherProfessionalTitle != null" >
+        teacher_professional_title = #{teacherProfessionalTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherDegree != null" >
+        teacher_degree = #{teacherDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherName != null" >
+        teacher_name = #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherAddress != null" >
+        teacher_address = #{teacherAddress,jdbcType=INTEGER},
+      </if>
+      <if test="teacherSex != null" >
+        teacher_sex = #{teacherSex,jdbcType=INTEGER},
+      </if>
+      <if test="teacherAge != null" >
+        teacher_age = #{teacherAge,jdbcType=INTEGER},
+      </if>
+      <if test="teacherPhone != null" >
+        teacher_phone = #{teacherPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherEmail != null" >
+        teacher_email = #{teacherEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherNationality != null" >
+        teacher_nationality = #{teacherNationality,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherCreatetime != null" >
+        teacher_createTime = #{teacherCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teacherLastedittime != null" >
+        teacher_lasteditTime = #{teacherLastedittime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nju.entity.TbTeacher" >
+    update tb_teacher
+    set teacher_account = #{teacherAccount,jdbcType=VARCHAR},
+      teacher_password = #{teacherPassword,jdbcType=VARCHAR},
+      teacher_professional_title = #{teacherProfessionalTitle,jdbcType=VARCHAR},
+      teacher_degree = #{teacherDegree,jdbcType=VARCHAR},
+      teacher_name = #{teacherName,jdbcType=VARCHAR},
+      teacher_address = #{teacherAddress,jdbcType=INTEGER},
+      teacher_sex = #{teacherSex,jdbcType=INTEGER},
+      teacher_age = #{teacherAge,jdbcType=INTEGER},
+      teacher_phone = #{teacherPhone,jdbcType=VARCHAR},
+      teacher_email = #{teacherEmail,jdbcType=VARCHAR},
+      teacher_nationality = #{teacherNationality,jdbcType=VARCHAR},
+      teacher_createTime = #{teacherCreatetime,jdbcType=TIMESTAMP},
+      teacher_lasteditTime = #{teacherLastedittime,jdbcType=TIMESTAMP}
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </update>
+</mapper>
