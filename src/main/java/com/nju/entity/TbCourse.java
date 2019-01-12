@@ -17,11 +17,23 @@ public class TbCourse {
 
     private Integer courseCredit;
 
-    private Integer courseClassroom;
+    private String courseClassroom;
 
     private String courseInfomation;
 
     private String courseQuailty;
+
+    private String courseModule;
+
+    private String courseClassify;
+
+    private Integer courseWeektime;
+
+    private String courseSession;
+
+    private String courseType;
+
+    private String courseTime;
 
     public Integer getCourseId() {
         return courseId;
@@ -79,12 +91,12 @@ public class TbCourse {
         this.courseCredit = courseCredit;
     }
 
-    public Integer getCourseClassroom() {
+    public String getCourseClassroom() {
         return courseClassroom;
     }
 
-    public void setCourseClassroom(Integer courseClassroom) {
-        this.courseClassroom = courseClassroom;
+    public void setCourseClassroom(String courseClassroom) {
+        this.courseClassroom = courseClassroom == null ? null : courseClassroom.trim();
     }
 
     public String getCourseInfomation() {
@@ -101,5 +113,53 @@ public class TbCourse {
 
     public void setCourseQuailty(String courseQuailty) {
         this.courseQuailty = courseQuailty == null ? null : courseQuailty.trim();
+    }
+
+    public String getCourseModule() {
+        return courseModule;
+    }
+
+    public void setCourseModule(String courseModule) {
+        this.courseModule = courseModule == null ? null : courseModule.trim();
+    }
+
+    public String getCourseClassify() {
+        return courseClassify;
+    }
+
+    public void setCourseClassify(String courseClassify) {
+        this.courseClassify = courseClassify == null ? null : courseClassify.trim();
+    }
+
+    public Integer getCourseWeektime() {
+        return courseWeektime;
+    }
+
+    public void setCourseWeektime(Integer courseWeektime) {
+        this.courseWeektime = courseWeektime;
+    }
+
+    public String getCourseSession() {
+        return courseSession;
+    }
+
+    public void setCourseSession(String courseSession) {
+        this.courseSession = courseSession == null ? null : courseSession.trim();
+    }
+
+    public String getCourseType() {
+        return courseType;
+    }
+
+    public void setCourseType(String courseType) {
+        this.courseType = courseType == null ? null : courseType.trim();
+    }
+
+    public String getCourseTime() {
+        return courseTime;
+    }
+
+    public void setCourseTime(String courseTime) {
+        this.courseTime = courseTime == null ? null : courseTime.trim();
     }
 }

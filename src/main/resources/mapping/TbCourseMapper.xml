@@ -9,9 +9,15 @@
     <result column="course_createTime" property="courseCreatetime" jdbcType="TIMESTAMP" />
     <result column="course_lasteditTime" property="courseLastedittime" jdbcType="TIMESTAMP" />
     <result column="course_credit" property="courseCredit" jdbcType="INTEGER" />
-    <result column="course_classroom" property="courseClassroom" jdbcType="INTEGER" />
+    <result column="course_classroom" property="courseClassroom" jdbcType="VARCHAR" />
     <result column="course_infomation" property="courseInfomation" jdbcType="VARCHAR" />
     <result column="course_quailty" property="courseQuailty" jdbcType="VARCHAR" />
+    <result column="course_module" property="courseModule" jdbcType="VARCHAR" />
+    <result column="course_classify" property="courseClassify" jdbcType="VARCHAR" />
+    <result column="course_weektime" property="courseWeektime" jdbcType="INTEGER" />
+    <result column="course_session" property="courseSession" jdbcType="VARCHAR" />
+    <result column="course_type" property="courseType" jdbcType="VARCHAR" />
+    <result column="course_time" property="courseTime" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -73,7 +79,8 @@
   </sql>
   <sql id="Base_Column_List" >
     course_id, course_encoding, course_name, course_isuse, course_createTime, course_lasteditTime, 
-    course_credit, course_classroom, course_infomation, course_quailty
+    course_credit, course_classroom, course_infomation, course_quailty, course_module, 
+    course_classify, course_weektime, course_session, course_type, course_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nju.entity.TbCourseExample" >
     select
@@ -109,11 +116,15 @@
     insert into tb_course (course_id, course_encoding, course_name, 
       course_isuse, course_createTime, course_lasteditTime, 
       course_credit, course_classroom, course_infomation, 
-      course_quailty)
+      course_quailty, course_module, course_classify, 
+      course_weektime, course_session, course_type, 
+      course_time)
     values (#{courseId,jdbcType=INTEGER}, #{courseEncoding,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, 
       #{courseIsuse,jdbcType=INTEGER}, #{courseCreatetime,jdbcType=TIMESTAMP}, #{courseLastedittime,jdbcType=TIMESTAMP}, 
-      #{courseCredit,jdbcType=INTEGER}, #{courseClassroom,jdbcType=INTEGER}, #{courseInfomation,jdbcType=VARCHAR}, 
-      #{courseQuailty,jdbcType=VARCHAR})
+      #{courseCredit,jdbcType=INTEGER}, #{courseClassroom,jdbcType=VARCHAR}, #{courseInfomation,jdbcType=VARCHAR}, 
+      #{courseQuailty,jdbcType=VARCHAR}, #{courseModule,jdbcType=VARCHAR}, #{courseClassify,jdbcType=VARCHAR}, 
+      #{courseWeektime,jdbcType=INTEGER}, #{courseSession,jdbcType=VARCHAR}, #{courseType,jdbcType=VARCHAR}, 
+      #{courseTime,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.nju.entity.TbCourse" >
     insert into tb_course
@@ -148,6 +159,24 @@
       <if test="courseQuailty != null" >
         course_quailty,
       </if>
+      <if test="courseModule != null" >
+        course_module,
+      </if>
+      <if test="courseClassify != null" >
+        course_classify,
+      </if>
+      <if test="courseWeektime != null" >
+        course_weektime,
+      </if>
+      <if test="courseSession != null" >
+        course_session,
+      </if>
+      <if test="courseType != null" >
+        course_type,
+      </if>
+      <if test="courseTime != null" >
+        course_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="courseId != null" >
@@ -172,13 +201,31 @@
         #{courseCredit,jdbcType=INTEGER},
       </if>
       <if test="courseClassroom != null" >
-        #{courseClassroom,jdbcType=INTEGER},
+        #{courseClassroom,jdbcType=VARCHAR},
       </if>
       <if test="courseInfomation != null" >
         #{courseInfomation,jdbcType=VARCHAR},
       </if>
       <if test="courseQuailty != null" >
         #{courseQuailty,jdbcType=VARCHAR},
+      </if>
+      <if test="courseModule != null" >
+        #{courseModule,jdbcType=VARCHAR},
+      </if>
+      <if test="courseClassify != null" >
+        #{courseClassify,jdbcType=VARCHAR},
+      </if>
+      <if test="courseWeektime != null" >
+        #{courseWeektime,jdbcType=INTEGER},
+      </if>
+      <if test="courseSession != null" >
+        #{courseSession,jdbcType=VARCHAR},
+      </if>
+      <if test="courseType != null" >
+        #{courseType,jdbcType=VARCHAR},
+      </if>
+      <if test="courseTime != null" >
+        #{courseTime,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -213,13 +260,31 @@
         course_credit = #{record.courseCredit,jdbcType=INTEGER},
       </if>
       <if test="record.courseClassroom != null" >
-        course_classroom = #{record.courseClassroom,jdbcType=INTEGER},
+        course_classroom = #{record.courseClassroom,jdbcType=VARCHAR},
       </if>
       <if test="record.courseInfomation != null" >
         course_infomation = #{record.courseInfomation,jdbcType=VARCHAR},
       </if>
       <if test="record.courseQuailty != null" >
         course_quailty = #{record.courseQuailty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseModule != null" >
+        course_module = #{record.courseModule,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseClassify != null" >
+        course_classify = #{record.courseClassify,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseWeektime != null" >
+        course_weektime = #{record.courseWeektime,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseSession != null" >
+        course_session = #{record.courseSession,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseType != null" >
+        course_type = #{record.courseType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseTime != null" >
+        course_time = #{record.courseTime,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -235,9 +300,15 @@
       course_createTime = #{record.courseCreatetime,jdbcType=TIMESTAMP},
       course_lasteditTime = #{record.courseLastedittime,jdbcType=TIMESTAMP},
       course_credit = #{record.courseCredit,jdbcType=INTEGER},
-      course_classroom = #{record.courseClassroom,jdbcType=INTEGER},
+      course_classroom = #{record.courseClassroom,jdbcType=VARCHAR},
       course_infomation = #{record.courseInfomation,jdbcType=VARCHAR},
-      course_quailty = #{record.courseQuailty,jdbcType=VARCHAR}
+      course_quailty = #{record.courseQuailty,jdbcType=VARCHAR},
+      course_module = #{record.courseModule,jdbcType=VARCHAR},
+      course_classify = #{record.courseClassify,jdbcType=VARCHAR},
+      course_weektime = #{record.courseWeektime,jdbcType=INTEGER},
+      course_session = #{record.courseSession,jdbcType=VARCHAR},
+      course_type = #{record.courseType,jdbcType=VARCHAR},
+      course_time = #{record.courseTime,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -264,13 +335,31 @@
         course_credit = #{courseCredit,jdbcType=INTEGER},
       </if>
       <if test="courseClassroom != null" >
-        course_classroom = #{courseClassroom,jdbcType=INTEGER},
+        course_classroom = #{courseClassroom,jdbcType=VARCHAR},
       </if>
       <if test="courseInfomation != null" >
         course_infomation = #{courseInfomation,jdbcType=VARCHAR},
       </if>
       <if test="courseQuailty != null" >
         course_quailty = #{courseQuailty,jdbcType=VARCHAR},
+      </if>
+      <if test="courseModule != null" >
+        course_module = #{courseModule,jdbcType=VARCHAR},
+      </if>
+      <if test="courseClassify != null" >
+        course_classify = #{courseClassify,jdbcType=VARCHAR},
+      </if>
+      <if test="courseWeektime != null" >
+        course_weektime = #{courseWeektime,jdbcType=INTEGER},
+      </if>
+      <if test="courseSession != null" >
+        course_session = #{courseSession,jdbcType=VARCHAR},
+      </if>
+      <if test="courseType != null" >
+        course_type = #{courseType,jdbcType=VARCHAR},
+      </if>
+      <if test="courseTime != null" >
+        course_time = #{courseTime,jdbcType=VARCHAR},
       </if>
     </set>
     where course_id = #{courseId,jdbcType=INTEGER}
@@ -283,9 +372,15 @@
       course_createTime = #{courseCreatetime,jdbcType=TIMESTAMP},
       course_lasteditTime = #{courseLastedittime,jdbcType=TIMESTAMP},
       course_credit = #{courseCredit,jdbcType=INTEGER},
-      course_classroom = #{courseClassroom,jdbcType=INTEGER},
+      course_classroom = #{courseClassroom,jdbcType=VARCHAR},
       course_infomation = #{courseInfomation,jdbcType=VARCHAR},
-      course_quailty = #{courseQuailty,jdbcType=VARCHAR}
+      course_quailty = #{courseQuailty,jdbcType=VARCHAR},
+      course_module = #{courseModule,jdbcType=VARCHAR},
+      course_classify = #{courseClassify,jdbcType=VARCHAR},
+      course_weektime = #{courseWeektime,jdbcType=INTEGER},
+      course_session = #{courseSession,jdbcType=VARCHAR},
+      course_type = #{courseType,jdbcType=VARCHAR},
+      course_time = #{courseTime,jdbcType=VARCHAR}
     where course_id = #{courseId,jdbcType=INTEGER}
   </update>
 </mapper>
