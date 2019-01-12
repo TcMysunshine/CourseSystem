@@ -19,6 +19,10 @@ public class TbCourse {
 
     private Integer courseClassroom;
 
+    private String courseInfomation;
+
+    private String courseQuailty;
+
     public Integer getCourseId() {
         return courseId;
     }
@@ -81,5 +85,21 @@ public class TbCourse {
 
     public void setCourseClassroom(Integer courseClassroom) {
         this.courseClassroom = courseClassroom;
+    }
+
+    public String getCourseInfomation() {
+        return courseInfomation;
+    }
+
+    public void setCourseInfomation(String courseInfomation) {
+        this.courseInfomation = courseInfomation == null ? null : courseInfomation.trim();
+    }
+
+    public String getCourseQuailty() {
+        return courseQuailty;
+    }
+
+    public void setCourseQuailty(String courseQuailty) {
+        this.courseQuailty = courseQuailty == null ? null : courseQuailty.trim();
     }
 }

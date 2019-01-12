@@ -10,6 +10,8 @@
     <result column="course_lasteditTime" property="courseLastedittime" jdbcType="TIMESTAMP" />
     <result column="course_credit" property="courseCredit" jdbcType="INTEGER" />
     <result column="course_classroom" property="courseClassroom" jdbcType="INTEGER" />
+    <result column="course_infomation" property="courseInfomation" jdbcType="VARCHAR" />
+    <result column="course_quailty" property="courseQuailty" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List" >
     course_id, course_encoding, course_name, course_isuse, course_createTime, course_lasteditTime, 
-    course_credit, course_classroom
+    course_credit, course_classroom, course_infomation, course_quailty
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nju.entity.TbCourseExample" >
     select
@@ -106,10 +108,12 @@
   <insert id="insert" parameterType="com.nju.entity.TbCourse" >
     insert into tb_course (course_id, course_encoding, course_name, 
       course_isuse, course_createTime, course_lasteditTime, 
-      course_credit, course_classroom)
+      course_credit, course_classroom, course_infomation, 
+      course_quailty)
     values (#{courseId,jdbcType=INTEGER}, #{courseEncoding,jdbcType=VARCHAR}, #{courseName,jdbcType=VARCHAR}, 
       #{courseIsuse,jdbcType=INTEGER}, #{courseCreatetime,jdbcType=TIMESTAMP}, #{courseLastedittime,jdbcType=TIMESTAMP}, 
-      #{courseCredit,jdbcType=INTEGER}, #{courseClassroom,jdbcType=INTEGER})
+      #{courseCredit,jdbcType=INTEGER}, #{courseClassroom,jdbcType=INTEGER}, #{courseInfomation,jdbcType=VARCHAR}, 
+      #{courseQuailty,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.nju.entity.TbCourse" >
     insert into tb_course
@@ -138,6 +142,12 @@
       <if test="courseClassroom != null" >
         course_classroom,
       </if>
+      <if test="courseInfomation != null" >
+        course_infomation,
+      </if>
+      <if test="courseQuailty != null" >
+        course_quailty,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="courseId != null" >
@@ -163,6 +173,12 @@
       </if>
       <if test="courseClassroom != null" >
         #{courseClassroom,jdbcType=INTEGER},
+      </if>
+      <if test="courseInfomation != null" >
+        #{courseInfomation,jdbcType=VARCHAR},
+      </if>
+      <if test="courseQuailty != null" >
+        #{courseQuailty,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -199,6 +215,12 @@
       <if test="record.courseClassroom != null" >
         course_classroom = #{record.courseClassroom,jdbcType=INTEGER},
       </if>
+      <if test="record.courseInfomation != null" >
+        course_infomation = #{record.courseInfomation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseQuailty != null" >
+        course_quailty = #{record.courseQuailty,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -213,7 +235,9 @@
       course_createTime = #{record.courseCreatetime,jdbcType=TIMESTAMP},
       course_lasteditTime = #{record.courseLastedittime,jdbcType=TIMESTAMP},
       course_credit = #{record.courseCredit,jdbcType=INTEGER},
-      course_classroom = #{record.courseClassroom,jdbcType=INTEGER}
+      course_classroom = #{record.courseClassroom,jdbcType=INTEGER},
+      course_infomation = #{record.courseInfomation,jdbcType=VARCHAR},
+      course_quailty = #{record.courseQuailty,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -242,6 +266,12 @@
       <if test="courseClassroom != null" >
         course_classroom = #{courseClassroom,jdbcType=INTEGER},
       </if>
+      <if test="courseInfomation != null" >
+        course_infomation = #{courseInfomation,jdbcType=VARCHAR},
+      </if>
+      <if test="courseQuailty != null" >
+        course_quailty = #{courseQuailty,jdbcType=VARCHAR},
+      </if>
     </set>
     where course_id = #{courseId,jdbcType=INTEGER}
   </update>
@@ -253,7 +283,9 @@
       course_createTime = #{courseCreatetime,jdbcType=TIMESTAMP},
       course_lasteditTime = #{courseLastedittime,jdbcType=TIMESTAMP},
       course_credit = #{courseCredit,jdbcType=INTEGER},
-      course_classroom = #{courseClassroom,jdbcType=INTEGER}
+      course_classroom = #{courseClassroom,jdbcType=INTEGER},
+      course_infomation = #{courseInfomation,jdbcType=VARCHAR},
+      course_quailty = #{courseQuailty,jdbcType=VARCHAR}
     where course_id = #{courseId,jdbcType=INTEGER}
   </update>
 </mapper>

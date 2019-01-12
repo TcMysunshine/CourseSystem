@@ -30,7 +30,7 @@ public class loginController {
         HttpSession session=request.getSession();
         String username=(String)session.getAttribute("username");
         model.addAttribute("username",username);
-        modelAndView.setViewName("index");
+        modelAndView.setViewName("studentInfo");
         return modelAndView;
     }
 

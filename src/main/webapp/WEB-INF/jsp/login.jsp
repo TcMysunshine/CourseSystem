@@ -63,7 +63,7 @@
             alert("用户名或者密码不能为空！");
         } else {
             $.ajax({
-                url: "login/confirm",
+                url: "studentLogin/confirm",
                 type: "get",
                 dataType: "json",
                 data: {
@@ -72,7 +72,7 @@
                 },
 				success:function (data) {
 					var newData=eval(data);
-                    window.location.href = 'index';
+                    window.location.href = 'studentInfo';
                 },
 				error:function () {
 					alert("用户名和密码错误！")

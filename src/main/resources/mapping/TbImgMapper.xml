@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.nju.dao.mapper.TbStudentCourseMapper" >
-  <resultMap id="BaseResultMap" type="com.nju.entity.TbStudentCourse" >
-    <id column="SCid" property="scid" jdbcType="INTEGER" />
-    <result column="student_id" property="studentId" jdbcType="INTEGER" />
-    <result column="course_id" property="courseId" jdbcType="INTEGER" />
-    <result column="sorce" property="sorce" jdbcType="INTEGER" />
+<mapper namespace="com.nju.dao.mapper.TbImgMapper" >
+  <resultMap id="BaseResultMap" type="com.nju.entity.TbImg" >
+    <id column="img_id" property="imgId" jdbcType="INTEGER" />
+    <result column="img_addr" property="imgAddr" jdbcType="VARCHAR" />
+    <result column="img_desc" property="imgDesc" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    SCid, student_id, course_id, sorce
+    img_id, img_addr, img_desc, create_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nju.entity.TbStudentCourseExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nju.entity.TbImgExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tb_student_course
+    from tb_img
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,76 +85,76 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from tb_student_course
-    where SCid = #{scid,jdbcType=INTEGER}
+    from tb_img
+    where img_id = #{imgId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from tb_student_course
-    where SCid = #{scid,jdbcType=INTEGER}
+    delete from tb_img
+    where img_id = #{imgId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.nju.entity.TbStudentCourseExample" >
-    delete from tb_student_course
+  <delete id="deleteByExample" parameterType="com.nju.entity.TbImgExample" >
+    delete from tb_img
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.nju.entity.TbStudentCourse" >
-    insert into tb_student_course (SCid, student_id, course_id, 
-      sorce)
-    values (#{scid,jdbcType=INTEGER}, #{studentId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, 
-      #{sorce,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.nju.entity.TbImg" >
+    insert into tb_img (img_id, img_addr, img_desc, 
+      create_time)
+    values (#{imgId,jdbcType=INTEGER}, #{imgAddr,jdbcType=VARCHAR}, #{imgDesc,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.nju.entity.TbStudentCourse" >
-    insert into tb_student_course
+  <insert id="insertSelective" parameterType="com.nju.entity.TbImg" >
+    insert into tb_img
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="scid != null" >
-        SCid,
+      <if test="imgId != null" >
+        img_id,
       </if>
-      <if test="studentId != null" >
-        student_id,
+      <if test="imgAddr != null" >
+        img_addr,
       </if>
-      <if test="courseId != null" >
-        course_id,
+      <if test="imgDesc != null" >
+        img_desc,
       </if>
-      <if test="sorce != null" >
-        sorce,
+      <if test="createTime != null" >
+        create_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="scid != null" >
-        #{scid,jdbcType=INTEGER},
+      <if test="imgId != null" >
+        #{imgId,jdbcType=INTEGER},
       </if>
-      <if test="studentId != null" >
-        #{studentId,jdbcType=INTEGER},
+      <if test="imgAddr != null" >
+        #{imgAddr,jdbcType=VARCHAR},
       </if>
-      <if test="courseId != null" >
-        #{courseId,jdbcType=INTEGER},
+      <if test="imgDesc != null" >
+        #{imgDesc,jdbcType=VARCHAR},
       </if>
-      <if test="sorce != null" >
-        #{sorce,jdbcType=INTEGER},
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.nju.entity.TbStudentCourseExample" resultType="java.lang.Integer" >
-    select count(*) from tb_student_course
+  <select id="countByExample" parameterType="com.nju.entity.TbImgExample" resultType="java.lang.Integer" >
+    select count(*) from tb_img
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update tb_student_course
+    update tb_img
     <set >
-      <if test="record.scid != null" >
-        SCid = #{record.scid,jdbcType=INTEGER},
+      <if test="record.imgId != null" >
+        img_id = #{record.imgId,jdbcType=INTEGER},
       </if>
-      <if test="record.studentId != null" >
-        student_id = #{record.studentId,jdbcType=INTEGER},
+      <if test="record.imgAddr != null" >
+        img_addr = #{record.imgAddr,jdbcType=VARCHAR},
       </if>
-      <if test="record.courseId != null" >
-        course_id = #{record.courseId,jdbcType=INTEGER},
+      <if test="record.imgDesc != null" >
+        img_desc = #{record.imgDesc,jdbcType=VARCHAR},
       </if>
-      <if test="record.sorce != null" >
-        sorce = #{record.sorce,jdbcType=INTEGER},
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -162,35 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update tb_student_course
-    set SCid = #{record.scid,jdbcType=INTEGER},
-      student_id = #{record.studentId,jdbcType=INTEGER},
-      course_id = #{record.courseId,jdbcType=INTEGER},
-      sorce = #{record.sorce,jdbcType=INTEGER}
+    update tb_img
+    set img_id = #{record.imgId,jdbcType=INTEGER},
+      img_addr = #{record.imgAddr,jdbcType=VARCHAR},
+      img_desc = #{record.imgDesc,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.nju.entity.TbStudentCourse" >
-    update tb_student_course
+  <update id="updateByPrimaryKeySelective" parameterType="com.nju.entity.TbImg" >
+    update tb_img
     <set >
-      <if test="studentId != null" >
-        student_id = #{studentId,jdbcType=INTEGER},
+      <if test="imgAddr != null" >
+        img_addr = #{imgAddr,jdbcType=VARCHAR},
       </if>
-      <if test="courseId != null" >
-        course_id = #{courseId,jdbcType=INTEGER},
+      <if test="imgDesc != null" >
+        img_desc = #{imgDesc,jdbcType=VARCHAR},
       </if>
-      <if test="sorce != null" >
-        sorce = #{sorce,jdbcType=INTEGER},
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where SCid = #{scid,jdbcType=INTEGER}
+    where img_id = #{imgId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.nju.entity.TbStudentCourse" >
-    update tb_student_course
-    set student_id = #{studentId,jdbcType=INTEGER},
-      course_id = #{courseId,jdbcType=INTEGER},
-      sorce = #{sorce,jdbcType=INTEGER}
-    where SCid = #{scid,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.nju.entity.TbImg" >
+    update tb_img
+    set img_addr = #{imgAddr,jdbcType=VARCHAR},
+      img_desc = #{imgDesc,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where img_id = #{imgId,jdbcType=INTEGER}
   </update>
 </mapper>

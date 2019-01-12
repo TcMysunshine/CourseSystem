@@ -13,7 +13,7 @@ public class TbStudent {
 
     private String studentName;
 
-    private Integer studentAddress;
+    private String studentAddress;
 
     private Integer studentSex;
 
@@ -29,7 +29,17 @@ public class TbStudent {
 
     private Date studentLastedittime;
 
-    private Integer courseId;
+    private String studentSifnature;
+
+    private String studentIntroduce;
+
+    private String studentStatus;
+
+    private String studentBlog;
+
+    private Integer studentImg;
+
+    private Integer studentDepartment;
 
     public Integer getStudentId() {
         return studentId;
@@ -71,12 +81,12 @@ public class TbStudent {
         this.studentName = studentName == null ? null : studentName.trim();
     }
 
-    public Integer getStudentAddress() {
+    public String getStudentAddress() {
         return studentAddress;
     }
 
-    public void setStudentAddress(Integer studentAddress) {
-        this.studentAddress = studentAddress;
+    public void setStudentAddress(String studentAddress) {
+        this.studentAddress = studentAddress == null ? null : studentAddress.trim();
     }
 
     public Integer getStudentSex() {
@@ -135,11 +145,51 @@ public class TbStudent {
         this.studentLastedittime = studentLastedittime;
     }
 
-    public Integer getCourseId() {
-        return courseId;
+    public String getStudentSifnature() {
+        return studentSifnature;
     }
 
-    public void setCourseId(Integer courseId) {
-        this.courseId = courseId;
+    public void setStudentSifnature(String studentSifnature) {
+        this.studentSifnature = studentSifnature == null ? null : studentSifnature.trim();
+    }
+
+    public String getStudentIntroduce() {
+        return studentIntroduce;
+    }
+
+    public void setStudentIntroduce(String studentIntroduce) {
+        this.studentIntroduce = studentIntroduce == null ? null : studentIntroduce.trim();
+    }
+
+    public String getStudentStatus() {
+        return studentStatus;
+    }
+
+    public void setStudentStatus(String studentStatus) {
+        this.studentStatus = studentStatus == null ? null : studentStatus.trim();
+    }
+
+    public String getStudentBlog() {
+        return studentBlog;
+    }
+
+    public void setStudentBlog(String studentBlog) {
+        this.studentBlog = studentBlog == null ? null : studentBlog.trim();
+    }
+
+    public Integer getStudentImg() {
+        return studentImg;
+    }
+
+    public void setStudentImg(Integer studentImg) {
+        this.studentImg = studentImg;
+    }
+
+    public Integer getStudentDepartment() {
+        return studentDepartment;
+    }
+
+    public void setStudentDepartment(Integer studentDepartment) {
+        this.studentDepartment = studentDepartment;
     }
 }

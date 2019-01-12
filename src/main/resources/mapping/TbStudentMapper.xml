@@ -7,7 +7,7 @@
     <result column="student_count" property="studentCount" jdbcType="VARCHAR" />
     <result column="student_password" property="studentPassword" jdbcType="VARCHAR" />
     <result column="student_name" property="studentName" jdbcType="VARCHAR" />
-    <result column="student_address" property="studentAddress" jdbcType="INTEGER" />
+    <result column="student_address" property="studentAddress" jdbcType="VARCHAR" />
     <result column="student_sex" property="studentSex" jdbcType="INTEGER" />
     <result column="student_age" property="studentAge" jdbcType="INTEGER" />
     <result column="student_phone" property="studentPhone" jdbcType="VARCHAR" />
@@ -15,7 +15,12 @@
     <result column="student_nationality" property="studentNationality" jdbcType="VARCHAR" />
     <result column="student_createTime" property="studentCreatetime" jdbcType="TIMESTAMP" />
     <result column="student_lasteditTime" property="studentLastedittime" jdbcType="TIMESTAMP" />
-    <result column="course_id" property="courseId" jdbcType="INTEGER" />
+    <result column="student_sifnature" property="studentSifnature" jdbcType="VARCHAR" />
+    <result column="student_introduce" property="studentIntroduce" jdbcType="VARCHAR" />
+    <result column="student_status" property="studentStatus" jdbcType="VARCHAR" />
+    <result column="student_blog" property="studentBlog" jdbcType="VARCHAR" />
+    <result column="student_img" property="studentImg" jdbcType="INTEGER" />
+    <result column="student_department" property="studentDepartment" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -78,7 +83,8 @@
   <sql id="Base_Column_List" >
     student_id, student_type, student_count, student_password, student_name, student_address, 
     student_sex, student_age, student_phone, student_email, student_nationality, student_createTime, 
-    student_lasteditTime, course_id
+    student_lasteditTime, student_sifnature, student_introduce, student_status, student_blog, 
+    student_img, student_department
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nju.entity.TbStudentExample" >
     select
@@ -115,12 +121,16 @@
       student_password, student_name, student_address, 
       student_sex, student_age, student_phone, 
       student_email, student_nationality, student_createTime, 
-      student_lasteditTime, course_id)
+      student_lasteditTime, student_sifnature, 
+      student_introduce, student_status, student_blog, 
+      student_img, student_department)
     values (#{studentId,jdbcType=INTEGER}, #{studentType,jdbcType=INTEGER}, #{studentCount,jdbcType=VARCHAR}, 
-      #{studentPassword,jdbcType=VARCHAR}, #{studentName,jdbcType=VARCHAR}, #{studentAddress,jdbcType=INTEGER}, 
+      #{studentPassword,jdbcType=VARCHAR}, #{studentName,jdbcType=VARCHAR}, #{studentAddress,jdbcType=VARCHAR}, 
       #{studentSex,jdbcType=INTEGER}, #{studentAge,jdbcType=INTEGER}, #{studentPhone,jdbcType=VARCHAR}, 
       #{studentEmail,jdbcType=VARCHAR}, #{studentNationality,jdbcType=VARCHAR}, #{studentCreatetime,jdbcType=TIMESTAMP}, 
-      #{studentLastedittime,jdbcType=TIMESTAMP}, #{courseId,jdbcType=INTEGER})
+      #{studentLastedittime,jdbcType=TIMESTAMP}, #{studentSifnature,jdbcType=VARCHAR}, 
+      #{studentIntroduce,jdbcType=VARCHAR}, #{studentStatus,jdbcType=VARCHAR}, #{studentBlog,jdbcType=VARCHAR}, 
+      #{studentImg,jdbcType=INTEGER}, #{studentDepartment,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.nju.entity.TbStudent" >
     insert into tb_student
@@ -164,8 +174,23 @@
       <if test="studentLastedittime != null" >
         student_lasteditTime,
       </if>
-      <if test="courseId != null" >
-        course_id,
+      <if test="studentSifnature != null" >
+        student_sifnature,
+      </if>
+      <if test="studentIntroduce != null" >
+        student_introduce,
+      </if>
+      <if test="studentStatus != null" >
+        student_status,
+      </if>
+      <if test="studentBlog != null" >
+        student_blog,
+      </if>
+      <if test="studentImg != null" >
+        student_img,
+      </if>
+      <if test="studentDepartment != null" >
+        student_department,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -185,7 +210,7 @@
         #{studentName,jdbcType=VARCHAR},
       </if>
       <if test="studentAddress != null" >
-        #{studentAddress,jdbcType=INTEGER},
+        #{studentAddress,jdbcType=VARCHAR},
       </if>
       <if test="studentSex != null" >
         #{studentSex,jdbcType=INTEGER},
@@ -208,8 +233,23 @@
       <if test="studentLastedittime != null" >
         #{studentLastedittime,jdbcType=TIMESTAMP},
       </if>
-      <if test="courseId != null" >
-        #{courseId,jdbcType=INTEGER},
+      <if test="studentSifnature != null" >
+        #{studentSifnature,jdbcType=VARCHAR},
+      </if>
+      <if test="studentIntroduce != null" >
+        #{studentIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="studentStatus != null" >
+        #{studentStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="studentBlog != null" >
+        #{studentBlog,jdbcType=VARCHAR},
+      </if>
+      <if test="studentImg != null" >
+        #{studentImg,jdbcType=INTEGER},
+      </if>
+      <if test="studentDepartment != null" >
+        #{studentDepartment,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -238,7 +278,7 @@
         student_name = #{record.studentName,jdbcType=VARCHAR},
       </if>
       <if test="record.studentAddress != null" >
-        student_address = #{record.studentAddress,jdbcType=INTEGER},
+        student_address = #{record.studentAddress,jdbcType=VARCHAR},
       </if>
       <if test="record.studentSex != null" >
         student_sex = #{record.studentSex,jdbcType=INTEGER},
@@ -261,8 +301,23 @@
       <if test="record.studentLastedittime != null" >
         student_lasteditTime = #{record.studentLastedittime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.courseId != null" >
-        course_id = #{record.courseId,jdbcType=INTEGER},
+      <if test="record.studentSifnature != null" >
+        student_sifnature = #{record.studentSifnature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentIntroduce != null" >
+        student_introduce = #{record.studentIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentStatus != null" >
+        student_status = #{record.studentStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentBlog != null" >
+        student_blog = #{record.studentBlog,jdbcType=VARCHAR},
+      </if>
+      <if test="record.studentImg != null" >
+        student_img = #{record.studentImg,jdbcType=INTEGER},
+      </if>
+      <if test="record.studentDepartment != null" >
+        student_department = #{record.studentDepartment,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -276,7 +331,7 @@
       student_count = #{record.studentCount,jdbcType=VARCHAR},
       student_password = #{record.studentPassword,jdbcType=VARCHAR},
       student_name = #{record.studentName,jdbcType=VARCHAR},
-      student_address = #{record.studentAddress,jdbcType=INTEGER},
+      student_address = #{record.studentAddress,jdbcType=VARCHAR},
       student_sex = #{record.studentSex,jdbcType=INTEGER},
       student_age = #{record.studentAge,jdbcType=INTEGER},
       student_phone = #{record.studentPhone,jdbcType=VARCHAR},
@@ -284,7 +339,12 @@
       student_nationality = #{record.studentNationality,jdbcType=VARCHAR},
       student_createTime = #{record.studentCreatetime,jdbcType=TIMESTAMP},
       student_lasteditTime = #{record.studentLastedittime,jdbcType=TIMESTAMP},
-      course_id = #{record.courseId,jdbcType=INTEGER}
+      student_sifnature = #{record.studentSifnature,jdbcType=VARCHAR},
+      student_introduce = #{record.studentIntroduce,jdbcType=VARCHAR},
+      student_status = #{record.studentStatus,jdbcType=VARCHAR},
+      student_blog = #{record.studentBlog,jdbcType=VARCHAR},
+      student_img = #{record.studentImg,jdbcType=INTEGER},
+      student_department = #{record.studentDepartment,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -305,7 +365,7 @@
         student_name = #{studentName,jdbcType=VARCHAR},
       </if>
       <if test="studentAddress != null" >
-        student_address = #{studentAddress,jdbcType=INTEGER},
+        student_address = #{studentAddress,jdbcType=VARCHAR},
       </if>
       <if test="studentSex != null" >
         student_sex = #{studentSex,jdbcType=INTEGER},
@@ -328,8 +388,23 @@
       <if test="studentLastedittime != null" >
         student_lasteditTime = #{studentLastedittime,jdbcType=TIMESTAMP},
       </if>
-      <if test="courseId != null" >
-        course_id = #{courseId,jdbcType=INTEGER},
+      <if test="studentSifnature != null" >
+        student_sifnature = #{studentSifnature,jdbcType=VARCHAR},
+      </if>
+      <if test="studentIntroduce != null" >
+        student_introduce = #{studentIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="studentStatus != null" >
+        student_status = #{studentStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="studentBlog != null" >
+        student_blog = #{studentBlog,jdbcType=VARCHAR},
+      </if>
+      <if test="studentImg != null" >
+        student_img = #{studentImg,jdbcType=INTEGER},
+      </if>
+      <if test="studentDepartment != null" >
+        student_department = #{studentDepartment,jdbcType=INTEGER},
       </if>
     </set>
     where student_id = #{studentId,jdbcType=INTEGER}
@@ -340,7 +415,7 @@
       student_count = #{studentCount,jdbcType=VARCHAR},
       student_password = #{studentPassword,jdbcType=VARCHAR},
       student_name = #{studentName,jdbcType=VARCHAR},
-      student_address = #{studentAddress,jdbcType=INTEGER},
+      student_address = #{studentAddress,jdbcType=VARCHAR},
       student_sex = #{studentSex,jdbcType=INTEGER},
       student_age = #{studentAge,jdbcType=INTEGER},
       student_phone = #{studentPhone,jdbcType=VARCHAR},
@@ -348,7 +423,12 @@
       student_nationality = #{studentNationality,jdbcType=VARCHAR},
       student_createTime = #{studentCreatetime,jdbcType=TIMESTAMP},
       student_lasteditTime = #{studentLastedittime,jdbcType=TIMESTAMP},
-      course_id = #{courseId,jdbcType=INTEGER}
+      student_sifnature = #{studentSifnature,jdbcType=VARCHAR},
+      student_introduce = #{studentIntroduce,jdbcType=VARCHAR},
+      student_status = #{studentStatus,jdbcType=VARCHAR},
+      student_blog = #{studentBlog,jdbcType=VARCHAR},
+      student_img = #{studentImg,jdbcType=INTEGER},
+      student_department = #{studentDepartment,jdbcType=INTEGER}
     where student_id = #{studentId,jdbcType=INTEGER}
   </update>
 </mapper>
