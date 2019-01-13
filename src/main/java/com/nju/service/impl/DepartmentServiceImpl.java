@@ -16,6 +16,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Autowired
     TbDepartmentMapper departmentMapper;
 
+    @Override
     public TbDepartment getDepartmentById(Integer id){
         TbDepartmentExample departmentExample=new TbDepartmentExample();
         TbDepartmentExample.Criteria criteria=departmentExample.createCriteria();
