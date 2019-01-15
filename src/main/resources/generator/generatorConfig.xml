@@ -60,13 +60,13 @@
             <columnOverride column="SJXX2016" javaType="java.lang.String" jdbcType="VARCHAR" />
         </table>-->
         <!--<table tableName="tb_course"></table>-->
-        <table tableName="tb_student"></table>
-        <table tableName="tb_course"></table>
-        <table tableName="tb_department"></table>
-        <table tableName="tb_img"></table>
-        <!--<table tableName="tb_student_course"></table>
+        <!--<table tableName="tb_student"></table>-->
+        <!--<table tableName="tb_course"></table>-->
+        <!--<table tableName="tb_department"></table>-->
+        <!--<table tableName="tb_img"></table>-->
+        <!--<table tableName="tb_student_course"></table>-->
         <table tableName="tb_teacher"></table>
-        <table tableName="tb_teacher_course"></table>-->
+        <!--<table tableName="tb_teacher_course"></table>-->
         <!-- ****************************************************************************************** -->
         <!-- ****************************************************************************************** -->
     </context>
