@@ -346,7 +346,7 @@
 
             },
             error:function () {
-                alert("信息修改失败！")
+
             }
 
         })
