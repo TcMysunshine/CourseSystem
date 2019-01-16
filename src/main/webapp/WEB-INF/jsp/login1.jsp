@@ -36,7 +36,7 @@
 	<div class="role2">
 	<input type="checkbox" name="role" id="teacher" />
 		<div id="role1">
-			教室
+			教师
 		</div>
 	</div>
 	<div class="role3">
@@ -89,13 +89,21 @@
         var password = $("input[name='logpass']").val();
         var url="";
         var href="";
-        if ($("#student").checked=true){
+        if ($("#student").is(':checked')){
             url="studentLogin/confirm";
             href='studentInfo';
-        }else if($("#teacher").checked=true){
-            url="teacherLogin/confirm";
+            data1={
+                username: username,
+                password: password,
+            }
+        }else if($("#teacher").is(':checked')){
+            url="/teacherLogin.do";
             href='teacherInfo';
-        }else if($("#super").checked=true){
+            data1={
+                teacherCount: username,
+                teacherPass: password,
+            }
+        }else if($("#super").is(':checked')){
             url="superLogin/confirm";
             href='superInfo';
         }
@@ -106,10 +114,7 @@
                 url:url ,
                 type: "get",
                 dataType: "json",
-                data: {
-                    username: username,
-                    password: password,
-                },
+                data: data1,
 				success:function (data) {
 					var newData=eval(data);
                     window.location.href = href;
@@ -120,6 +125,7 @@
                 
             });
         }
+
 	})
 </script>
 </html>
