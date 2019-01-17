@@ -1,6 +1,8 @@
 package com.nju.conf;
 
+import com.nju.Model.TeacherModel;
 import com.nju.entity.TbStudent;
+import com.nju.entity.TbTeacher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -16,18 +18,13 @@ public class AccessInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 //        request.getSession().getAttribute("user").getClass().equals()
         logger.info("进入拦截器");
-        TbStudent userModel = (TbStudent)request.getSession().getAttribute("user");
+        Object userObject=request.getSession().getAttribute("user");
         request.getSession().setMaxInactiveInterval(30*60);
-        if(null==userModel) {
-            response.sendRedirect(request.getSession().getServletContext().getContextPath()+"/login");
+        if(userObject==null){
+            response.sendRedirect(request.getSession()
+                        .getServletContext().getContextPath()+"/login");
             return false;
         }
-//        String url=request.getServletPath();
-//        logger.info(userModel.getYhmc()+"访问了"+url+"页面");
-//        if(url.equals("/index.do")) {
-//            String qx=request.getParameter("type"));
-//        }
-//        System.out.println(userModel.getMenuList().toString());
         return true;
     }
 
