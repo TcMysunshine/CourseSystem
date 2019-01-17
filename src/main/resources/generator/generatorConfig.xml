@@ -65,7 +65,7 @@
         <!--<table tableName="tb_department"></table>-->
         <!--<table tableName="tb_img"></table>-->
         <!--<table tableName="tb_student_course"></table>-->
-        <table tableName="tb_teacher"></table>
+        <!--<table tableName="tb_teacher"></table>-->
         <!--<table tableName="tb_teacher_course"></table>-->
         <!-- ****************************************************************************************** -->
         <!-- ****************************************************************************************** -->

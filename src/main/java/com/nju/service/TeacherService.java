@@ -1,6 +1,5 @@
 package com.nju.service;
 
-import com.nju.entity.TbStudent;
 import com.nju.entity.TbTeacher;
 
 import java.util.List;
