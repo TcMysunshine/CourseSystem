@@ -12,13 +12,9 @@ public class MyWebMvcConfigurerAdaper implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry interceptorRegistry){
         interceptorRegistry.addInterceptor(accessInterceptor).
-                addPathPatterns("/**").excludePathPatterns("/","/login","/teacherLogin")
-                .excludePathPatterns("/css/**","/js/**","/image/**","/assets/**");
-//        super.addInterceptors(interceptorRegistry);
+                addPathPatterns("/**").excludePathPatterns("/","/login",
+                "/teacherLogin","/studentLogin/confirm","teacherLogin.do")
+                .excludePathPatterns("/css/**","/js/**",
+                        "/image/**","/assets/**");
     }
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/**","classpath:/webapp/");
-//        super.addResourceHandlers(registry);
-//    }
 }
