@@ -71,7 +71,7 @@
         </div>
     </div>
 
-    <div class="main-panel">
+    <%--<div class="main-panel">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -315,8 +315,49 @@
             <div class="container-fluid">
             </div>
         </footer>
+    </div>--%>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="card">
+                        <div class="header text-center">
+                            <h3 class="title">选课列表</h3>
+                            <p class="category">规定时间内选择课程添加到课程列表，退课可以在课程详情中选择</p>
+                            <br>
+                        </div>
+                        <div class="content table-responsive table-full-width table-upgrade">
+                            <table class="table">
+                                <thead>
+                                <th>课程名</th>
+                                <th class="text-center">时间</th>
+                                <th class="text-center">学分</th>
+                                <th class="text-center">老师</th>
+                                <th  width="100px">操作</th>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td class="text-center" width="100px">
+                                        <div class="icon-container">
+                                        <a><span class="ti-check"></span></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 </body>
 <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -326,7 +367,7 @@
 <script src="assets/js/paper-dashboard.js"></script>
 <script src="assets/js/demo.js"></script>
 <script type="text/javascript">
-    $(".btn-editInfo").click(function () {
+    /*$(".btn-editInfo").click(function () {
         sex=1;
         if ($("input[name='studentSex']").val()=="女"){
             sex=2
@@ -356,7 +397,7 @@
             }
 
         })
-    })
+    })*/
 </script>
 </html>
 
