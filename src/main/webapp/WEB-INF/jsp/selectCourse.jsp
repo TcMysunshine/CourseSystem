@@ -48,7 +48,7 @@
 
             <ul class="nav">
 
-                <li class="active">
+                <li >
                     <a href="/studentInfo">
                         <i class="ti-user"></i>
                         <p>学生信息</p>
@@ -60,7 +60,7 @@
                         <p>课程信息</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="/selectCourseList">
                         <i class="ti-view-list-alt"></i>
                         <p>选课列表</p>
@@ -336,20 +336,19 @@
                                 <th  width="100px">操作</th>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td class="text-center" width="100px">
-                                        <div class="icon-container">
-                                        <a><span class="ti-check"></span></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <c:forEach items="${currentCourse}" var="course">
+                                    <tr>
+                                        <td>${course.courseName}</td>
+                                        <td>${course.courseTime}</td>
+                                        <td>${course.courseCredit}</td>
+                                        <td></td>
+                                        <td class="text-center" width="100px" >
+                                            <div class="icon-container" style="padding-top: 0px;width: 100px" >
+                                                <a class="addCourse" course="${course.courseId}" ><span class="ti-check"></span></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -367,37 +366,39 @@
 <script src="assets/js/paper-dashboard.js"></script>
 <script src="assets/js/demo.js"></script>
 <script type="text/javascript">
-    /*$(".btn-editInfo").click(function () {
-        sex=1;
-        if ($("input[name='studentSex']").val()=="女"){
-            sex=2
-        }
-        var studentInfo={
-            studentName:$("input[name='studentName']").val(),
-            studentEmail:$("input[name='studentEmail']").val(),
-            studentNationality:$("input[name='studentNationality']").val(),
-            studentSex:sex,
-            studentAge:$("input[name='studentAge']").val(),
-            studentAddress:$("input[name='studentAddress']").val(),
-            studentPhone:$("input[name='studentPhone']").val(),
-            studentIntroduce:$("textarea[name='studentIntroduce']").text()
-        }
-        $.ajax({
-            url:"/stuEditInfo",
+    function  updateCourse(a) {
+        var courseId=$(a).data("courseId");
+        /*$.ajax({
+            url:"/addCourse",
             contentType:"application/json;charset=utf-8",
             processData:true,
             type:"post",
-            data:JSON.stringify(studentInfo),
+            data:{courseId:courseId},
             dataType:"json",
             success:function (json) {
-
             },
             error:function () {
-
             }
-
-        })
-    })*/
+        })*/
+        alert(courseId)
+    }
+    $(function() {
+        $(".addCourse").click(function () {
+            var courseId = $(this).attr("course");
+            $.ajax({
+                url: "/addCourse",
+                type: "get",
+                dataType: "json",
+                data: {courseId: courseId},
+                success: function () {
+                    alert("选课成功！");
+                    window.location.href = "/selectCourseList";
+                },
+                error: function () {
+                }
+            })
+        });
+    })
 </script>
 </html>
 

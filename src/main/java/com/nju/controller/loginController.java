@@ -1,6 +1,7 @@
 package com.nju.controller;
 
 import com.nju.entity.User;
+import com.nju.service.SemesterService;
 import com.nju.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +19,14 @@ import javax.servlet.http.HttpSession;
 public class loginController {
     @Autowired
     UserService userService;
-
+    @Autowired
+    SemesterService semesterService;
     @RequestMapping("/login")
-    public String login(){
-        return "login";
+    public String login(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        String currentSemester=semesterService.getCurrentSemester();
+        session.setAttribute("currentSemester",currentSemester);
+        return "login1";
     }
 
     @RequestMapping("/index")

@@ -43,7 +43,12 @@
                         <p>课程信息</p>
                     </a>
                 </li>
-
+                <li>
+                    <a href="/selectCourseList">
+                        <i class="ti-view-list-alt"></i>
+                        <p>选课列表</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

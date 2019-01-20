@@ -15,6 +15,6 @@ public class MyWebMvcConfigurerAdaper implements WebMvcConfigurer {
                 addPathPatterns("/**").excludePathPatterns("/","/login",
                 "/teacherLogin","/studentLogin/confirm","teacherLogin.do")
                 .excludePathPatterns("/css/**","/js/**",
-                        "/image/**","/assets/**");
+                        "/img/**","/assets/**");
     }
 }
