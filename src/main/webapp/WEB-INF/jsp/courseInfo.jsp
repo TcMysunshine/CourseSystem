@@ -63,7 +63,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">课程列表</a>
+                    <a class="navbar-brand" href="#">${course.courseName}</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -104,7 +104,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
+                    <%--<div class="col-md-12">
                         <div class="card">
                             <div class="header">
 
@@ -135,12 +135,23 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
 
                     <div class="col-md-12">
                         <div class="card card-plain">
-                            <div class="header"><%--
-                                <h4 class="title">${student.studentName}的课程表</h4>
+                            <div class="header">
+                                <%--<hr style="height:1px;width:40%;border:none;border-top:5px ridge #777;margin-left: 0px" />--%>
+                                    <div style="border-bottom: 1px ridge #777;height: 100px">
+                                        <h4 class="title" style="padding-top: 28px">课件</h4>
+                                    </div>
+                                <div style="border-bottom: 1px ridge #777;height: 100px">
+                                    <h4 class="title" style="padding-top: 28px">作业</h4>
+                                </div>
+                                <%--<hr style="height:1px;width:40%;border:none;border-top:5px ridge #777;margin-left: 0px" />--%>
+                                    <div style="border-bottom: 1px ridge #777;height: 100px">
+                                        <h4 class="title" style="padding-top: 28px">通知</h4>
+                                    </div>
+                                <%--
                                 <p class="category">点击查看课程详情</p>--%>
                             </div>
                             <div class="content table-responsive table-full-width">

@@ -3,14 +3,18 @@ package com.nju.controller;
 import com.nju.Enum.CourseTimeEnum;
 import com.nju.entity.TbCourse;
 import com.nju.entity.TbStudent;
+import com.nju.entity.vo.CourseInfoVo;
 import com.nju.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -29,12 +33,42 @@ public class courseController {
         List<TbCourse> courses=courseService.getCoursesByStuId(student.getStudentId());
         for(int i=0;i<courses.size();i++){
             String courseInfo=courses.get(i).getCourseName()+"<br/> 教室:"+courses.get(i).getCourseClassroom();
+            Integer courseId=courses.get(i).getCourseId();
+            CourseInfoVo courseInfoVo=new CourseInfoVo();
+            courseInfoVo.setCourseId(courseId);
+            courseInfoVo.setCourseIntro(courseInfo);
             String timeType=CourseTimeEnum.getTimeTypeByCourseTime(courses.get(i).getCourseTime());
-            model.addAttribute(timeType,courseInfo);
+            model.addAttribute(timeType,courseInfoVo);
         }
         model.addAttribute("courselist",courses);
         model.addAttribute("student",student);
         modelAndView.setViewName("showStudentCourse");
+        return modelAndView;
+    }
+
+    @RequestMapping("/courseInfo")
+    public ModelAndView addCourse(HttpServletRequest request,ModelMap model,
+                             @RequestParam(value = "courseId", required = false) String courseId){
+        ModelAndView modelAndView=new ModelAndView();
+        HttpSession session=request.getSession();
+        TbStudent student=(TbStudent) session.getAttribute("user");
+        Integer courseId1=Integer.parseInt(courseId);
+        TbCourse course=courseService.getCourseByCourseId(courseId1);
+        model.addAttribute("course",course);
+
+        List<TbCourse> courses=courseService.getCoursesByStuId(student.getStudentId());
+        for(int i=0;i<courses.size();i++){
+            String courseInfo=courses.get(i).getCourseName()+"<br/> 教室:"+courses.get(i).getCourseClassroom();
+            Integer courseId2=courses.get(i).getCourseId();
+            CourseInfoVo courseInfoVo=new CourseInfoVo();
+            courseInfoVo.setCourseId(courseId2);
+            courseInfoVo.setCourseIntro(courseInfo);
+            String timeType=CourseTimeEnum.getTimeTypeByCourseTime(courses.get(i).getCourseTime());
+            model.addAttribute(timeType,courseInfoVo);
+        }
+        model.addAttribute("courselist",courses);
+        model.addAttribute("student",student);
+        modelAndView.setViewName("courseInfo");
         return modelAndView;
     }
 

@@ -63,4 +63,17 @@ public class CourseServiceImpl implements CourseService {
 
     }
 
+    @Override
+    public TbCourse getCourseByCourseId(Integer id){
+        TbCourseExample courseExample=new TbCourseExample();
+        TbCourseExample.Criteria criteria1=courseExample.createCriteria();
+        criteria1.andCourseIdEqualTo(id);
+        List<TbCourse> courseList=courseMapper.selectByExample(courseExample);
+        if(courseList.size()>0){
+            return courseList.get(0);
+        }
+        else
+            return null;
+    }
+
 }

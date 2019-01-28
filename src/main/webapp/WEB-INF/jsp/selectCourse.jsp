@@ -366,22 +366,7 @@
 <script src="assets/js/paper-dashboard.js"></script>
 <script src="assets/js/demo.js"></script>
 <script type="text/javascript">
-    function  updateCourse(a) {
-        var courseId=$(a).data("courseId");
-        /*$.ajax({
-            url:"/addCourse",
-            contentType:"application/json;charset=utf-8",
-            processData:true,
-            type:"post",
-            data:{courseId:courseId},
-            dataType:"json",
-            success:function (json) {
-            },
-            error:function () {
-            }
-        })*/
-        alert(courseId)
-    }
+
     $(function() {
         $(".addCourse").click(function () {
             var courseId = $(this).attr("course");
