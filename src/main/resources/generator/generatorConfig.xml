@@ -67,6 +67,9 @@
         <!--<table tableName="tb_student_course"></table>-->
         <!--<table tableName="tb_teacher"></table>-->
         <!--<table tableName="tb_teacher_course"></table>-->
+        <!-- <table tableName="tb_course_concrete"></table>-->
+        <!--<table tableName="tb_tcc_homework"></table>-->
+        <!--<table tableName="tb_homework"></table>-->
         <!-- ****************************************************************************************** -->
         <!-- ****************************************************************************************** -->
     </context>

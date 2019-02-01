@@ -1,21 +1,25 @@
 package com.nju.controller;
 
 import com.nju.Enum.CourseTimeEnum;
-import com.nju.entity.TbCourse;
-import com.nju.entity.TbStudent;
+import com.nju.dao.mapper.TbCourseConcreteMapper;
+import com.nju.dao.mapper.TbCourseMapper;
+import com.nju.dao.mapper.TbTeacherCourseMapper;
+import com.nju.entity.*;
 import com.nju.entity.vo.CourseInfoVo;
+import com.nju.entity.vo.TeacherCourseInfoVo;
 import com.nju.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -23,7 +27,12 @@ public class courseController {
 
     @Autowired
     CourseService courseService;
-
+    @Autowired
+    TbTeacherCourseMapper teacherCourseMapper;
+    @Autowired
+    TbCourseConcreteMapper courseConcreteMapper;
+    @Autowired
+    TbCourseMapper courseMapper;
     //显示课程界面
     @RequestMapping("/showCourse")
     public ModelAndView getIndex(HttpServletRequest request, ModelMap model){
@@ -72,4 +81,60 @@ public class courseController {
         return modelAndView;
     }
 
+    @RequestMapping("/teacherCourseInfo")
+    public ModelAndView getTeacherCourseInfo(HttpServletRequest request, ModelMap model){
+        ModelAndView modelAndView=new ModelAndView();
+        HttpSession session =request.getSession();
+        TbTeacher teacher= (TbTeacher) session.getAttribute("user");
+        List<TbCourse> courses=courseService.getCourseByTeacherId(teacher.getTeacherId());
+        List<TbCourseConcrete> courseConcretes=courseService.getCourseConcreteByTeacherId(teacher.getTeacherId());
+        List<TbTeacherCourse> teacherCourses=courseService.getTeacherCourseByTeacherId(teacher.getTeacherId());
+        List<TeacherCourseInfoVo> teacherCourseInfoVoList=new ArrayList<>();
+        for(int i=0;i<teacherCourses.size();i++){
+            TeacherCourseInfoVo teacherCourseInfoVo=new TeacherCourseInfoVo();
+            teacherCourseInfoVo.setTcid(teacherCourses.get(i).getTcid());
+            for (int j=0;j<courses.size();j++){
+                if(teacherCourses.get(i).getCourseId()==courses.get(j).getCourseId()){
+                    teacherCourseInfoVo.setCourseId(courses.get(j).getCourseId());
+                    teacherCourseInfoVo.setCourseName(courses.get(j).getCourseName());
+                    teacherCourseInfoVo.setCourseEncoding(courses.get(j).getCourseEncoding());
+                    break;
+                }
+            }
+            for(int j=0;j<courseConcretes.size();j++){
+                if (teacherCourses.get(i).getCourseConcreteId()==courseConcretes.get(j).getCourseConcreteId())
+                {
+                    teacherCourseInfoVo.setCourseConcreteId(courseConcretes.get(j).getCourseConcreteId());
+                    teacherCourseInfoVo.setCourseConcreteClassroom(courseConcretes.get(j).getCourseConcreteClassroom());
+                    teacherCourseInfoVo.setCourseConcreteCredit(courseConcretes.get(j).getCourseConcreteCredit());
+                    teacherCourseInfoVo.setCourseConcreteCreatetime(courseConcretes.get(j).getCourseConcreteCreatetime());
+                    teacherCourseInfoVo.setCourseConcreteInformation(courseConcretes.get(j).getCourseConcreteInformation());
+                    teacherCourseInfoVo.setCourseConcreteRequest(courseConcretes.get(j).getCourseConcreteRequest());
+                    teacherCourseInfoVo.setCourseConcreteWeektime(courseConcretes.get(j).getCourseConcreteWeektime());
+                    teacherCourseInfoVo.setCourseConcreteTime(courseConcretes.get(j).getCourseConcreteTime());
+                    break;
+                }
+            }
+            teacherCourseInfoVoList.add(i,teacherCourseInfoVo);
+        }
+        model.addAttribute("teacher",teacher);
+        model.addAttribute("teacherCourseInfo",teacherCourseInfoVoList);
+        modelAndView.setViewName("teacherCourseList");
+        return modelAndView;
+    }
+
+    @RequestMapping("/teacherCourseManage")
+    public ModelAndView getCourseCourseInfo(HttpServletRequest request,ModelMap model,
+                                            @RequestParam(value = "courseId", required = false) Integer courseId,
+                                            @RequestParam(value = "courseConcreteId", required = false) Integer courseConcreteId) {
+        ModelAndView modelAndView = new ModelAndView();
+        List<TbHomework> tbHomeworkList = courseService.getCourseHomeworkByCourseConcreteId(courseId);
+        TbCourse course =courseMapper.selectByPrimaryKey(courseId);
+        TbCourseConcrete courseConcrete = courseConcreteMapper.selectByPrimaryKey(courseConcreteId);
+        model.addAttribute("homeworkList", tbHomeworkList);
+        model.addAttribute("courseInfo", courseConcrete);
+        model.addAttribute("course",course);
+        modelAndView.setViewName("teacherCourseManage");
+        return modelAndView;
+    }
 }

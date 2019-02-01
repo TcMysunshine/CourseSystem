@@ -61,25 +61,6 @@
         var password = $("input[name='logpass']").val();
         if ( username == ""|| password == "") {
             alert("用户名或者密码不能为空！");
-        } else {
-            $.ajax({
-                url: "/teacherLogin.do",
-                type: "get",
-                dataType: "json",
-                data: {
-                    teacherCount: username,
-                    teacherPass: password
-                },
-				success:function (data) {
-					var newData=eval(data);
-                    window.location.href = 'teacherInfo';
-                },
-				error:function () {
-					alert("用户名和密码错误！")
-                }
-                
-            });
-        }
-	})
+
 </script>
 </html>

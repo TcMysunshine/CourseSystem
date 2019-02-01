@@ -9,4 +9,7 @@ public interface TeacherService {
     List<TbTeacher> findTeacherByCountPass(String count, String pass);
     //编辑用户
     Boolean editTeacherInfo(TbTeacher teacher);
+
+    //根据教师地账号和密码获取教师信息
+    TbTeacher getTeacher(String teacherCount, String teacherPassword);
 }
