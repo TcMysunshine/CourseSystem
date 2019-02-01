@@ -4,7 +4,10 @@ import com.nju.entity.TbTccHomework;
 import com.nju.entity.TbTccHomeworkExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+
+@Repository
 public interface TbTccHomeworkMapper {
     int countByExample(TbTccHomeworkExample example);
 

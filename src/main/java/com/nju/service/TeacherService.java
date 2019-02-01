@@ -12,4 +12,7 @@ public interface TeacherService {
 
     //根据教师地账号和密码获取教师信息
     TbTeacher getTeacher(String teacherCount, String teacherPassword);
+
+
+    List<TeacherService> getTeachers(String teacherName,String teacherProfessionalTitle);
 }

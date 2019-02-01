@@ -4,7 +4,10 @@ import com.nju.entity.TbHomework;
 import com.nju.entity.TbHomeworkExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+
+@Repository
 public interface TbHomeworkMapper {
     int countByExample(TbHomeworkExample example);
 

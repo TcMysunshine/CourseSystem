@@ -2,10 +2,13 @@ package com.nju.controller;
 
 import com.nju.Model.ResultModel;
 import com.nju.entity.TbStudent;
+import com.nju.entity.TbTeacher;
 import com.nju.entity.User;
 import com.nju.entity.vo.StudentInfoVo;
 import com.nju.service.StudentService;
+import com.nju.service.TeacherService;
 import com.nju.service.UserService;
+import com.nju.service.impl.TeacherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,6 +30,8 @@ public class superController {
     UserService userService;
     @Autowired
     StudentService studentService;
+    @Autowired
+    TeacherServiceImpl teacherService;
     @ResponseBody
     @RequestMapping("/superLogin/confirm")
     public ResultModel superConfirm(HttpServletRequest request,
@@ -67,6 +72,20 @@ public class superController {
             return new ResultModel(1,ResultModel.SUCCESS,students);
         }
         return new ResultModel(0,ResultModel.FAIL,null);
+    }
+
+    @RequestMapping("/superTeacher")
+    public ModelAndView getTeachers(HttpServletRequest request, ModelMap model,
+                                 @RequestParam(value = "teacherName", required = false) String teacherName,
+                                 @RequestParam(value = "teacherProfessionalTitle", required = false) String teacherProfessionalTitle
+    ){
+        ModelAndView modelAndView=new ModelAndView();
+        /*List<StudentInfoVo> students=studentService.getStudents(studentCount,studentName,departmentName,departmentPerfession);
+        model.addAttribute("students",students);*/
+        List<TbTeacher> teachers=teacherService.getTeachers(teacherName,teacherProfessionalTitle);
+        model.addAttribute("teachers",teachers);
+        modelAndView.setViewName("superTeacher");
+        return modelAndView;
     }
 
 }

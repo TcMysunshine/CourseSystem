@@ -48,4 +48,18 @@ public class TeacherServiceImpl {
             return null;
     }
 
+    public List<TbTeacher> getTeachers(String teacherName,String teacherProfessionalTitle){
+        TbTeacherExample teacherExample=new TbTeacherExample();
+        TbTeacherExample.Criteria criteria=teacherExample.createCriteria();
+        if (teacherName!=null&&teacherName!=""){
+            criteria.andTeacherNameLike(teacherName);
+        }
+        if (teacherProfessionalTitle!=null&&teacherProfessionalTitle!=""){
+            criteria.andTeacherProfessionalTitleLike(teacherName);
+        }
+        List<TbTeacher> teachers=tbTeacherMapper.selectByExample(teacherExample);
+        return teachers;
+
+    }
+
 }

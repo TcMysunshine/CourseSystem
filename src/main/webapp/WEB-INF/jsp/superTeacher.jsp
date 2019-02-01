@@ -69,8 +69,8 @@
     <div class="main-panel">
         <div id="nav1" class="nav1 portlet-title" style="background-color: #eceaea">
             <ul class="tab-menu">
-                <li class="active" > <a class="aaaa" href='/superInfo' >学生</a></li>
-                <li > <a class="aaaa" href='/superTeacher' >教师</a></li>
+                <li > <a class="aaaa" href='/superInfo' >学生</a></li>
+                <li class="active" > <a class="aaaa" href='/superTeacher'  >教师</a></li>
             </ul>
         </div>
         <div class="row">
@@ -78,30 +78,18 @@
             <div class="col-md-12">
                 <div class="card card-plain">
                     <div class="header">
-                        <div class="addStudent">
-                            <h4 class="title" style="margin-bottom: 30px">添加学生账号</h4>
-                            <label style="width: 70px;float: left;height: 30px;font-size: 20px;">学院：</label>
-                            <select id="single-select2" style="width: 200px;float: left;height: 35px;" class="form-control">
-                                <option value="软件学院">软件学院</option>
-                                <option value="计算机学院">计算机学院</option>
-                            </select>
+                        <%--<div class="addStudent">
+                            <h4 class="title" style="margin-bottom: 30px">添加教师账号</h4>
                             <label style="width: 70px;float: left;height: 30px;font-size: 20px;margin-left: 20px">数目：</label>
                             <input type="text" class="form-control border-input" style="width: 100px;float: left;height: 30px;" name="studentNum"  placeholder="1">
-                            <button  class="btn btn-info btn-fill btn-wd btn-addStudent" style="margin-left: 40px;height: 30px;width:150px;padding: 0px;">添加学生</button>
-                        </div>
+                            <button  class="btn btn-info btn-fill btn-wd btn-addStudent" style="margin-left: 40px;height: 30px;width:150px;padding: 0px;">添加教师</button>
+                        </div>--%>
 
                         <div class="form-group" style="margin-top: 100px">
                             <h4 class="title" style="margin-bottom: 30px">账号查询</h4>
-                            <label style="width: 70px;float: left;height: 30px;font-size: 20px;">学号：</label>
-                            <input type="text" class="form-control border-input" style="width: 150px;float: left;height: 30px;" name="studentCount" placeholder="id" value="${studentCount}">
-                            <label style="width: 70px;float: left;height: 30px;font-size: 20px;margin-left: 20px">姓名：</label>
-                            <input type="text" class="form-control border-input" style="width: 150px;float: left;height: 30px;" name="studentName" placeholder="name" value="${studentName}">
-                            <label style="width: 70px;float: left;height: 30px;font-size: 20px;margin-left: 20px">学院：</label>
-                            <select id="single-select" style="width: 200px;float: left;height: 35px;" class="form-control">
-                                <option value="软件学院">软件学院</option>
-                                <option value="计算机学院">计算机学院</option>
-                            </select>
-                            <label style="width: 70px;float: left;height: 30px;font-size: 20px;margin-left: 20px">系别：</label>
+                            <label style="width: 70px;float: left;height: 30px;font-size: 20px;">姓名：</label>
+                            <input type="text" class="form-control border-input" style="width: 150px;float: left;height: 30px;" name="teacherName" placeholder="name" value="${teacherName}">
+                            <label style="width: 70px;float: left;height: 30px;font-size: 20px;margin-left: 20px">方向：</label>
                             <select id="single-select1" style="width: 150px;float: left;height: 35px;" class="form-control">
                                 <option>软件工程</option>
                             </select>
@@ -111,22 +99,22 @@
                     <div class="content table-responsive table-full-width">
                         <table class="table table-bordered " style="margin-top: 30px">
                             <thead>
-                            <th>学号</th>
+                            <th>工号</th>
                             <th>姓名</th>
-                            <th>性别</th>
+                            <th>电话</th>
                             <th>邮箱</th>
-                            <th>学院</th>
-                            <th>系别</th>
+                            <th>地址</th>
+                            <th>方向</th>
                             </thead>
                             <tbody>
-                            <c:forEach items="${students}" var="student">
+                            <c:forEach items="${teachers}" var="teacher">
                                 <tr>
-                                    <td>${student.studentCount}</td>
-                                    <td>${student.studentName}</td>
-                                    <td>${student.studentSex}</td>
-                                    <td>${student.studentEmail}</td>
-                                    <td>${student.departmentName}</td>
-                                    <td>${student.departmentPerfession}</td>
+                                    <td>${teacher.teacherCount}</td>
+                                    <td>${teacher.teacherName}</td>
+                                    <td>${teacher.teacherPhone}</td>
+                                    <td>${teacher.teacherEmail}</td>
+                                    <td>${teacher.teacherAddress}</td>
+                                    <td>${teacher.teacherProfessionalTitle}</td>
                                 </tr>
                             </c:forEach>
                             </tbody>
@@ -190,9 +178,8 @@
 <script src="assets/js/demo.js"></script>
 <script type="text/javascript">
     $(".btn-search").click(function (){
-        var studentCount=$("input[name='studentCount']").val();
-        var studentName=$("input[name='studentName']").val();
-        window.location.href = "/superInfo?studentName="+studentName+"&&studentCount="+studentCount;
+        var teacherName=$("input[name='teacherName']").val();
+        window.location.href = "/superTeacher?teacherName="+teacherName;
 
     })
     $(".btn-addStudent").click(function (){

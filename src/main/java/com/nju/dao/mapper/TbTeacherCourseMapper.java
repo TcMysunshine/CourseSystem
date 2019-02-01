@@ -4,7 +4,10 @@ import com.nju.entity.TbTeacherCourse;
 import com.nju.entity.TbTeacherCourseExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+
+@Repository
 public interface TbTeacherCourseMapper {
     int countByExample(TbTeacherCourseExample example);
 
