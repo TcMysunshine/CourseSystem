@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.nju.dao.mapper.TbStudentCourseMapper" >
-  <resultMap id="BaseResultMap" type="com.nju.entity.TbStudentCourse" >
-    <id column="SCid" property="scid" jdbcType="INTEGER" />
-    <result column="student_id" property="studentId" jdbcType="INTEGER" />
+<mapper namespace="com.nju.dao.mapper.TbTeacherCourseMapper" >
+  <resultMap id="BaseResultMap" type="com.nju.entity.TbTeacherCourse" >
+    <id column="TCid" property="tcid" jdbcType="INTEGER" />
+    <result column="teacher_id" property="teacherId" jdbcType="INTEGER" />
     <result column="course_id" property="courseId" jdbcType="INTEGER" />
-    <result column="sorce" property="sorce" jdbcType="INTEGER" />
-    <result column="create_year" property="createYear" jdbcType="INTEGER" />
+    <result column="create_year" property="createYear" jdbcType="DATE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    SCid, student_id, course_id, sorce, create_year
+    TCid, teacher_id, course_id, create_year
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nju.entity.TbStudentCourseExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nju.entity.TbTeacherCourseExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tb_student_course
+    from tb_teacher_course
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,85 +85,76 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from tb_student_course
-    where SCid = #{scid,jdbcType=INTEGER}
+    from tb_teacher_course
+    where TCid = #{tcid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from tb_student_course
-    where SCid = #{scid,jdbcType=INTEGER}
+    delete from tb_teacher_course
+    where TCid = #{tcid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.nju.entity.TbStudentCourseExample" >
-    delete from tb_student_course
+  <delete id="deleteByExample" parameterType="com.nju.entity.TbTeacherCourseExample" >
+    delete from tb_teacher_course
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.nju.entity.TbStudentCourse" >
-    insert into tb_student_course (SCid, student_id, course_id, 
-      sorce, create_year)
-    values (#{scid,jdbcType=INTEGER}, #{studentId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, 
-      #{sorce,jdbcType=INTEGER}, #{createYear,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.nju.entity.TbTeacherCourse" >
+    insert into tb_teacher_course (TCid, teacher_id, course_id, 
+      create_year)
+    values (#{tcid,jdbcType=INTEGER}, #{teacherId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, 
+      #{createYear,jdbcType=DATE})
   </insert>
-  <insert id="insertSelective" parameterType="com.nju.entity.TbStudentCourse" >
-    insert into tb_student_course
+  <insert id="insertSelective" parameterType="com.nju.entity.TbTeacherCourse" >
+    insert into tb_teacher_course
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="scid != null" >
-        SCid,
+      <if test="tcid != null" >
+        TCid,
       </if>
-      <if test="studentId != null" >
-        student_id,
+      <if test="teacherId != null" >
+        teacher_id,
       </if>
       <if test="courseId != null" >
         course_id,
-      </if>
-      <if test="sorce != null" >
-        sorce,
       </if>
       <if test="createYear != null" >
         create_year,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="scid != null" >
-        #{scid,jdbcType=INTEGER},
+      <if test="tcid != null" >
+        #{tcid,jdbcType=INTEGER},
       </if>
-      <if test="studentId != null" >
-        #{studentId,jdbcType=INTEGER},
+      <if test="teacherId != null" >
+        #{teacherId,jdbcType=INTEGER},
       </if>
       <if test="courseId != null" >
         #{courseId,jdbcType=INTEGER},
       </if>
-      <if test="sorce != null" >
-        #{sorce,jdbcType=INTEGER},
-      </if>
       <if test="createYear != null" >
-        #{createYear,jdbcType=INTEGER},
+        #{createYear,jdbcType=DATE},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.nju.entity.TbStudentCourseExample" resultType="java.lang.Integer" >
-    select count(*) from tb_student_course
+  <select id="countByExample" parameterType="com.nju.entity.TbTeacherCourseExample" resultType="java.lang.Integer" >
+    select count(*) from tb_teacher_course
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update tb_student_course
+    update tb_teacher_course
     <set >
-      <if test="record.scid != null" >
-        SCid = #{record.scid,jdbcType=INTEGER},
+      <if test="record.tcid != null" >
+        TCid = #{record.tcid,jdbcType=INTEGER},
       </if>
-      <if test="record.studentId != null" >
-        student_id = #{record.studentId,jdbcType=INTEGER},
+      <if test="record.teacherId != null" >
+        teacher_id = #{record.teacherId,jdbcType=INTEGER},
       </if>
       <if test="record.courseId != null" >
         course_id = #{record.courseId,jdbcType=INTEGER},
       </if>
-      <if test="record.sorce != null" >
-        sorce = #{record.sorce,jdbcType=INTEGER},
-      </if>
       <if test="record.createYear != null" >
-        create_year = #{record.createYear,jdbcType=INTEGER},
+        create_year = #{record.createYear,jdbcType=DATE},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -172,40 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update tb_student_course
-    set SCid = #{record.scid,jdbcType=INTEGER},
-      student_id = #{record.studentId,jdbcType=INTEGER},
+    update tb_teacher_course
+    set TCid = #{record.tcid,jdbcType=INTEGER},
+      teacher_id = #{record.teacherId,jdbcType=INTEGER},
       course_id = #{record.courseId,jdbcType=INTEGER},
-      sorce = #{record.sorce,jdbcType=INTEGER},
-      create_year = #{record.createYear,jdbcType=INTEGER}
+      create_year = #{record.createYear,jdbcType=DATE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.nju.entity.TbStudentCourse" >
-    update tb_student_course
+  <update id="updateByPrimaryKeySelective" parameterType="com.nju.entity.TbTeacherCourse" >
+    update tb_teacher_course
     <set >
-      <if test="studentId != null" >
-        student_id = #{studentId,jdbcType=INTEGER},
+      <if test="teacherId != null" >
+        teacher_id = #{teacherId,jdbcType=INTEGER},
       </if>
       <if test="courseId != null" >
         course_id = #{courseId,jdbcType=INTEGER},
       </if>
-      <if test="sorce != null" >
-        sorce = #{sorce,jdbcType=INTEGER},
-      </if>
       <if test="createYear != null" >
-        create_year = #{createYear,jdbcType=INTEGER},
+        create_year = #{createYear,jdbcType=DATE},
       </if>
     </set>
-    where SCid = #{scid,jdbcType=INTEGER}
+    where TCid = #{tcid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.nju.entity.TbStudentCourse" >
-    update tb_student_course
-    set student_id = #{studentId,jdbcType=INTEGER},
+  <update id="updateByPrimaryKey" parameterType="com.nju.entity.TbTeacherCourse" >
+    update tb_teacher_course
+    set teacher_id = #{teacherId,jdbcType=INTEGER},
       course_id = #{courseId,jdbcType=INTEGER},
-      sorce = #{sorce,jdbcType=INTEGER},
-      create_year = #{createYear,jdbcType=INTEGER}
-    where SCid = #{scid,jdbcType=INTEGER}
+      create_year = #{createYear,jdbcType=DATE}
+    where TCid = #{tcid,jdbcType=INTEGER}
   </update>
 </mapper>

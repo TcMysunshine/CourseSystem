@@ -1,13 +1,14 @@
 package com.nju.service.impl;
 
 import com.nju.dao.mapper.TbCourseMapper;
-import com.nju.dao.mapper.TbStudentCourseMapper;
 import com.nju.entity.*;
 import com.nju.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.nju.dao.mapper.TbStudentCourseMapper;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -56,6 +57,10 @@ public class CourseServiceImpl implements CourseService {
         TbStudentCourse studentCourse=new TbStudentCourse();
         studentCourse.setCourseId(courseId);
         studentCourse.setStudentId(studentId);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        int year = cal.get(Calendar.YEAR);
+        studentCourse.setCreateYear(year);
         if (studentCourseMapper.insert(studentCourse)==1)
             return true;
         else

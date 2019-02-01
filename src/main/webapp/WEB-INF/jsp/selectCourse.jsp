@@ -382,7 +382,9 @@
                 error: function () {
                 }
             })
+
         });
+        /*demo.showNotification('top','center');*/
     })
 </script>
 </html>

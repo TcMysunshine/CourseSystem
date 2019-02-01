@@ -1,16 +1,18 @@
 package com.nju.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
-public class TbStudentCourseExample {
+public class TbTeacherCourseExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public TbStudentCourseExample() {
+    public TbTeacherCourseExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -104,123 +106,149 @@ public class TbStudentCourseExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andScidIsNull() {
-            addCriterion("SCid is null");
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
+        }
+
+        public Criteria andTcidIsNull() {
+            addCriterion("TCid is null");
             return (Criteria) this;
         }
 
-        public Criteria andScidIsNotNull() {
-            addCriterion("SCid is not null");
+        public Criteria andTcidIsNotNull() {
+            addCriterion("TCid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andScidEqualTo(Integer value) {
-            addCriterion("SCid =", value, "scid");
+        public Criteria andTcidEqualTo(Integer value) {
+            addCriterion("TCid =", value, "tcid");
             return (Criteria) this;
         }
 
-        public Criteria andScidNotEqualTo(Integer value) {
-            addCriterion("SCid <>", value, "scid");
+        public Criteria andTcidNotEqualTo(Integer value) {
+            addCriterion("TCid <>", value, "tcid");
             return (Criteria) this;
         }
 
-        public Criteria andScidGreaterThan(Integer value) {
-            addCriterion("SCid >", value, "scid");
+        public Criteria andTcidGreaterThan(Integer value) {
+            addCriterion("TCid >", value, "tcid");
             return (Criteria) this;
         }
 
-        public Criteria andScidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("SCid >=", value, "scid");
+        public Criteria andTcidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("TCid >=", value, "tcid");
             return (Criteria) this;
         }
 
-        public Criteria andScidLessThan(Integer value) {
-            addCriterion("SCid <", value, "scid");
+        public Criteria andTcidLessThan(Integer value) {
+            addCriterion("TCid <", value, "tcid");
             return (Criteria) this;
         }
 
-        public Criteria andScidLessThanOrEqualTo(Integer value) {
-            addCriterion("SCid <=", value, "scid");
+        public Criteria andTcidLessThanOrEqualTo(Integer value) {
+            addCriterion("TCid <=", value, "tcid");
             return (Criteria) this;
         }
 
-        public Criteria andScidIn(List<Integer> values) {
-            addCriterion("SCid in", values, "scid");
+        public Criteria andTcidIn(List<Integer> values) {
+            addCriterion("TCid in", values, "tcid");
             return (Criteria) this;
         }
 
-        public Criteria andScidNotIn(List<Integer> values) {
-            addCriterion("SCid not in", values, "scid");
+        public Criteria andTcidNotIn(List<Integer> values) {
+            addCriterion("TCid not in", values, "tcid");
             return (Criteria) this;
         }
 
-        public Criteria andScidBetween(Integer value1, Integer value2) {
-            addCriterion("SCid between", value1, value2, "scid");
+        public Criteria andTcidBetween(Integer value1, Integer value2) {
+            addCriterion("TCid between", value1, value2, "tcid");
             return (Criteria) this;
         }
 
-        public Criteria andScidNotBetween(Integer value1, Integer value2) {
-            addCriterion("SCid not between", value1, value2, "scid");
+        public Criteria andTcidNotBetween(Integer value1, Integer value2) {
+            addCriterion("TCid not between", value1, value2, "tcid");
             return (Criteria) this;
         }
 
-        public Criteria andStudentIdIsNull() {
-            addCriterion("student_id is null");
+        public Criteria andTeacherIdIsNull() {
+            addCriterion("teacher_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andStudentIdIsNotNull() {
-            addCriterion("student_id is not null");
+        public Criteria andTeacherIdIsNotNull() {
+            addCriterion("teacher_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andStudentIdEqualTo(Integer value) {
-            addCriterion("student_id =", value, "studentId");
+        public Criteria andTeacherIdEqualTo(Integer value) {
+            addCriterion("teacher_id =", value, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andStudentIdNotEqualTo(Integer value) {
-            addCriterion("student_id <>", value, "studentId");
+        public Criteria andTeacherIdNotEqualTo(Integer value) {
+            addCriterion("teacher_id <>", value, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andStudentIdGreaterThan(Integer value) {
-            addCriterion("student_id >", value, "studentId");
+        public Criteria andTeacherIdGreaterThan(Integer value) {
+            addCriterion("teacher_id >", value, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andStudentIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("student_id >=", value, "studentId");
+        public Criteria andTeacherIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("teacher_id >=", value, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andStudentIdLessThan(Integer value) {
-            addCriterion("student_id <", value, "studentId");
+        public Criteria andTeacherIdLessThan(Integer value) {
+            addCriterion("teacher_id <", value, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andStudentIdLessThanOrEqualTo(Integer value) {
-            addCriterion("student_id <=", value, "studentId");
+        public Criteria andTeacherIdLessThanOrEqualTo(Integer value) {
+            addCriterion("teacher_id <=", value, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andStudentIdIn(List<Integer> values) {
-            addCriterion("student_id in", values, "studentId");
+        public Criteria andTeacherIdIn(List<Integer> values) {
+            addCriterion("teacher_id in", values, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andStudentIdNotIn(List<Integer> values) {
-            addCriterion("student_id not in", values, "studentId");
+        public Criteria andTeacherIdNotIn(List<Integer> values) {
+            addCriterion("teacher_id not in", values, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andStudentIdBetween(Integer value1, Integer value2) {
-            addCriterion("student_id between", value1, value2, "studentId");
+        public Criteria andTeacherIdBetween(Integer value1, Integer value2) {
+            addCriterion("teacher_id between", value1, value2, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andStudentIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("student_id not between", value1, value2, "studentId");
+        public Criteria andTeacherIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("teacher_id not between", value1, value2, "teacherId");
             return (Criteria) this;
         }
 
@@ -284,66 +312,6 @@ public class TbStudentCourseExample {
             return (Criteria) this;
         }
 
-        public Criteria andSorceIsNull() {
-            addCriterion("sorce is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSorceIsNotNull() {
-            addCriterion("sorce is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSorceEqualTo(Integer value) {
-            addCriterion("sorce =", value, "sorce");
-            return (Criteria) this;
-        }
-
-        public Criteria andSorceNotEqualTo(Integer value) {
-            addCriterion("sorce <>", value, "sorce");
-            return (Criteria) this;
-        }
-
-        public Criteria andSorceGreaterThan(Integer value) {
-            addCriterion("sorce >", value, "sorce");
-            return (Criteria) this;
-        }
-
-        public Criteria andSorceGreaterThanOrEqualTo(Integer value) {
-            addCriterion("sorce >=", value, "sorce");
-            return (Criteria) this;
-        }
-
-        public Criteria andSorceLessThan(Integer value) {
-            addCriterion("sorce <", value, "sorce");
-            return (Criteria) this;
-        }
-
-        public Criteria andSorceLessThanOrEqualTo(Integer value) {
-            addCriterion("sorce <=", value, "sorce");
-            return (Criteria) this;
-        }
-
-        public Criteria andSorceIn(List<Integer> values) {
-            addCriterion("sorce in", values, "sorce");
-            return (Criteria) this;
-        }
-
-        public Criteria andSorceNotIn(List<Integer> values) {
-            addCriterion("sorce not in", values, "sorce");
-            return (Criteria) this;
-        }
-
-        public Criteria andSorceBetween(Integer value1, Integer value2) {
-            addCriterion("sorce between", value1, value2, "sorce");
-            return (Criteria) this;
-        }
-
-        public Criteria andSorceNotBetween(Integer value1, Integer value2) {
-            addCriterion("sorce not between", value1, value2, "sorce");
-            return (Criteria) this;
-        }
-
         public Criteria andCreateYearIsNull() {
             addCriterion("create_year is null");
             return (Criteria) this;
@@ -354,53 +322,53 @@ public class TbStudentCourseExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearEqualTo(Integer value) {
-            addCriterion("create_year =", value, "createYear");
+        public Criteria andCreateYearEqualTo(Date value) {
+            addCriterionForJDBCDate("create_year =", value, "createYear");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearNotEqualTo(Integer value) {
-            addCriterion("create_year <>", value, "createYear");
+        public Criteria andCreateYearNotEqualTo(Date value) {
+            addCriterionForJDBCDate("create_year <>", value, "createYear");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearGreaterThan(Integer value) {
-            addCriterion("create_year >", value, "createYear");
+        public Criteria andCreateYearGreaterThan(Date value) {
+            addCriterionForJDBCDate("create_year >", value, "createYear");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearGreaterThanOrEqualTo(Integer value) {
-            addCriterion("create_year >=", value, "createYear");
+        public Criteria andCreateYearGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("create_year >=", value, "createYear");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearLessThan(Integer value) {
-            addCriterion("create_year <", value, "createYear");
+        public Criteria andCreateYearLessThan(Date value) {
+            addCriterionForJDBCDate("create_year <", value, "createYear");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearLessThanOrEqualTo(Integer value) {
-            addCriterion("create_year <=", value, "createYear");
+        public Criteria andCreateYearLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("create_year <=", value, "createYear");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearIn(List<Integer> values) {
-            addCriterion("create_year in", values, "createYear");
+        public Criteria andCreateYearIn(List<Date> values) {
+            addCriterionForJDBCDate("create_year in", values, "createYear");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearNotIn(List<Integer> values) {
-            addCriterion("create_year not in", values, "createYear");
+        public Criteria andCreateYearNotIn(List<Date> values) {
+            addCriterionForJDBCDate("create_year not in", values, "createYear");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearBetween(Integer value1, Integer value2) {
-            addCriterion("create_year between", value1, value2, "createYear");
+        public Criteria andCreateYearBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("create_year between", value1, value2, "createYear");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearNotBetween(Integer value1, Integer value2) {
-            addCriterion("create_year not between", value1, value2, "createYear");
+        public Criteria andCreateYearNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("create_year not between", value1, value2, "createYear");
             return (Criteria) this;
         }
     }

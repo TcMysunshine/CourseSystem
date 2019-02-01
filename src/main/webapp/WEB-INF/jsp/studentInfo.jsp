@@ -339,7 +339,7 @@
             studentAge:$("input[name='studentAge']").val(),
             studentAddress:$("input[name='studentAddress']").val(),
             studentPhone:$("input[name='studentPhone']").val(),
-            studentIntroduce:$("textarea[name='studentIntroduce']").text()
+            studentIntroduce:$("textarea[name='studentIntroduce']").val(),
         }
         $.ajax({
             url:"/stuEditInfo",
@@ -349,7 +349,8 @@
             data:JSON.stringify(studentInfo),
             dataType:"json",
             success:function (json) {
-
+                alert("修改成功！");
+                window.location.href="/studentInfo";
             },
             error:function () {
 

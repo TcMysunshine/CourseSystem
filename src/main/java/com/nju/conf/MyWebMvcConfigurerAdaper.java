@@ -13,7 +13,7 @@ public class MyWebMvcConfigurerAdaper implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry interceptorRegistry){
         interceptorRegistry.addInterceptor(accessInterceptor).
                 addPathPatterns("/**").excludePathPatterns("/","/login",
-                "/teacherLogin","/studentLogin/confirm","teacherLogin.do")
+                "/teacherLogin","/studentLogin/confirm","/teacherLogin.do","/superLogin/confirm")
                 .excludePathPatterns("/css/**","/js/**",
                         "/img/**","/assets/**");
     }

@@ -9,6 +9,8 @@ public class TbStudentCourse {
 
     private Integer sorce;
 
+    private Integer createYear;
+
     public Integer getScid() {
         return scid;
     }
@@ -39,5 +41,13 @@ public class TbStudentCourse {
 
     public void setSorce(Integer sorce) {
         this.sorce = sorce;
+    }
+
+    public Integer getCreateYear() {
+        return createYear;
+    }
+
+    public void setCreateYear(Integer createYear) {
+        this.createYear = createYear;
     }
 }

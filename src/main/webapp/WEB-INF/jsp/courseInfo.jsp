@@ -140,9 +140,29 @@
                     <div class="col-md-12">
                         <div class="card card-plain">
                             <div class="header">
-                                <%--<hr style="height:1px;width:40%;border:none;border-top:5px ridge #777;margin-left: 0px" />--%>
-                                    <div style="border-bottom: 1px ridge #777;height: 100px">
+                                    <div style="border-bottom: 1px ridge #777; ">
                                         <h4 class="title" style="padding-top: 28px">课件</h4>
+                                        <div class="card" style="margin-top: 18px">
+                                            <div class="content">
+                                                <div class="row">
+                                                    <div class="col-xs-5">
+                                                        <span class="ti-uppercase" style="margin: 8px"></span><a href="courseware/课件2.pdf" style="font-size: 18px; margin: 8px" target="view_window">课件1</a><br/>
+                                                        <span class="ti-uppercase" style="margin: 8px"></span><a href="courseware/课件2.pdf" style="font-size: 18px; margin: 8px" target="view_window">课件2</a><br/>
+                                                        <span class="ti-uppercase" style="margin: 8px"></span><a href="courseware/课件2.pdf" style="font-size: 18px; margin: 8px" target="view_window">课件3</a><br/>
+                                                        <span class="ti-uppercase"style="margin: 8px"></span><a href="courseware/课件2.pdf" style="font-size: 18px; margin: 8px" target="view_window">课件4</a><br/>
+                                                    </div>
+                                                    <div class="col-xs-7">
+
+                                                    </div>
+                                                </div>
+                                                <div class="footer">
+                                                    <hr />
+                                                    <div class="stats">
+                                                        <i class="ti-reload"></i> Updated now
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 <div style="border-bottom: 1px ridge #777;height: 100px">
                                     <h4 class="title" style="padding-top: 28px">作业</h4>
@@ -151,6 +171,24 @@
                                     <div style="border-bottom: 1px ridge #777;height: 100px">
                                         <h4 class="title" style="padding-top: 28px">通知</h4>
                                     </div>
+                                <div class="card" style="margin-top: 18px">
+                                    <div class="content">
+                                        <div class="row">
+                                            <div class="alert alert-info">
+                                                <span>This is a plain notification</span>
+                                            </div>
+                                            <div class="col-xs-7">
+
+                                            </div>
+                                        </div>
+                                        <div class="footer">
+                                            <hr />
+                                            <div class="stats">
+                                                <i class="ti-reload"></i> Updated now
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <%--
                                 <p class="category">点击查看课程详情</p>--%>
                             </div>

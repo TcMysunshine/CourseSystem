@@ -96,16 +96,22 @@
                 username: username,
                 password: password,
             }
-        }else if($("#teacher").is(':checked')){
+        }
+        if($("#teacher").is(':checked')){
             url="/teacherLogin.do";
             href='teacherInfo';
             data1={
                 teacherCount: username,
                 teacherPass: password,
             }
-        }else if($("#super").is(':checked')){
+        }
+        if($("#super").is(':checked')){
             url="superLogin/confirm";
             href='superInfo';
+            data1={
+                username: username,
+                password: password,
+            }
         }
         if ( username == ""|| password == "") {
             alert("用户名或者密码不能为空！");

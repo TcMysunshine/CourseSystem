@@ -135,7 +135,7 @@ demo = {
 
     	$.notify({
         	icon: "ti-gift",
-        	message: "Welcome to <b>Paper Dashboard</b> - a beautiful freebie for every web developer."
+        	message: "请在规定时间内选课！"
 
         },{
             type: type[color],
