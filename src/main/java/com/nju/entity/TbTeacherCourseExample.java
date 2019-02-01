@@ -1,8 +1,6 @@
 package com.nju.entity;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class TbTeacherCourseExample {
@@ -104,32 +102,6 @@ public class TbTeacherCourseExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andTcidIsNull() {
@@ -312,63 +284,63 @@ public class TbTeacherCourseExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearIsNull() {
-            addCriterion("create_year is null");
+        public Criteria andCourseConcreteIdIsNull() {
+            addCriterion("course_concrete_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearIsNotNull() {
-            addCriterion("create_year is not null");
+        public Criteria andCourseConcreteIdIsNotNull() {
+            addCriterion("course_concrete_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearEqualTo(Date value) {
-            addCriterionForJDBCDate("create_year =", value, "createYear");
+        public Criteria andCourseConcreteIdEqualTo(Integer value) {
+            addCriterion("course_concrete_id =", value, "courseConcreteId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearNotEqualTo(Date value) {
-            addCriterionForJDBCDate("create_year <>", value, "createYear");
+        public Criteria andCourseConcreteIdNotEqualTo(Integer value) {
+            addCriterion("course_concrete_id <>", value, "courseConcreteId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearGreaterThan(Date value) {
-            addCriterionForJDBCDate("create_year >", value, "createYear");
+        public Criteria andCourseConcreteIdGreaterThan(Integer value) {
+            addCriterion("course_concrete_id >", value, "courseConcreteId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("create_year >=", value, "createYear");
+        public Criteria andCourseConcreteIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("course_concrete_id >=", value, "courseConcreteId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearLessThan(Date value) {
-            addCriterionForJDBCDate("create_year <", value, "createYear");
+        public Criteria andCourseConcreteIdLessThan(Integer value) {
+            addCriterion("course_concrete_id <", value, "courseConcreteId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("create_year <=", value, "createYear");
+        public Criteria andCourseConcreteIdLessThanOrEqualTo(Integer value) {
+            addCriterion("course_concrete_id <=", value, "courseConcreteId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearIn(List<Date> values) {
-            addCriterionForJDBCDate("create_year in", values, "createYear");
+        public Criteria andCourseConcreteIdIn(List<Integer> values) {
+            addCriterion("course_concrete_id in", values, "courseConcreteId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearNotIn(List<Date> values) {
-            addCriterionForJDBCDate("create_year not in", values, "createYear");
+        public Criteria andCourseConcreteIdNotIn(List<Integer> values) {
+            addCriterion("course_concrete_id not in", values, "courseConcreteId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("create_year between", value1, value2, "createYear");
+        public Criteria andCourseConcreteIdBetween(Integer value1, Integer value2) {
+            addCriterion("course_concrete_id between", value1, value2, "courseConcreteId");
             return (Criteria) this;
         }
 
-        public Criteria andCreateYearNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("create_year not between", value1, value2, "createYear");
+        public Criteria andCourseConcreteIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("course_concrete_id not between", value1, value2, "courseConcreteId");
             return (Criteria) this;
         }
     }

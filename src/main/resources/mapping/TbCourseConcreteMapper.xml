@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nju.dao.mapper.TbCourseConcreteMapper" >
+  <resultMap id="BaseResultMap" type="com.nju.entity.TbCourseConcrete" >
+    <id column="course_concrete_id" property="courseConcreteId" jdbcType="INTEGER" />
+    <result column="course_concrete_createtime" property="courseConcreteCreatetime" jdbcType="INTEGER" />
+    <result column="course_concrete_weektime" property="courseConcreteWeektime" jdbcType="INTEGER" />
+    <result column="course_concrete_information" property="courseConcreteInformation" jdbcType="VARCHAR" />
+    <result column="course_concrete_request" property="courseConcreteRequest" jdbcType="VARCHAR" />
+    <result column="course_concrete_credit" property="courseConcreteCredit" jdbcType="INTEGER" />
+    <result column="course_concrete_classroom" property="courseConcreteClassroom" jdbcType="VARCHAR" />
+    <result column="course_concrete_time" property="courseConcreteTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    course_concrete_id, course_concrete_createtime, course_concrete_weektime, course_concrete_information, 
+    course_concrete_request, course_concrete_credit, course_concrete_classroom, course_concrete_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nju.entity.TbCourseConcreteExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_course_concrete
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_course_concrete
+    where course_concrete_id = #{courseConcreteId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_course_concrete
+    where course_concrete_id = #{courseConcreteId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.nju.entity.TbCourseConcreteExample" >
+    delete from tb_course_concrete
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.nju.entity.TbCourseConcrete" >
+    insert into tb_course_concrete (course_concrete_id, course_concrete_createtime, 
+      course_concrete_weektime, course_concrete_information, 
+      course_concrete_request, course_concrete_credit, 
+      course_concrete_classroom, course_concrete_time
+      )
+    values (#{courseConcreteId,jdbcType=INTEGER}, #{courseConcreteCreatetime,jdbcType=INTEGER}, 
+      #{courseConcreteWeektime,jdbcType=INTEGER}, #{courseConcreteInformation,jdbcType=VARCHAR}, 
+      #{courseConcreteRequest,jdbcType=VARCHAR}, #{courseConcreteCredit,jdbcType=INTEGER}, 
+      #{courseConcreteClassroom,jdbcType=VARCHAR}, #{courseConcreteTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.nju.entity.TbCourseConcrete" >
+    insert into tb_course_concrete
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseConcreteId != null" >
+        course_concrete_id,
+      </if>
+      <if test="courseConcreteCreatetime != null" >
+        course_concrete_createtime,
+      </if>
+      <if test="courseConcreteWeektime != null" >
+        course_concrete_weektime,
+      </if>
+      <if test="courseConcreteInformation != null" >
+        course_concrete_information,
+      </if>
+      <if test="courseConcreteRequest != null" >
+        course_concrete_request,
+      </if>
+      <if test="courseConcreteCredit != null" >
+        course_concrete_credit,
+      </if>
+      <if test="courseConcreteClassroom != null" >
+        course_concrete_classroom,
+      </if>
+      <if test="courseConcreteTime != null" >
+        course_concrete_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseConcreteId != null" >
+        #{courseConcreteId,jdbcType=INTEGER},
+      </if>
+      <if test="courseConcreteCreatetime != null" >
+        #{courseConcreteCreatetime,jdbcType=INTEGER},
+      </if>
+      <if test="courseConcreteWeektime != null" >
+        #{courseConcreteWeektime,jdbcType=INTEGER},
+      </if>
+      <if test="courseConcreteInformation != null" >
+        #{courseConcreteInformation,jdbcType=VARCHAR},
+      </if>
+      <if test="courseConcreteRequest != null" >
+        #{courseConcreteRequest,jdbcType=VARCHAR},
+      </if>
+      <if test="courseConcreteCredit != null" >
+        #{courseConcreteCredit,jdbcType=INTEGER},
+      </if>
+      <if test="courseConcreteClassroom != null" >
+        #{courseConcreteClassroom,jdbcType=VARCHAR},
+      </if>
+      <if test="courseConcreteTime != null" >
+        #{courseConcreteTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.nju.entity.TbCourseConcreteExample" resultType="java.lang.Integer" >
+    select count(*) from tb_course_concrete
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_course_concrete
+    <set >
+      <if test="record.courseConcreteId != null" >
+        course_concrete_id = #{record.courseConcreteId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseConcreteCreatetime != null" >
+        course_concrete_createtime = #{record.courseConcreteCreatetime,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseConcreteWeektime != null" >
+        course_concrete_weektime = #{record.courseConcreteWeektime,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseConcreteInformation != null" >
+        course_concrete_information = #{record.courseConcreteInformation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseConcreteRequest != null" >
+        course_concrete_request = #{record.courseConcreteRequest,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseConcreteCredit != null" >
+        course_concrete_credit = #{record.courseConcreteCredit,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseConcreteClassroom != null" >
+        course_concrete_classroom = #{record.courseConcreteClassroom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseConcreteTime != null" >
+        course_concrete_time = #{record.courseConcreteTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_course_concrete
+    set course_concrete_id = #{record.courseConcreteId,jdbcType=INTEGER},
+      course_concrete_createtime = #{record.courseConcreteCreatetime,jdbcType=INTEGER},
+      course_concrete_weektime = #{record.courseConcreteWeektime,jdbcType=INTEGER},
+      course_concrete_information = #{record.courseConcreteInformation,jdbcType=VARCHAR},
+      course_concrete_request = #{record.courseConcreteRequest,jdbcType=VARCHAR},
+      course_concrete_credit = #{record.courseConcreteCredit,jdbcType=INTEGER},
+      course_concrete_classroom = #{record.courseConcreteClassroom,jdbcType=VARCHAR},
+      course_concrete_time = #{record.courseConcreteTime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nju.entity.TbCourseConcrete" >
+    update tb_course_concrete
+    <set >
+      <if test="courseConcreteCreatetime != null" >
+        course_concrete_createtime = #{courseConcreteCreatetime,jdbcType=INTEGER},
+      </if>
+      <if test="courseConcreteWeektime != null" >
+        course_concrete_weektime = #{courseConcreteWeektime,jdbcType=INTEGER},
+      </if>
+      <if test="courseConcreteInformation != null" >
+        course_concrete_information = #{courseConcreteInformation,jdbcType=VARCHAR},
+      </if>
+      <if test="courseConcreteRequest != null" >
+        course_concrete_request = #{courseConcreteRequest,jdbcType=VARCHAR},
+      </if>
+      <if test="courseConcreteCredit != null" >
+        course_concrete_credit = #{courseConcreteCredit,jdbcType=INTEGER},
+      </if>
+      <if test="courseConcreteClassroom != null" >
+        course_concrete_classroom = #{courseConcreteClassroom,jdbcType=VARCHAR},
+      </if>
+      <if test="courseConcreteTime != null" >
+        course_concrete_time = #{courseConcreteTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where course_concrete_id = #{courseConcreteId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nju.entity.TbCourseConcrete" >
+    update tb_course_concrete
+    set course_concrete_createtime = #{courseConcreteCreatetime,jdbcType=INTEGER},
+      course_concrete_weektime = #{courseConcreteWeektime,jdbcType=INTEGER},
+      course_concrete_information = #{courseConcreteInformation,jdbcType=VARCHAR},
+      course_concrete_request = #{courseConcreteRequest,jdbcType=VARCHAR},
+      course_concrete_credit = #{courseConcreteCredit,jdbcType=INTEGER},
+      course_concrete_classroom = #{courseConcreteClassroom,jdbcType=VARCHAR},
+      course_concrete_time = #{courseConcreteTime,jdbcType=VARCHAR}
+    where course_concrete_id = #{courseConcreteId,jdbcType=INTEGER}
+  </update>
+</mapper>

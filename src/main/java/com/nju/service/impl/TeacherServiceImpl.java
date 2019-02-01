@@ -13,6 +13,7 @@ import java.util.List;
 public class TeacherServiceImpl {
     @Autowired
     TbTeacherMapper tbTeacherMapper;
+
     public TeacherModel findTeacherByCountPass(String count, String pass){
         TbTeacherExample teacherExample=new TbTeacherExample();
         TbTeacherExample.Criteria criteria=teacherExample.createCriteria();
@@ -32,4 +33,19 @@ public class TeacherServiceImpl {
         }
         return false;
     }
+
+    public TbTeacher getTeacher(String teacherCount, String teacherPassword){
+        TbTeacherExample teacherExample=new TbTeacherExample();
+        TbTeacherExample.Criteria criteria=teacherExample.createCriteria();
+
+        criteria.andTeacherCountEqualTo(teacherCount);
+        criteria.andTeacherPasswordEqualTo(teacherPassword);
+        List<TbTeacher> teachers=tbTeacherMapper.selectByExample(teacherExample);
+        if(teachers.size()>0){
+            return teachers.get(0);
+        }
+        else
+            return null;
+    }
+
 }

@@ -1,7 +1,5 @@
 package com.nju.entity;
 
-import java.util.Date;
-
 public class TbTeacherCourse {
     private Integer tcid;
 
@@ -9,7 +7,7 @@ public class TbTeacherCourse {
 
     private Integer courseId;
 
-    private Date createYear;
+    private Integer courseConcreteId;
 
     public Integer getTcid() {
         return tcid;
@@ -35,11 +33,11 @@ public class TbTeacherCourse {
         this.courseId = courseId;
     }
 
-    public Date getCreateYear() {
-        return createYear;
+    public Integer getCourseConcreteId() {
+        return courseConcreteId;
     }
 
-    public void setCreateYear(Date createYear) {
-        this.createYear = createYear;
+    public void setCourseConcreteId(Integer courseConcreteId) {
+        this.courseConcreteId = courseConcreteId;
     }
 }

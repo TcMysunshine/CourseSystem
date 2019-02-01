@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="teacherCourseInfo">
                         <i class="ti-view-list-alt"></i>
                         <p>课程信息</p>
                     </a>

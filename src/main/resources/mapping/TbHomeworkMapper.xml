@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nju.dao.mapper.TbHomeworkMapper" >
+  <resultMap id="BaseResultMap" type="com.nju.entity.TbHomework" >
+    <id column="homework_id" property="homeworkId" jdbcType="INTEGER" />
+    <result column="homework_title" property="homeworkTitle" jdbcType="VARCHAR" />
+    <result column="homework_content" property="homeworkContent" jdbcType="VARCHAR" />
+    <result column="homework_starttime" property="homeworkStarttime" jdbcType="TIMESTAMP" />
+    <result column="homework_endtime" property="homeworkEndtime" jdbcType="TIMESTAMP" />
+    <result column="homework_submit_state" property="homeworkSubmitState" jdbcType="VARCHAR" />
+    <result column="homework_grade_state" property="homeworkGradeState" jdbcType="VARCHAR" />
+    <result column="homework_last_edit_time" property="homeworkLastEditTime" jdbcType="TIMESTAMP" />
+    <result column="homework_remark" property="homeworkRemark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    homework_id, homework_title, homework_content, homework_starttime, homework_endtime, 
+    homework_submit_state, homework_grade_state, homework_last_edit_time, homework_remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nju.entity.TbHomeworkExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_homework
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_homework
+    where homework_id = #{homeworkId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_homework
+    where homework_id = #{homeworkId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.nju.entity.TbHomeworkExample" >
+    delete from tb_homework
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.nju.entity.TbHomework" >
+    insert into tb_homework (homework_id, homework_title, homework_content, 
+      homework_starttime, homework_endtime, 
+      homework_submit_state, homework_grade_state, 
+      homework_last_edit_time, homework_remark)
+    values (#{homeworkId,jdbcType=INTEGER}, #{homeworkTitle,jdbcType=VARCHAR}, #{homeworkContent,jdbcType=VARCHAR}, 
+      #{homeworkStarttime,jdbcType=TIMESTAMP}, #{homeworkEndtime,jdbcType=TIMESTAMP}, 
+      #{homeworkSubmitState,jdbcType=VARCHAR}, #{homeworkGradeState,jdbcType=VARCHAR}, 
+      #{homeworkLastEditTime,jdbcType=TIMESTAMP}, #{homeworkRemark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nju.entity.TbHomework" >
+    insert into tb_homework
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="homeworkId != null" >
+        homework_id,
+      </if>
+      <if test="homeworkTitle != null" >
+        homework_title,
+      </if>
+      <if test="homeworkContent != null" >
+        homework_content,
+      </if>
+      <if test="homeworkStarttime != null" >
+        homework_starttime,
+      </if>
+      <if test="homeworkEndtime != null" >
+        homework_endtime,
+      </if>
+      <if test="homeworkSubmitState != null" >
+        homework_submit_state,
+      </if>
+      <if test="homeworkGradeState != null" >
+        homework_grade_state,
+      </if>
+      <if test="homeworkLastEditTime != null" >
+        homework_last_edit_time,
+      </if>
+      <if test="homeworkRemark != null" >
+        homework_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="homeworkId != null" >
+        #{homeworkId,jdbcType=INTEGER},
+      </if>
+      <if test="homeworkTitle != null" >
+        #{homeworkTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="homeworkContent != null" >
+        #{homeworkContent,jdbcType=VARCHAR},
+      </if>
+      <if test="homeworkStarttime != null" >
+        #{homeworkStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="homeworkEndtime != null" >
+        #{homeworkEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="homeworkSubmitState != null" >
+        #{homeworkSubmitState,jdbcType=VARCHAR},
+      </if>
+      <if test="homeworkGradeState != null" >
+        #{homeworkGradeState,jdbcType=VARCHAR},
+      </if>
+      <if test="homeworkLastEditTime != null" >
+        #{homeworkLastEditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="homeworkRemark != null" >
+        #{homeworkRemark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.nju.entity.TbHomeworkExample" resultType="java.lang.Integer" >
+    select count(*) from tb_homework
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_homework
+    <set >
+      <if test="record.homeworkId != null" >
+        homework_id = #{record.homeworkId,jdbcType=INTEGER},
+      </if>
+      <if test="record.homeworkTitle != null" >
+        homework_title = #{record.homeworkTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.homeworkContent != null" >
+        homework_content = #{record.homeworkContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.homeworkStarttime != null" >
+        homework_starttime = #{record.homeworkStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.homeworkEndtime != null" >
+        homework_endtime = #{record.homeworkEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.homeworkSubmitState != null" >
+        homework_submit_state = #{record.homeworkSubmitState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.homeworkGradeState != null" >
+        homework_grade_state = #{record.homeworkGradeState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.homeworkLastEditTime != null" >
+        homework_last_edit_time = #{record.homeworkLastEditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.homeworkRemark != null" >
+        homework_remark = #{record.homeworkRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_homework
+    set homework_id = #{record.homeworkId,jdbcType=INTEGER},
+      homework_title = #{record.homeworkTitle,jdbcType=VARCHAR},
+      homework_content = #{record.homeworkContent,jdbcType=VARCHAR},
+      homework_starttime = #{record.homeworkStarttime,jdbcType=TIMESTAMP},
+      homework_endtime = #{record.homeworkEndtime,jdbcType=TIMESTAMP},
+      homework_submit_state = #{record.homeworkSubmitState,jdbcType=VARCHAR},
+      homework_grade_state = #{record.homeworkGradeState,jdbcType=VARCHAR},
+      homework_last_edit_time = #{record.homeworkLastEditTime,jdbcType=TIMESTAMP},
+      homework_remark = #{record.homeworkRemark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nju.entity.TbHomework" >
+    update tb_homework
+    <set >
+      <if test="homeworkTitle != null" >
+        homework_title = #{homeworkTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="homeworkContent != null" >
+        homework_content = #{homeworkContent,jdbcType=VARCHAR},
+      </if>
+      <if test="homeworkStarttime != null" >
+        homework_starttime = #{homeworkStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="homeworkEndtime != null" >
+        homework_endtime = #{homeworkEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="homeworkSubmitState != null" >
+        homework_submit_state = #{homeworkSubmitState,jdbcType=VARCHAR},
+      </if>
+      <if test="homeworkGradeState != null" >
+        homework_grade_state = #{homeworkGradeState,jdbcType=VARCHAR},
+      </if>
+      <if test="homeworkLastEditTime != null" >
+        homework_last_edit_time = #{homeworkLastEditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="homeworkRemark != null" >
+        homework_remark = #{homeworkRemark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where homework_id = #{homeworkId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nju.entity.TbHomework" >
+    update tb_homework
+    set homework_title = #{homeworkTitle,jdbcType=VARCHAR},
+      homework_content = #{homeworkContent,jdbcType=VARCHAR},
+      homework_starttime = #{homeworkStarttime,jdbcType=TIMESTAMP},
+      homework_endtime = #{homeworkEndtime,jdbcType=TIMESTAMP},
+      homework_submit_state = #{homeworkSubmitState,jdbcType=VARCHAR},
+      homework_grade_state = #{homeworkGradeState,jdbcType=VARCHAR},
+      homework_last_edit_time = #{homeworkLastEditTime,jdbcType=TIMESTAMP},
+      homework_remark = #{homeworkRemark,jdbcType=VARCHAR}
+    where homework_id = #{homeworkId,jdbcType=INTEGER}
+  </update>
+</mapper>

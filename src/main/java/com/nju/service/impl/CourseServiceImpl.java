@@ -1,6 +1,7 @@
 package com.nju.service.impl;
 
 import com.nju.dao.mapper.TbCourseMapper;
+import com.nju.dao.mapper.*;
 import com.nju.entity.*;
 import com.nju.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,14 @@ public class CourseServiceImpl implements CourseService {
     TbCourseMapper courseMapper;
     @Autowired
     TbStudentCourseMapper studentCourseMapper;
+    @Autowired
+    TbTeacherCourseMapper teacherCourseMapper;
+    @Autowired
+    TbCourseConcreteMapper courseConcreteMapper;
+    @Autowired
+    TbTccHomeworkMapper tccHomeworkMapper;
+    @Autowired
+    TbHomeworkMapper homeworkMapper;
 
     @Override
     public List<TbCourse> getCoursesByStuId(Integer id){
@@ -81,4 +90,55 @@ public class CourseServiceImpl implements CourseService {
             return null;
     }
 
+    //由教师ID查询课程表的基本信息
+    @Override
+    public List<TbCourse> getCourseByTeacherId(Integer id){
+        List<TbTeacherCourse> teacherCourses=getTeacherCourseByTeacherId( id);
+        List<Integer> courseList=new ArrayList<Integer>();
+        for (int i=0;i<teacherCourses.size();i++){
+            courseList.add(teacherCourses.get(i).getCourseId());
+        }
+        TbCourseExample courseExample=new TbCourseExample();
+        TbCourseExample.Criteria criteria2=courseExample.createCriteria();
+        criteria2.andCourseIdIn(courseList);
+        return  courseMapper.selectByExample(courseExample);
+    }
+    //由教师ID查询课程表的详细信息
+    @Override
+    public List<TbCourseConcrete> getCourseConcreteByTeacherId(Integer id){
+        List<TbTeacherCourse> teacherCourses=getTeacherCourseByTeacherId( id);
+        List<Integer> courseList=new ArrayList<Integer>();
+        for (int i=0;i<teacherCourses.size();i++){
+            courseList.add(teacherCourses.get(i).getCourseConcreteId());
+        }
+        TbCourseConcreteExample courseConcreteExample=new TbCourseConcreteExample();
+        TbCourseConcreteExample.Criteria criteria=courseConcreteExample.createCriteria();
+        criteria.andCourseConcreteIdIn(courseList);
+        return courseConcreteMapper.selectByExample(courseConcreteExample);
+    }
+    //由教师ID查询教师表与课程表的关联信息
+    @Override
+    public List<TbTeacherCourse>getTeacherCourseByTeacherId(Integer id){
+       TbTeacherCourseExample teacherCourseExample=new TbTeacherCourseExample();
+       TbTeacherCourseExample.Criteria criteria1=teacherCourseExample.createCriteria();
+       criteria1.andTeacherIdEqualTo(id);
+       return teacherCourseMapper.selectByExample(teacherCourseExample);
+    }
+
+    //由课程ID获取该课程的相关作业列表
+    @Override
+    public List<TbHomework> getCourseHomeworkByCourseConcreteId(Integer id){
+        TbTccHomeworkExample tccHomeworkExample=new TbTccHomeworkExample();
+        TbTccHomeworkExample.Criteria criteria=tccHomeworkExample.createCriteria();
+        criteria.andCourseConcreteIdEqualTo(id);
+        List<TbTccHomework> tccHomeworkList=tccHomeworkMapper.selectByExample(tccHomeworkExample);
+        List<Integer> homeworkIdList=new ArrayList<>();
+        for (int i=0;i<tccHomeworkList.size();i++){
+            homeworkIdList.add(tccHomeworkList.get(i).getHomeworkId());
+        }
+        TbHomeworkExample homeworkExample=new TbHomeworkExample();
+        TbHomeworkExample.Criteria criteria1=homeworkExample.createCriteria();
+        criteria1.andHomeworkIdIn(homeworkIdList);
+        return homeworkMapper.selectByExample(homeworkExample);
+    }
 }
