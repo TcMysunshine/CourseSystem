@@ -59,8 +59,9 @@
     $(".submit").click(function () {
         var username = $("input[name='logname']").val();
         var password = $("input[name='logpass']").val();
-        if ( username == ""|| password == "") {
+        if (username == "" || password == "") {
             alert("用户名或者密码不能为空！");
-
+        }
+    })
 </script>
 </html>

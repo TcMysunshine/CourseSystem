@@ -41,7 +41,7 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="/studentInfo" class="simple-text">
+                <a href="studentInfo" class="simple-text">
                     ${student.studentName}
                 </a>
             </div>

@@ -192,7 +192,7 @@
     $(".btn-search").click(function (){
         var studentCount=$("input[name='studentCount']").val();
         var studentName=$("input[name='studentName']").val();
-        window.location.href = "/superInfo?studentName="+studentName+"&&studentCount="+studentCount;
+        window.location.href = "superInfo?studentName="+studentName+"&&studentCount="+studentCount;
 
     })
     $(".btn-addStudent").click(function (){
