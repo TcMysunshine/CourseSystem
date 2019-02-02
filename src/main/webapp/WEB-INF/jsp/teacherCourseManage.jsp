@@ -94,12 +94,12 @@
                         <p>课程信息</p>
                     </a>
                 </li>
-                <li class="active">
-                    <a href="teacherCourseInfo">
-                        <i class="ti-view-list-alt"></i>
-                        <p>文件信息</p>
-                    </a>
-                </li>
+                <%--<li class="active">--%>
+                    <%--<a href="teacherCourseInfo">--%>
+                        <%--<i class="ti-view-list-alt"></i>--%>
+                        <%--<p>文件信息</p>--%>
+                    <%--</a>--%>
+                <%--</li>--%>
             </ul>
         </div>
     </div>
