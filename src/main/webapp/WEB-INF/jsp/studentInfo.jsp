@@ -49,7 +49,7 @@
             <ul class="nav">
 
                 <li class="active">
-                    <a href=studentInfo">
+                    <a href="studentInfo">
                         <i class="ti-user"></i>
                         <p>学生信息</p>
                     </a>
