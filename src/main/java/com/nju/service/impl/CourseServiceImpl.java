@@ -6,7 +6,7 @@ import com.nju.entity.*;
 import com.nju.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.nju.dao.mapper.TbStudentCourseMapper;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
