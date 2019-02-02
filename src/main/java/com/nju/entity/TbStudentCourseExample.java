@@ -104,63 +104,63 @@ public class TbStudentCourseExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andScidIsNull() {
-            addCriterion("SCid is null");
+        public Criteria andScIdIsNull() {
+            addCriterion("SC_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andScidIsNotNull() {
-            addCriterion("SCid is not null");
+        public Criteria andScIdIsNotNull() {
+            addCriterion("SC_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andScidEqualTo(Integer value) {
-            addCriterion("SCid =", value, "scid");
+        public Criteria andScIdEqualTo(Integer value) {
+            addCriterion("SC_id =", value, "scId");
             return (Criteria) this;
         }
 
-        public Criteria andScidNotEqualTo(Integer value) {
-            addCriterion("SCid <>", value, "scid");
+        public Criteria andScIdNotEqualTo(Integer value) {
+            addCriterion("SC_id <>", value, "scId");
             return (Criteria) this;
         }
 
-        public Criteria andScidGreaterThan(Integer value) {
-            addCriterion("SCid >", value, "scid");
+        public Criteria andScIdGreaterThan(Integer value) {
+            addCriterion("SC_id >", value, "scId");
             return (Criteria) this;
         }
 
-        public Criteria andScidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("SCid >=", value, "scid");
+        public Criteria andScIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("SC_id >=", value, "scId");
             return (Criteria) this;
         }
 
-        public Criteria andScidLessThan(Integer value) {
-            addCriterion("SCid <", value, "scid");
+        public Criteria andScIdLessThan(Integer value) {
+            addCriterion("SC_id <", value, "scId");
             return (Criteria) this;
         }
 
-        public Criteria andScidLessThanOrEqualTo(Integer value) {
-            addCriterion("SCid <=", value, "scid");
+        public Criteria andScIdLessThanOrEqualTo(Integer value) {
+            addCriterion("SC_id <=", value, "scId");
             return (Criteria) this;
         }
 
-        public Criteria andScidIn(List<Integer> values) {
-            addCriterion("SCid in", values, "scid");
+        public Criteria andScIdIn(List<Integer> values) {
+            addCriterion("SC_id in", values, "scId");
             return (Criteria) this;
         }
 
-        public Criteria andScidNotIn(List<Integer> values) {
-            addCriterion("SCid not in", values, "scid");
+        public Criteria andScIdNotIn(List<Integer> values) {
+            addCriterion("SC_id not in", values, "scId");
             return (Criteria) this;
         }
 
-        public Criteria andScidBetween(Integer value1, Integer value2) {
-            addCriterion("SCid between", value1, value2, "scid");
+        public Criteria andScIdBetween(Integer value1, Integer value2) {
+            addCriterion("SC_id between", value1, value2, "scId");
             return (Criteria) this;
         }
 
-        public Criteria andScidNotBetween(Integer value1, Integer value2) {
-            addCriterion("SCid not between", value1, value2, "scid");
+        public Criteria andScIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("SC_id not between", value1, value2, "scId");
             return (Criteria) this;
         }
 

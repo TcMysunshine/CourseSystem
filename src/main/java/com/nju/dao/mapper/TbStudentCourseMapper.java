@@ -4,16 +4,13 @@ import com.nju.entity.TbStudentCourse;
 import com.nju.entity.TbStudentCourseExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-
-@Repository
 public interface TbStudentCourseMapper {
     int countByExample(TbStudentCourseExample example);
 
     int deleteByExample(TbStudentCourseExample example);
 
-    int deleteByPrimaryKey(Integer scid);
+    int deleteByPrimaryKey(Integer scId);
 
     int insert(TbStudentCourse record);
 
@@ -21,7 +18,7 @@ public interface TbStudentCourseMapper {
 
     List<TbStudentCourse> selectByExample(TbStudentCourseExample example);
 
-    TbStudentCourse selectByPrimaryKey(Integer scid);
+    TbStudentCourse selectByPrimaryKey(Integer scId);
 
     int updateByExampleSelective(@Param("record") TbStudentCourse record, @Param("example") TbStudentCourseExample example);
 

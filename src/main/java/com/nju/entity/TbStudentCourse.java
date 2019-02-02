@@ -1,7 +1,7 @@
 package com.nju.entity;
 
 public class TbStudentCourse {
-    private Integer scid;
+    private Integer scId;
 
     private Integer studentId;
 
@@ -11,12 +11,12 @@ public class TbStudentCourse {
 
     private Integer createYear;
 
-    public Integer getScid() {
-        return scid;
+    public Integer getScId() {
+        return scId;
     }
 
-    public void setScid(Integer scid) {
-        this.scid = scid;
+    public void setScId(Integer scId) {
+        this.scId = scId;
     }
 
     public Integer getStudentId() {
