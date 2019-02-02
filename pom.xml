@@ -40,12 +40,7 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
-        <!-- 添加 servlet 依赖. -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
+
 
         <!--mybatis-->
         <dependency>
@@ -66,19 +61,30 @@
             <scope>test</scope>
         </dependency>
 
+        <!--sprinbgboot内置tomcat-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
             <scope>provided</scope>
         </dependency>
-
-        <!-- 添加 JSTL（JSP Standard Tag Library，JSP标准标签库) -->
+        <!--添加 JSTL（JSP Standard Tag Library，JSP标准标签库)-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <scope>provided</scope>
         </dependency>
-
+        <!--添加 servlet 依赖.-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <!-- Spring Boot的JPA依赖包 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -90,18 +96,23 @@
             <artifactId>druid</artifactId>
             <version>1.0.20</version>
         </dependency>
-
-        <!--&lt;!&ndash;日志包&ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>org.slf4j</groupId>-->
-            <!--<artifactId>slf4j-log4j12</artifactId>-->
-            <!--<version>1.8.0-alpha2</version>-->
-        <!--</dependency>-->
         <!--lombook-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.14</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.servlet.jsp.jstl</artifactId>
+            <version>1.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp.jstl</groupId>
+            <artifactId>javax.servlet.jsp.jstl-api</artifactId>
+            <version>1.2.1</version>
         </dependency>
 
     </dependencies>
@@ -158,11 +169,6 @@
                         <version>5.1.38</version>
                         <scope>runtime</scope>
                     </dependency>
-                    <!--<dependency>-->
-                    <!--<groupId>com.sybase</groupId>-->
-                    <!--<artifactId>sybase-driver</artifactId>-->
-                    <!--<version>12</version>-->
-                    <!--</dependency>-->
                     <dependency>
                         <groupId>org.mybatis.generator</groupId>
                         <artifactId>mybatis-generator-core</artifactId>

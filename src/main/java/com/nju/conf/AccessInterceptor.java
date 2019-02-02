@@ -17,7 +17,7 @@ public class AccessInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 //        request.getSession().getAttribute("user").getClass().equals()
-        logger.info("进入拦截器");
+//        logger.info("进入拦截器");
         Object userObject=request.getSession().getAttribute("user");
         request.getSession().setMaxInactiveInterval(30*60);
         if(userObject==null){
