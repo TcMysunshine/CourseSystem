@@ -41,7 +41,7 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="/studentInfo" class="simple-text">
+                <a href="studentInfo" class="simple-text">
                     管理员
                 </a>
             </div>
@@ -49,13 +49,13 @@
             <ul class="nav">
 
                 <li class="active">
-                    <a href="/studentInfo">
+                    <a href="studentInfo">
                         <i class="ti-user"></i>
                         <p>账号管理</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/showCourse">
+                    <a href="showCourse">
                         <i class="ti-view-list-alt"></i>
                         <p>课程管理</p>
                     </a>
@@ -69,8 +69,8 @@
     <div class="main-panel">
         <div id="nav1" class="nav1 portlet-title" style="background-color: #eceaea">
             <ul class="tab-menu">
-                <li class="active" > <a class="aaaa" href='/superInfo' >学生</a></li>
-                <li > <a class="aaaa" href='/superTeacher' >教师</a></li>
+                <li class="active" > <a class="aaaa" href='superInfo' >学生</a></li>
+                <li > <a class="aaaa" href='superTeacher' >教师</a></li>
             </ul>
         </div>
         <div class="row">
@@ -199,13 +199,13 @@
         var studentNum=$("input[name='studentNum']").val();
         data1={studentNum:studentNum};
         $.ajax({
-            url:"/addStudents",
+            url:"addStudents",
             type:"get",
             data:data1,
             dataType:"json",
             success:function (json) {
                 alert("添加成功!");
-                window.location.href = "/superInfo";
+                window.location.href = "superInfo";
             },
             error:function () {
             }

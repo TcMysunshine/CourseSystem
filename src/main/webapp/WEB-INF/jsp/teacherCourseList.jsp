@@ -26,19 +26,19 @@
     <div class="sidebar" data-background-color="white" data-active-color="danger">
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="/teacherInfo" class="simple-text">
+                <a href="teacherInfo" class="simple-text">
                     ${teacher.teacherName}
                 </a>
             </div>
             <ul class="nav">
                 <li >
-                    <a href="/teacherInfo">
+                    <a href="teacherInfo">
                         <i class="ti-user"></i>
                         <p>教师信息</p>
                     </a>
                 </li>
                 <li class="active">
-                    <a href="/teacherCourseInfo">
+                    <a href="teacherCourseInfo">
                         <i class="ti-view-list-alt"></i>
                         <p>课程信息</p>
                     </a>

@@ -49,19 +49,19 @@
             <ul class="nav">
 
                 <li class="active">
-                    <a href="/studentInfo">
+                    <a href=studentInfo">
                         <i class="ti-user"></i>
                         <p>学生信息</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/showCourse">
+                    <a href="showCourse">
                         <i class="ti-view-list-alt"></i>
                         <p>课程信息</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/selectCourseList">
+                    <a href=selectCourseList">
                         <i class="ti-view-list-alt"></i>
                         <p>选课列表</p>
                     </a>
@@ -342,7 +342,7 @@
             studentIntroduce:$("textarea[name='studentIntroduce']").val(),
         }
         $.ajax({
-            url:"/stuEditInfo",
+            url:"stuEditInfo",
             contentType:"application/json;charset=utf-8",
             processData:true,
             type:"post",
@@ -350,7 +350,7 @@
             dataType:"json",
             success:function (json) {
                 alert("修改成功！");
-                window.location.href="/studentInfo";
+                window.location.href="studentInfo";
             },
             error:function () {
 

@@ -98,7 +98,7 @@
             }
         }
         if($("#teacher").is(':checked')){
-            url="/teacherLogin.do";
+            url="teacherLogin.do";
             href='teacherInfo';
             data1={
                 teacherCount: username,

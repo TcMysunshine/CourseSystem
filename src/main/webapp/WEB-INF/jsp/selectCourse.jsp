@@ -49,19 +49,19 @@
             <ul class="nav">
 
                 <li >
-                    <a href="/studentInfo">
+                    <a href="studentInfo">
                         <i class="ti-user"></i>
                         <p>学生信息</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/showCourse">
+                    <a href="showCourse">
                         <i class="ti-view-list-alt"></i>
                         <p>课程信息</p>
                     </a>
                 </li>
                 <li class="active">
-                    <a href="/selectCourseList">
+                    <a href="selectCourseList">
                         <i class="ti-view-list-alt"></i>
                         <p>选课列表</p>
                     </a>
@@ -126,13 +126,13 @@
         $(".addCourse").click(function () {
             var courseId = $(this).attr("course");
             $.ajax({
-                url: "/addCourse",
+                url: "addCourse",
                 type: "get",
                 dataType: "json",
                 data: {courseId: courseId},
                 success: function () {
                     alert("选课成功！");
-                    window.location.href = "/selectCourseList";
+                    window.location.href = "selectCourseList";
                 },
                 error: function () {
                 }

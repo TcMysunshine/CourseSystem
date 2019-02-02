@@ -41,7 +41,7 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="/teacherInfo" class="simple-text">
+                <a href="teacherInfo" class="simple-text">
                     ${teacherInfo.teacherName}
                 </a>
             </div>
@@ -49,7 +49,7 @@
             <ul class="nav">
 
                 <li class="active">
-                    <a href="/teacherInfo">
+                    <a href="teacherInfo">
                         <i class="ti-user"></i>
                         <p>教师信息</p>
                     </a>
@@ -336,7 +336,7 @@
             teacherIntroduce:$("textarea[name='teacherIntroduce']").text()
         }
         $.ajax({
-            url:"/teacherEditInfo",
+            url:"teacherEditInfo",
             contentType:"application/json;charset=utf-8",
             processData:true,
             type:"post",
