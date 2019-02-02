@@ -41,7 +41,7 @@
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="studentInfo" class="simple-text">
+                <a href="superInfo" class="simple-text">
                     管理员
                 </a>
             </div>
@@ -49,13 +49,13 @@
             <ul class="nav">
 
                 <li class="active">
-                    <a href="studentInfo">
+                    <a href="superInfo">
                         <i class="ti-user"></i>
                         <p>账号管理</p>
                     </a>
                 </li>
                 <li>
-                    <a href="showCourse">
+                    <a href="courseInfo">
                         <i class="ti-view-list-alt"></i>
                         <p>课程管理</p>
                     </a>
