@@ -26,7 +26,7 @@
     <div class="sidebar" data-background-color="white" data-active-color="danger">
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="/studentInfo" class="simple-text">
+                <a href="studentInfo" class="simple-text">
                     ${student.studentName}
                 </a>
             </div>

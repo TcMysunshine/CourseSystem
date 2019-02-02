@@ -218,7 +218,7 @@
                                                     <td>${homework.homeworkEndtime}</td>
                                                     <td>${homework.homeworkContent}</td>
                                                     <td>${homework.homeworkRemark}</td>
-                                                    <td ><a href="/teacherCourseManage?courseConcreteId=${homework.homeworkId}">作业管理</a></td>
+                                                    <td ><a href="teacherCourseManage?courseConcreteId=${homework.homeworkId}">作业管理</a></td>
                                                 </tr>
                                             </c:forEach>
                                             </tbody>

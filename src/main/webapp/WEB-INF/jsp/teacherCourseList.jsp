@@ -119,7 +119,7 @@
                                             <td>${course.courseConcreteClassroom}</td>
                                             <td>${course.courseConcreteCredit}</td>
                                             <td>${course.courseConcreteInformation}</td>
-                                            <td ><a href="/teacherCourseManage?courseConcreteId=${course.courseConcreteId}&&courseId=${course.courseId}">课程管理</a></td>
+                                            <td ><a href="teacherCourseManage?courseConcreteId=${course.courseConcreteId}&&courseId=${course.courseId}">课程管理</a></td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>

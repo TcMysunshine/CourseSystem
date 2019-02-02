@@ -311,51 +311,51 @@
                                     <tbody>
                                     <tr>
                                         <td rowspan="2" height="200px">上午</td>
-                                        <td rowspan="1" height="100px" id="Mon-one"><a class="courseIntro" href="/courseInfo?courseId=${MonOne.courseId}">${MonOne.courseIntro}</a></td>
-                                        <td rowspan="1" height="100px" id="Tues-one"><a class="courseIntro" href="/courseInfo?courseId=${TuesOne.courseId}">${TuesOne.courseIntro}</a></td>
-                                        <td rowspan="1" height="100px" id="Wed-one"><a class="courseIntro" href="/courseInfo?courseId=${WedOne.courseId}">${WedOne.courseIntro}</a></td>
+                                        <td rowspan="1" height="100px" id="Mon-one"><a class="courseIntro" href="courseInfo?courseId=${MonOne.courseId}">${MonOne.courseIntro}</a></td>
+                                        <td rowspan="1" height="100px" id="Tues-one"><a class="courseIntro" href="courseInfo?courseId=${TuesOne.courseId}">${TuesOne.courseIntro}</a></td>
+                                        <td rowspan="1" height="100px" id="Wed-one"><a class="courseIntro" href="courseInfo?courseId=${WedOne.courseId}">${WedOne.courseIntro}</a></td>
                                         <td rowspan="1" height="100px" id="Thurs-one"><a class="courseIntro" href="/courseInfo?courseId=${ThursOne.courseId}">${ThursOne.courseIntro}</a></td>
-                                        <td rowspan="1" height="100px" id="Fri-one"><a class="courseIntro" href="/courseInfo?courseId=${FriOne.courseId}">${FriOne.courseIntro}</a></td>
-                                        <td rowspan="1" height="100px" id="Sat-one"><a class="courseIntro" href="/courseInfo?courseId=${SatOne.courseId}">${SatOne.courseIntro}</a></td>
-                                        <td rowspan="1" height="100px" id="Sun-one"><a class="courseIntro" href="/courseInfo?courseId=${SunOne.courseId}">${SunOne.courseIntro}</a></td>
+                                        <td rowspan="1" height="100px" id="Fri-one"><a class="courseIntro" href="courseInfo?courseId=${FriOne.courseId}">${FriOne.courseIntro}</a></td>
+                                        <td rowspan="1" height="100px" id="Sat-one"><a class="courseIntro" href="courseInfo?courseId=${SatOne.courseId}">${SatOne.courseIntro}</a></td>
+                                        <td rowspan="1" height="100px" id="Sun-one"><a class="courseIntro" href="courseInfo?courseId=${SunOne.courseId}">${SunOne.courseIntro}</a></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="1" id="Mon-Three"><a class="courseIntro" href="/courseInfo?courseId=${MonThree.courseId}">${MonThree.courseIntro}</a></td>
-                                        <td rowspan="1" id="Tues-Three"><a class="courseIntro" href="/courseInfo?courseId=${TuesThree.courseId}">${TuesThree.courseIntro}</a></td>
-                                        <td rowspan="1" id="Wed-Three"><a class="courseIntro" href="/courseInfo?courseId=${WedThree.courseId}">${WedThree.courseIntro}</a></td>
-                                        <td rowspan="1" id="Thurs-Three"><a class="courseIntro" href="/courseInfo?courseId=${ThursThree.courseId}">${ThursThree.courseIntro}</a></td>
-                                        <td rowspan="1" id="Fri-Three"><a class="courseIntro" href="/courseInfo?courseId=${FriThree.courseId}">${FriThree.courseIntro}</a></td>
-                                        <td rowspan="1" id="Sat-Three"><a class="courseIntro" href="/courseInfo?courseId=${SatThree.courseId}">${SatThree.courseIntro}</a></td>
-                                        <td rowspan="1" id="Sun-Three"><a class="courseIntro" href="/courseInfo?courseId=${SunThree.courseId}">${SunThree.courseIntro}</a></td>
+                                        <td rowspan="1" id="Mon-Three"><a class="courseIntro" href="courseInfo?courseId=${MonThree.courseId}">${MonThree.courseIntro}</a></td>
+                                        <td rowspan="1" id="Tues-Three"><a class="courseIntro" href="courseInfo?courseId=${TuesThree.courseId}">${TuesThree.courseIntro}</a></td>
+                                        <td rowspan="1" id="Wed-Three"><a class="courseIntro" href="courseInfo?courseId=${WedThree.courseId}">${WedThree.courseIntro}</a></td>
+                                        <td rowspan="1" id="Thurs-Three"><a class="courseIntro" href="courseInfo?courseId=${ThursThree.courseId}">${ThursThree.courseIntro}</a></td>
+                                        <td rowspan="1" id="Fri-Three"><a class="courseIntro" href="courseInfo?courseId=${FriThree.courseId}">${FriThree.courseIntro}</a></td>
+                                        <td rowspan="1" id="Sat-Three"><a class="courseIntro" href="courseInfo?courseId=${SatThree.courseId}">${SatThree.courseIntro}</a></td>
+                                        <td rowspan="1" id="Sun-Three"><a class="courseIntro" href="courseInfo?courseId=${SunThree.courseId}">${SunThree.courseIntro}</a></td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2" height="200px">下午</td>
-                                        <td rowspan="1" height="100px" id="Mon-five"><a class="courseIntro" href="/courseInfo?courseId=${MonFive.courseId}">${MonFive.courseIntro}</a></td>
-                                        <td rowspan="1" height="100px" id="Tues-five"><a class="courseIntro" href="/courseInfo?courseId=${TuesFive.courseId}">${TuesFive.courseIntro}</a></td>
-                                        <td rowspan="1"  height="100px" id="Wed-five"><a class="courseIntro" href="/courseInfo?courseId=${WedFive.courseId}">${WedFive.courseIntro}</a></td>
-                                        <td rowspan="1" height="100px" id="Thurs-five"><a class="courseIntro" href="/courseInfo?courseId=${ThursFive.courseId}">${ThursFive.courseIntro}</a></td>
-                                        <td rowspan="1" height="100px" id="Fri-five"><a class="courseIntro" href="/courseInfo?courseId=${FriFive.courseId}">${FriFive.courseIntro}</a></td>
-                                        <td rowspan="1" height="100px" id="Sat-five"><a class="courseIntro" href="/courseInfo?courseId=${SatFive.courseId}">${SatFive.courseIntro}</a></td>
-                                        <td rowspan="1" height="100px" id="Sun-five"><a class="courseIntro" href="/courseInfo?courseId=${SunFive.courseId}">${SunFive.courseIntro}</a></td>
+                                        <td rowspan="1" height="100px" id="Mon-five"><a class="courseIntro" href="courseInfo?courseId=${MonFive.courseId}">${MonFive.courseIntro}</a></td>
+                                        <td rowspan="1" height="100px" id="Tues-five"><a class="courseIntro" href="courseInfo?courseId=${TuesFive.courseId}">${TuesFive.courseIntro}</a></td>
+                                        <td rowspan="1"  height="100px" id="Wed-five"><a class="courseIntro" href="courseInfo?courseId=${WedFive.courseId}">${WedFive.courseIntro}</a></td>
+                                        <td rowspan="1" height="100px" id="Thurs-five"><a class="courseIntro" href="courseInfo?courseId=${ThursFive.courseId}">${ThursFive.courseIntro}</a></td>
+                                        <td rowspan="1" height="100px" id="Fri-five"><a class="courseIntro" href="courseInfo?courseId=${FriFive.courseId}">${FriFive.courseIntro}</a></td>
+                                        <td rowspan="1" height="100px" id="Sat-five"><a class="courseIntro" href="courseInfo?courseId=${SatFive.courseId}">${SatFive.courseIntro}</a></td>
+                                        <td rowspan="1" height="100px" id="Sun-five"><a class="courseIntro" href="courseInfo?courseId=${SunFive.courseId}">${SunFive.courseIntro}</a></td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="1" id="Mon-seven"><a class="courseIntro" href="/courseInfo?courseId=${MonSeven.courseId}">${MonSeven.courseIntro}</a></td>
-                                        <td rowspan="1" id="Tues-seven"><a class="courseIntro" href="/courseInfo?courseId=${TuesSeven.courseId}">${TuesSeven.courseIntro}</a></td>
-                                        <td rowspan="1" id="Wed-seven"><a class="courseIntro" href=/courseInfo?courseId=${WedSeven.courseId}">${WedSeven.courseIntro}</a></td>
-                                        <td rowspan="1" id="Thurs-seven"><a class="courseIntro" href="/courseInfo?courseId=${ThursSeven.courseId}">${ThursSeven.courseIntro}</a></td>
-                                        <td rowspan="1" id="Fri-seven"><a class="courseIntro" href="/courseInfo?courseId=${FriSeven.courseId}">${FriSeven.courseIntro}</a></td>
-                                        <td rowspan="1" id="Sat-seven"><a class="courseIntro" href="/courseInfo?courseId=${SatSeven.courseId}">${SatSeven.courseIntro}</a></td>
-                                        <td rowspan="1" id="Sun-seven"><a class="courseIntro" href="/courseInfo?courseId=${SunSeven.courseId}">${SunSeven.courseIntro}</a></td>
+                                        <td rowspan="1" id="Mon-seven"><a class="courseIntro" href="courseInfo?courseId=${MonSeven.courseId}">${MonSeven.courseIntro}</a></td>
+                                        <td rowspan="1" id="Tues-seven"><a class="courseIntro" href="courseInfo?courseId=${TuesSeven.courseId}">${TuesSeven.courseIntro}</a></td>
+                                        <td rowspan="1" id="Wed-seven"><a class="courseIntro" href="courseInfo?courseId=${WedSeven.courseId}">${WedSeven.courseIntro}</a></td>
+                                        <td rowspan="1" id="Thurs-seven"><a class="courseIntro" href="courseInfo?courseId=${ThursSeven.courseId}">${ThursSeven.courseIntro}</a></td>
+                                        <td rowspan="1" id="Fri-seven"><a class="courseIntro" href="courseInfo?courseId=${FriSeven.courseId}">${FriSeven.courseIntro}</a></td>
+                                        <td rowspan="1" id="Sat-seven"><a class="courseIntro" href="courseInfo?courseId=${SatSeven.courseId}">${SatSeven.courseIntro}</a></td>
+                                        <td rowspan="1" id="Sun-seven"><a class="courseIntro" href="courseInfo?courseId=${SunSeven.courseId}">${SunSeven.courseIntro}</a></td>
                                     </tr>
                                     <tr >
                                         <td rowspan="2" height="100px">晚上</td>
-                                        <td rowspan="2" id="Mon-nine"><a class="courseIntro" href="/courseInfo?courseId=${MonNine.courseId}">${MonNine.courseIntro}</a></td>
-                                        <td rowspan="2" id="Tues-nine"><a class="courseIntro" href="/courseInfo?courseId=${TuesNine.courseId}">${TuesNine.courseIntro}</a></td>
-                                        <td rowspan="2" id="Wed-nine"><a class="courseIntro" href="/courseInfo?courseId=${WedNine.courseId}">${WedNine.courseIntro}</a></td>
-                                        <td rowspan="2" id="Thurs-nine"><a class="courseIntro" href="/courseInfo?courseId=${ThursNine.courseId}">${ThursNine.courseIntro}</a></td>
-                                        <td rowspan="2" id="Fri-nine"><a class="courseIntro" href="/courseInfo?courseId=${FriNine.courseId}">${FriNine.courseIntro}</a></td>
-                                        <td rowspan="2" id="Sat-nine"><a class="courseIntro" href="/courseInfo?courseId=${SatNine.courseId}">${SatNine.courseIntro}</a></td>
-                                        <td rowspan="2" id="Sun-nine"><a class="courseIntro" href="/courseInfo?courseId=${SunNine.courseId}">${SunNine.courseIntro}</a></td>
+                                        <td rowspan="2" id="Mon-nine"><a class="courseIntro" href="courseInfo?courseId=${MonNine.courseId}">${MonNine.courseIntro}</a></td>
+                                        <td rowspan="2" id="Tues-nine"><a class="courseIntro" href="courseInfo?courseId=${TuesNine.courseId}">${TuesNine.courseIntro}</a></td>
+                                        <td rowspan="2" id="Wed-nine"><a class="courseIntro" href="courseInfo?courseId=${WedNine.courseId}">${WedNine.courseIntro}</a></td>
+                                        <td rowspan="2" id="Thurs-nine"><a class="courseIntro" href="courseInfo?courseId=${ThursNine.courseId}">${ThursNine.courseIntro}</a></td>
+                                        <td rowspan="2" id="Fri-nine"><a class="courseIntro" href="courseInfo?courseId=${FriNine.courseId}">${FriNine.courseIntro}</a></td>
+                                        <td rowspan="2" id="Sat-nine"><a class="courseIntro" href="courseInfo?courseId=${SatNine.courseId}">${SatNine.courseIntro}</a></td>
+                                        <td rowspan="2" id="Sun-nine"><a class="courseIntro" href="courseInfo?courseId=${SunNine.courseId}">${SunNine.courseIntro}</a></td>
                                     </tr>
 
                                     </tbody>
