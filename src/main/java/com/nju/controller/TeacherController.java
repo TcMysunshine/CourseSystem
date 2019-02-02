@@ -47,7 +47,7 @@ public class TeacherController {
         TbTeacher teacher=(TbTeacher)session.getAttribute("user");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String teacherCreateTime = df.format((Date)teacher.getTeacherCreatetime());
-        model.addAttribute("teacher",teacher);
+        model.addAttribute("teacherInfo",teacher);
         model.addAttribute("teacherCreateTime",teacherCreateTime);
         return modelAndView;
        /* TeacherModel teacherModel=(TeacherModel) request.getSession().getAttribute("user");
