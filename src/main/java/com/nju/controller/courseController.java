@@ -86,35 +86,23 @@ public class courseController {
         ModelAndView modelAndView=new ModelAndView();
         HttpSession session =request.getSession();
         TbTeacher teacher= (TbTeacher) session.getAttribute("user");
-        List<TbCourse> courses=courseService.getCourseByTeacherId(teacher.getTeacherId());
         List<TbCourseConcrete> courseConcretes=courseService.getCourseConcreteByTeacherId(teacher.getTeacherId());
-        List<TbTeacherCourse> teacherCourses=courseService.getTeacherCourseByTeacherId(teacher.getTeacherId());
         List<TeacherCourseInfoVo> teacherCourseInfoVoList=new ArrayList<>();
-        for(int i=0;i<teacherCourses.size();i++){
+        for(int i=0;i<courseConcretes.size();i++){
             TeacherCourseInfoVo teacherCourseInfoVo=new TeacherCourseInfoVo();
-            teacherCourseInfoVo.setTcid(teacherCourses.get(i).getTcid());
-            for (int j=0;j<courses.size();j++){
-                if(teacherCourses.get(i).getCourseId()==courses.get(j).getCourseId()){
-                    teacherCourseInfoVo.setCourseId(courses.get(j).getCourseId());
-                    teacherCourseInfoVo.setCourseName(courses.get(j).getCourseName());
-                    teacherCourseInfoVo.setCourseEncoding(courses.get(j).getCourseEncoding());
-                    break;
-                }
-            }
-            for(int j=0;j<courseConcretes.size();j++){
-                if (teacherCourses.get(i).getCourseConcreteId()==courseConcretes.get(j).getCourseConcreteId())
-                {
-                    teacherCourseInfoVo.setCourseConcreteId(courseConcretes.get(j).getCourseConcreteId());
-                    teacherCourseInfoVo.setCourseConcreteClassroom(courseConcretes.get(j).getCourseConcreteClassroom());
-                    teacherCourseInfoVo.setCourseConcreteCredit(courseConcretes.get(j).getCourseConcreteCredit());
-                    teacherCourseInfoVo.setCourseConcreteCreatetime(courseConcretes.get(j).getCourseConcreteCreatetime());
-                    teacherCourseInfoVo.setCourseConcreteInformation(courseConcretes.get(j).getCourseConcreteInformation());
-                    teacherCourseInfoVo.setCourseConcreteRequest(courseConcretes.get(j).getCourseConcreteRequest());
-                    teacherCourseInfoVo.setCourseConcreteWeektime(courseConcretes.get(j).getCourseConcreteWeektime());
-                    teacherCourseInfoVo.setCourseConcreteTime(courseConcretes.get(j).getCourseConcreteTime());
-                    break;
-                }
-            }
+            TbTeacherCourse tbTeacherCourse=teacherCourseMapper.selectByCourseConcreteId(courseConcretes.get(i).getCourseConcreteId());
+            TbCourse courses=courseService.getCourseByCourseId(tbTeacherCourse.getCourseId());
+            teacherCourseInfoVo.setCourseId(courses.getCourseId());
+            teacherCourseInfoVo.setCourseName(courses.getCourseName());
+            teacherCourseInfoVo.setCourseEncoding(courses.getCourseEncoding());
+            teacherCourseInfoVo.setCourseConcreteId(courseConcretes.get(i).getCourseConcreteId());
+            teacherCourseInfoVo.setCourseConcreteClassroom(courseConcretes.get(i).getCourseConcreteClassroom());
+            teacherCourseInfoVo.setCourseConcreteCredit(courseConcretes.get(i).getCourseConcreteCredit());
+            teacherCourseInfoVo.setCourseConcreteCreatetime(courseConcretes.get(i).getCourseConcreteCreatetime());
+            teacherCourseInfoVo.setCourseConcreteInformation(courseConcretes.get(i).getCourseConcreteInformation());
+            teacherCourseInfoVo.setCourseConcreteRequest(courseConcretes.get(i).getCourseConcreteRequest());
+            teacherCourseInfoVo.setCourseConcreteWeektime(courseConcretes.get(i).getCourseConcreteWeektime());
+            teacherCourseInfoVo.setCourseConcreteTime(courseConcretes.get(i).getCourseConcreteTime());
             teacherCourseInfoVoList.add(i,teacherCourseInfoVo);
         }
         model.addAttribute("teacher",teacher);

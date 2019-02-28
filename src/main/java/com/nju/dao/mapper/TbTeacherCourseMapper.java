@@ -4,10 +4,7 @@ import com.nju.entity.TbTeacherCourse;
 import com.nju.entity.TbTeacherCourseExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-
-@Repository
 public interface TbTeacherCourseMapper {
     int countByExample(TbTeacherCourseExample example);
 
@@ -22,6 +19,8 @@ public interface TbTeacherCourseMapper {
     List<TbTeacherCourse> selectByExample(TbTeacherCourseExample example);
 
     TbTeacherCourse selectByPrimaryKey(Integer tcid);
+
+    TbTeacherCourse selectByCourseConcreteId(Integer courseConcreteId);
 
     int updateByExampleSelective(@Param("record") TbTeacherCourse record, @Param("example") TbTeacherCourseExample example);
 

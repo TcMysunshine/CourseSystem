@@ -136,13 +136,13 @@
                             <div class="text-center">
                                 <div class="row">
                                     <div class="col-md-3 col-md-offset-1">
-                                        <h5>学院<br /><small>${teacherInfo.teacherName}</small></h5>
+                                        <h5>学院<br /><small>${teacherInfo.teacherDepartment}</small></h5>
                                     </div>
                                     <div class="col-md-4">
-                                        <h5>系别<br /><small>${teacherInfo.teacherName}</small></h5>
+                                        <h5>职称<br /><small>${teacherInfo.teacherDegree}</small></h5>
                                     </div>
                                     <div class="col-md-3">
-                                        <h5>年级<br /><small>${teacherInfo.teacherName}</small></h5>
+                                        <h5>办公室<br /><small>${teacherInfo.teacherOffice}</small></h5>
                                     </div>
                                 </div>
                             </div>
@@ -221,14 +221,14 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>学号</label>
+                                                <label>教师编号</label>
                                                 <input type="text" class="form-control border-input" disabled placeholder="id" value="${teacherInfo.teacherCount}">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>姓名</label>
-                                                <input type="text" class="form-control border-input " name="teacherEmail" placeholder="Username" value="${teacherInfo.teacherEmail}">
+                                                <input type="text" class="form-control border-input " name="teacherEmail" placeholder="Username" value="${teacherInfo.teacherName}">
                                             </div>
                                         </div>
                                         <div class="col-md-4">

@@ -3,7 +3,6 @@
 <mapper namespace="com.nju.dao.mapper.TbTeacherCourseMapper" >
   <resultMap id="BaseResultMap" type="com.nju.entity.TbTeacherCourse" >
     <id column="TCid" property="tcid" jdbcType="INTEGER" />
-    <result column="teacher_id" property="teacherId" jdbcType="INTEGER" />
     <result column="course_id" property="courseId" jdbcType="INTEGER" />
     <result column="course_concrete_id" property="courseConcreteId" jdbcType="INTEGER" />
   </resultMap>
@@ -66,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    TCid, teacher_id, course_id, course_concrete_id
+    TCid, course_id, course_concrete_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nju.entity.TbTeacherCourseExample" >
     select
@@ -88,6 +87,13 @@
     from tb_teacher_course
     where TCid = #{tcid,jdbcType=INTEGER}
   </select>
+  <!--自定义的查询语句   通过CourseConcreteId 来查询数据-->
+  <select id="selectByCourseConcreteId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from tb_teacher_course
+    where course_concrete_id = #{courseConcreteId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from tb_teacher_course
     where TCid = #{tcid,jdbcType=INTEGER}
@@ -99,19 +105,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.nju.entity.TbTeacherCourse" >
-    insert into tb_teacher_course (TCid, teacher_id, course_id, 
-      course_concrete_id)
-    values (#{tcid,jdbcType=INTEGER}, #{teacherId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, 
-      #{courseConcreteId,jdbcType=INTEGER})
+    insert into tb_teacher_course (TCid, course_id, course_concrete_id
+      )
+    values (#{tcid,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, #{courseConcreteId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.nju.entity.TbTeacherCourse" >
     insert into tb_teacher_course
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="tcid != null" >
         TCid,
-      </if>
-      <if test="teacherId != null" >
-        teacher_id,
       </if>
       <if test="courseId != null" >
         course_id,
@@ -123,9 +126,6 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="tcid != null" >
         #{tcid,jdbcType=INTEGER},
-      </if>
-      <if test="teacherId != null" >
-        #{teacherId,jdbcType=INTEGER},
       </if>
       <if test="courseId != null" >
         #{courseId,jdbcType=INTEGER},
@@ -147,9 +147,6 @@
       <if test="record.tcid != null" >
         TCid = #{record.tcid,jdbcType=INTEGER},
       </if>
-      <if test="record.teacherId != null" >
-        teacher_id = #{record.teacherId,jdbcType=INTEGER},
-      </if>
       <if test="record.courseId != null" >
         course_id = #{record.courseId,jdbcType=INTEGER},
       </if>
@@ -164,7 +161,6 @@
   <update id="updateByExample" parameterType="map" >
     update tb_teacher_course
     set TCid = #{record.tcid,jdbcType=INTEGER},
-      teacher_id = #{record.teacherId,jdbcType=INTEGER},
       course_id = #{record.courseId,jdbcType=INTEGER},
       course_concrete_id = #{record.courseConcreteId,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -174,9 +170,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.nju.entity.TbTeacherCourse" >
     update tb_teacher_course
     <set >
-      <if test="teacherId != null" >
-        teacher_id = #{teacherId,jdbcType=INTEGER},
-      </if>
       <if test="courseId != null" >
         course_id = #{courseId,jdbcType=INTEGER},
       </if>
@@ -188,8 +181,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.nju.entity.TbTeacherCourse" >
     update tb_teacher_course
-    set teacher_id = #{teacherId,jdbcType=INTEGER},
-      course_id = #{courseId,jdbcType=INTEGER},
+    set course_id = #{courseId,jdbcType=INTEGER},
       course_concrete_id = #{courseConcreteId,jdbcType=INTEGER}
     where TCid = #{tcid,jdbcType=INTEGER}
   </update>

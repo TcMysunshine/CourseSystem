@@ -17,6 +17,8 @@ public class TbCourseConcrete {
 
     private String courseConcreteTime;
 
+    private Integer teacherId;
+
     public Integer getCourseConcreteId() {
         return courseConcreteId;
     }
@@ -79,5 +81,13 @@ public class TbCourseConcrete {
 
     public void setCourseConcreteTime(String courseConcreteTime) {
         this.courseConcreteTime = courseConcreteTime == null ? null : courseConcreteTime.trim();
+    }
+
+    public Integer getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(Integer teacherId) {
+        this.teacherId = teacherId;
     }
 }

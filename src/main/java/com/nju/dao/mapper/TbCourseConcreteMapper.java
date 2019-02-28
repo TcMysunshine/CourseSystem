@@ -4,10 +4,7 @@ import com.nju.entity.TbCourseConcrete;
 import com.nju.entity.TbCourseConcreteExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-
-@Repository
 public interface TbCourseConcreteMapper {
     int countByExample(TbCourseConcreteExample example);
 
