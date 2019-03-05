@@ -3,7 +3,6 @@ package com.nju.controller;
 import com.nju.Enum.CourseTimeEnum;
 import com.nju.dao.mapper.TbCourseConcreteMapper;
 import com.nju.dao.mapper.TbCourseMapper;
-import com.nju.dao.mapper.TbTeacherCourseMapper;
 import com.nju.entity.*;
 import com.nju.entity.vo.CourseInfoVo;
 import com.nju.entity.vo.TeacherCourseInfoVo;
@@ -28,11 +27,10 @@ public class courseController {
     @Autowired
     CourseService courseService;
     @Autowired
-    TbTeacherCourseMapper teacherCourseMapper;
-    @Autowired
     TbCourseConcreteMapper courseConcreteMapper;
     @Autowired
     TbCourseMapper courseMapper;
+    
     //显示课程界面
     @RequestMapping("/showCourse")
     public ModelAndView getIndex(HttpServletRequest request, ModelMap model){
@@ -90,8 +88,7 @@ public class courseController {
         List<TeacherCourseInfoVo> teacherCourseInfoVoList=new ArrayList<>();
         for(int i=0;i<courseConcretes.size();i++){
             TeacherCourseInfoVo teacherCourseInfoVo=new TeacherCourseInfoVo();
-            TbTeacherCourse tbTeacherCourse=teacherCourseMapper.selectByCourseConcreteId(courseConcretes.get(i).getCourseConcreteId());
-            TbCourse courses=courseService.getCourseByCourseId(tbTeacherCourse.getCourseId());
+            TbCourse courses=courseService.getCourseByCourseId(courseConcretes.get(i).getCourseId());
             teacherCourseInfoVo.setCourseId(courses.getCourseId());
             teacherCourseInfoVo.setCourseName(courses.getCourseName());
             teacherCourseInfoVo.setCourseEncoding(courses.getCourseEncoding());

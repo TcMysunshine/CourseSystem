@@ -17,7 +17,9 @@ public class TbCourseConcrete {
 
     private String courseConcreteTime;
 
-    private Integer teacherId;
+    private Integer courseId;
+
+    private Integer weekId;
 
     public Integer getCourseConcreteId() {
         return courseConcreteId;
@@ -83,11 +85,19 @@ public class TbCourseConcrete {
         this.courseConcreteTime = courseConcreteTime == null ? null : courseConcreteTime.trim();
     }
 
-    public Integer getTeacherId() {
-        return teacherId;
+    public Integer getCourseId() {
+        return courseId;
     }
 
-    public void setTeacherId(Integer teacherId) {
-        this.teacherId = teacherId;
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
+    }
+
+    public Integer getWeekId() {
+        return weekId;
+    }
+
+    public void setWeekId(Integer weekId) {
+        this.weekId = weekId;
     }
 }

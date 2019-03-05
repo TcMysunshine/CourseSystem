@@ -8,22 +8,22 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>课程列表</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="assets/css/animate.min.css" rel="stylesheet"/>
     <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
-    <link href="assets/css/demo.css" rel="stylesheet" />
+    <link href="assets/css/demo.css" rel="stylesheet"/>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
@@ -32,45 +32,43 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div>
-    <!-- 模态框（Modal） -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">课程信息</h4>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label>课程名称</label>
-                                <label><c:out value="${course.courseName}"></c:out></label>
-                            </div>
-                            <div>
-                                <label>课程详情</label>
-                                <input type="text" value="${courseInfo.courseConcreteInformation}">
-                            </div>
-                            <div>
-                                <label>课程要求</label>
-                                <input type="text" value="${courseInfo.courseConcreteRequest}">
-                            </div>
-                            <div>
-                                <label>上课教室</label>
-                                <input type="text" value="${courseInfo.courseConcreteClassroom}">
-                            </div>
-                            <div>
-                                <label>上课时间</label>
-                                <input type="text" value="${courseInfo.courseConcreteTime}">
-                            </div>
-                        </form>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="button" class="btn btn-primary">提交更改</button>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="EditCourseInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">课程信息</h4>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-lable">课程名称</label>
+                            <label class="col-sm-10"><c:out value="${course.courseName}"></c:out></label>
                         </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-lable">课程详情</label>
+                            <input class="col-sm-10" type="text" name="CourseInfo" id="CourseInfo">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-lable">课程要求</label>
+                            <input class="col-sm-10" type="text" name="CourseRequest" id="CourseRequest">
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-lable">上课教室</label>
+                            <input class="col-sm-10" type="text" name="ClassRoom" id="ClassRoom">
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-lable">上课时间</label>
+                            <input class="col-sm-10" type="text" name="ClassTime" id="ClassTime">
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary btn-info">提交更改</button>
                     </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal -->
-        </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
     </div>
 </div>
 <div class="wrapper">
@@ -82,7 +80,7 @@
                 </a>
             </div>
             <ul class="nav">
-                <li >
+                <li>
                     <a href="teacherInfo">
                         <i class="ti-user"></i>
                         <p>教师信息</p>
@@ -95,10 +93,10 @@
                     </a>
                 </li>
                 <%--<li class="active">--%>
-                    <%--<a href="teacherCourseInfo">--%>
-                        <%--<i class="ti-view-list-alt"></i>--%>
-                        <%--<p>文件信息</p>--%>
-                    <%--</a>--%>
+                <%--<a href="teacherCourseInfo">--%>
+                <%--<i class="ti-view-list-alt"></i>--%>
+                <%--<p>文件信息</p>--%>
+                <%--</a>--%>
                 <%--</li>--%>
             </ul>
         </div>
@@ -189,7 +187,8 @@
                                             <tr>
                                                 <td>
                                                     <!-- 按钮触发模态框 -->
-                                                    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">修改课程信息</button>
+                                                    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#EditCourseInfo">修改课程信息</button>
+                                                    <%--<input type="button" class="btn btn-primary" data-toggle="model" data-target="#EditCourseInfo" value="修改课程信息">--%>
                                                 </td>
                                             </tr>
                                         </table>
@@ -218,7 +217,9 @@
                                                     <td>${homework.homeworkEndtime}</td>
                                                     <td>${homework.homeworkContent}</td>
                                                     <td>${homework.homeworkRemark}</td>
-                                                    <td ><a href="teacherCourseManage?courseConcreteId=${homework.homeworkId}">作业管理</a></td>
+                                                    <td>
+                                                        <a href="teacherCourseManage?courseConcreteId=${homework.homeworkId}">作业管理</a>
+                                                    </td>
                                                 </tr>
                                             </c:forEach>
                                             </tbody>
@@ -250,7 +251,13 @@
 <script src="assets/js/paper-dashboard.js"></script>
 <script src="assets/js/demo.js"></script>
 <script type="text/javascript">
-
+    //触发模态框的同时调用此方法
+    <%--$('#EditCourseInfo').on('show.bs.model',function(){--%>
+        <%--var modal = $(this)--%>
+        <%--modal.find('#CourseRequest').value(${courseInfo.courseConcreteRequest})--%>
+        <%--$('#CourseInfo').val(${courseInfo.courseConcreteInformation});--%>
+    <%--})--%>
+    //模态框提交更改信息时触发的方法
 </script>
 </html>
 

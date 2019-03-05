@@ -59,17 +59,21 @@
             <columnOverride column="SJXX" javaType="java.lang.String" jdbcType="VARCHAR" />
             <columnOverride column="SJXX2016" javaType="java.lang.String" jdbcType="VARCHAR" />
         </table>-->
-        <!--<table tableName="tb_course"></table>-->
+
         <!--<table tableName="tb_student"></table>-->
         <!--<table tableName="tb_course"></table>-->
         <!--<table tableName="tb_department"></table>-->
         <!--<table tableName="tb_img"></table>-->
-        <!--<table tableName="tb_student_course"></table>-->
         <!--<table tableName="tb_teacher"></table>-->
-        <!--<table tableName="tb_teacher_course"></table>-->
-        <!-- <table tableName="tb_course_concrete"></table>-->
+        <!-- <table tableName="tb_student_course_concrete"></table>
+         <table tableName="tb_teacher_course_concrete"></table>
+         <table tableName="tb_course_concrete"></table>
+         <table tableName="tb_week"></table>-->
         <!--<table tableName="tb_tcc_homework"></table>-->
         <!--<table tableName="tb_homework"></table>-->
+        <!-- <table tableName="tb_course"></table>
+         <table tableName="tb_course_concrete"></table>-->
+        <table tableName="tb_semester"></table>
         <!-- ****************************************************************************************** -->
         <!-- ****************************************************************************************** -->
     </context>

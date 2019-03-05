@@ -624,63 +624,123 @@ public class TbCourseConcreteExample {
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdIsNull() {
-            addCriterion("teacher_id is null");
+        public Criteria andCourseIdIsNull() {
+            addCriterion("course_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdIsNotNull() {
-            addCriterion("teacher_id is not null");
+        public Criteria andCourseIdIsNotNull() {
+            addCriterion("course_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdEqualTo(Integer value) {
-            addCriterion("teacher_id =", value, "teacherId");
+        public Criteria andCourseIdEqualTo(Integer value) {
+            addCriterion("course_id =", value, "courseId");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdNotEqualTo(Integer value) {
-            addCriterion("teacher_id <>", value, "teacherId");
+        public Criteria andCourseIdNotEqualTo(Integer value) {
+            addCriterion("course_id <>", value, "courseId");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdGreaterThan(Integer value) {
-            addCriterion("teacher_id >", value, "teacherId");
+        public Criteria andCourseIdGreaterThan(Integer value) {
+            addCriterion("course_id >", value, "courseId");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("teacher_id >=", value, "teacherId");
+        public Criteria andCourseIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("course_id >=", value, "courseId");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdLessThan(Integer value) {
-            addCriterion("teacher_id <", value, "teacherId");
+        public Criteria andCourseIdLessThan(Integer value) {
+            addCriterion("course_id <", value, "courseId");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdLessThanOrEqualTo(Integer value) {
-            addCriterion("teacher_id <=", value, "teacherId");
+        public Criteria andCourseIdLessThanOrEqualTo(Integer value) {
+            addCriterion("course_id <=", value, "courseId");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdIn(List<Integer> values) {
-            addCriterion("teacher_id in", values, "teacherId");
+        public Criteria andCourseIdIn(List<Integer> values) {
+            addCriterion("course_id in", values, "courseId");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdNotIn(List<Integer> values) {
-            addCriterion("teacher_id not in", values, "teacherId");
+        public Criteria andCourseIdNotIn(List<Integer> values) {
+            addCriterion("course_id not in", values, "courseId");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdBetween(Integer value1, Integer value2) {
-            addCriterion("teacher_id between", value1, value2, "teacherId");
+        public Criteria andCourseIdBetween(Integer value1, Integer value2) {
+            addCriterion("course_id between", value1, value2, "courseId");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("teacher_id not between", value1, value2, "teacherId");
+        public Criteria andCourseIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("course_id not between", value1, value2, "courseId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdIsNull() {
+            addCriterion("week_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdIsNotNull() {
+            addCriterion("week_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdEqualTo(Integer value) {
+            addCriterion("week_id =", value, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdNotEqualTo(Integer value) {
+            addCriterion("week_id <>", value, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdGreaterThan(Integer value) {
+            addCriterion("week_id >", value, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("week_id >=", value, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdLessThan(Integer value) {
+            addCriterion("week_id <", value, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdLessThanOrEqualTo(Integer value) {
+            addCriterion("week_id <=", value, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdIn(List<Integer> values) {
+            addCriterion("week_id in", values, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdNotIn(List<Integer> values) {
+            addCriterion("week_id not in", values, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdBetween(Integer value1, Integer value2) {
+            addCriterion("week_id between", value1, value2, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("week_id not between", value1, value2, "weekId");
             return (Criteria) this;
         }
     }

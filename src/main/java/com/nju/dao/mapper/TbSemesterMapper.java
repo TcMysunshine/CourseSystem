@@ -4,9 +4,7 @@ import com.nju.entity.TbSemester;
 import com.nju.entity.TbSemesterExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface TbSemesterMapper {
     int countByExample(TbSemesterExample example);
 
