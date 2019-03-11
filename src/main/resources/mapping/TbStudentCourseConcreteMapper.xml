@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nju.dao.mapper.TbStudentCourseConcreteMapper" >
+  <resultMap id="BaseResultMap" type="com.nju.entity.TbStudentCourseConcrete" >
+    <id column="SC_id" property="scId" jdbcType="INTEGER" />
+    <result column="student_id" property="studentId" jdbcType="INTEGER" />
+    <result column="course_concrete_id" property="courseConcreteId" jdbcType="INTEGER" />
+    <result column="sorce" property="sorce" jdbcType="INTEGER" />
+    <result column="create_year" property="createYear" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    SC_id, student_id, course_concrete_id, sorce, create_year
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nju.entity.TbStudentCourseConcreteExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_student_course_concrete
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_student_course_concrete
+    where SC_id = #{scId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_student_course_concrete
+    where SC_id = #{scId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.nju.entity.TbStudentCourseConcreteExample" >
+    delete from tb_student_course_concrete
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.nju.entity.TbStudentCourseConcrete" >
+    insert into tb_student_course_concrete (SC_id, student_id, course_concrete_id, 
+      sorce, create_year)
+    values (#{scId,jdbcType=INTEGER}, #{studentId,jdbcType=INTEGER}, #{courseConcreteId,jdbcType=INTEGER}, 
+      #{sorce,jdbcType=INTEGER}, #{createYear,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.nju.entity.TbStudentCourseConcrete" >
+    insert into tb_student_course_concrete
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="scId != null" >
+        SC_id,
+      </if>
+      <if test="studentId != null" >
+        student_id,
+      </if>
+      <if test="courseConcreteId != null" >
+        course_concrete_id,
+      </if>
+      <if test="sorce != null" >
+        sorce,
+      </if>
+      <if test="createYear != null" >
+        create_year,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="scId != null" >
+        #{scId,jdbcType=INTEGER},
+      </if>
+      <if test="studentId != null" >
+        #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="courseConcreteId != null" >
+        #{courseConcreteId,jdbcType=INTEGER},
+      </if>
+      <if test="sorce != null" >
+        #{sorce,jdbcType=INTEGER},
+      </if>
+      <if test="createYear != null" >
+        #{createYear,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.nju.entity.TbStudentCourseConcreteExample" resultType="java.lang.Integer" >
+    select count(*) from tb_student_course_concrete
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_student_course_concrete
+    <set >
+      <if test="record.scId != null" >
+        SC_id = #{record.scId,jdbcType=INTEGER},
+      </if>
+      <if test="record.studentId != null" >
+        student_id = #{record.studentId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseConcreteId != null" >
+        course_concrete_id = #{record.courseConcreteId,jdbcType=INTEGER},
+      </if>
+      <if test="record.sorce != null" >
+        sorce = #{record.sorce,jdbcType=INTEGER},
+      </if>
+      <if test="record.createYear != null" >
+        create_year = #{record.createYear,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_student_course_concrete
+    set SC_id = #{record.scId,jdbcType=INTEGER},
+      student_id = #{record.studentId,jdbcType=INTEGER},
+      course_concrete_id = #{record.courseConcreteId,jdbcType=INTEGER},
+      sorce = #{record.sorce,jdbcType=INTEGER},
+      create_year = #{record.createYear,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.nju.entity.TbStudentCourseConcrete" >
+    update tb_student_course_concrete
+    <set >
+      <if test="studentId != null" >
+        student_id = #{studentId,jdbcType=INTEGER},
+      </if>
+      <if test="courseConcreteId != null" >
+        course_concrete_id = #{courseConcreteId,jdbcType=INTEGER},
+      </if>
+      <if test="sorce != null" >
+        sorce = #{sorce,jdbcType=INTEGER},
+      </if>
+      <if test="createYear != null" >
+        create_year = #{createYear,jdbcType=INTEGER},
+      </if>
+    </set>
+    where SC_id = #{scId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.nju.entity.TbStudentCourseConcrete" >
+    update tb_student_course_concrete
+    set student_id = #{studentId,jdbcType=INTEGER},
+      course_concrete_id = #{courseConcreteId,jdbcType=INTEGER},
+      sorce = #{sorce,jdbcType=INTEGER},
+      create_year = #{createYear,jdbcType=INTEGER}
+    where SC_id = #{scId,jdbcType=INTEGER}
+  </update>
+</mapper>

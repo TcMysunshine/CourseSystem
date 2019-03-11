@@ -114,20 +114,22 @@
                                     <thead>
                                     <th>课程编号</th>
                                     <th>课程名</th>
+                                    <th>老师</th>
                                     <th>课程时间</th>
                                     <th>课程地点</th>
                                     <th>课程学分</th>
-                                    <th>课程介绍</th>
+                                    <th>课程要求</th>
                                     </thead>
                                     <tbody>
                                     <c:forEach items="${courselist}" var="course">
                                         <tr>
                                             <td>${course.courseEncoding}</td>
                                             <td>${course.courseName}</td>
-                                            <td>${course.courseTime}</td>
-                                            <td>${course.courseClassroom}</td>
-                                            <td>${course.courseCredit}</td>
-                                            <td>${course.courseInfomation}</td>
+                                            <td>${course.teacherName}</td>
+                                            <td>${course.courseConcreteTime}</td>
+                                            <td>${course.courseConcreteClassroom}</td>
+                                            <td>${course.courseConcreteCredit}</td>
+                                            <td>${course.courseConcreteRequest}</td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>

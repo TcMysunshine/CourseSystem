@@ -1,5 +1,6 @@
 package com.nju.service.impl;
 
+import com.nju.Model.CourseShowModel;
 import com.nju.dao.mapper.*;
 import com.nju.entity.*;
 import com.nju.service.CourseService;
@@ -16,6 +17,8 @@ public  class CourseServiceImpl implements CourseService {
 
     @Autowired
     TbCourseMapper courseMapper;
+    @Autowired
+    TbTeacherMapper tbTeacherMapper;
 
     @Autowired
     TbStudentCourseConcreteMapper studentCourseConcreteMapper;
@@ -30,22 +33,53 @@ public  class CourseServiceImpl implements CourseService {
     TbHomeworkMapper homeworkMapper;
 
     @Override
-    public List<TbCourse> getCoursesByStuId(Integer id){
-//        TbStudentCourseExample studentCourseExample=new TbStudentCourseExample();
-////        TbStudentCourseExample.Criteria criteria1=studentCourseExample.createCriteria();
-////        criteria1.andStudentIdEqualTo(id);
-////        List<TbStudentCourse> studentCourses=studentCourseMapper.selectByExample(studentCourseExample);
-////        List<Integer> courseList=new ArrayList<Integer>();
-////        for (int i=0;i<studentCourses.size();i++){
-////            courseList.add(studentCourses.get(i).getCourseId());
-////        }
-////        TbCourseExample courseExample=new TbCourseExample();
-////        TbCourseExample.Criteria criteria2=courseExample.createCriteria();
-////        criteria2.andCourseIdIn(courseList);
-////        return courseMapper.selectByExample(courseExample);
-            return null;
+    public List<TbCourseConcrete> getCoursesByStuId(Integer id){
+        TbStudentCourseConcreteExample studentCourseConcreteExample=new TbStudentCourseConcreteExample();
+        TbStudentCourseConcreteExample.Criteria criteria1=studentCourseConcreteExample.createCriteria();
+        criteria1.andStudentIdEqualTo(id);
+        List<TbStudentCourseConcrete> studentCourses=studentCourseConcreteMapper.selectByExample(studentCourseConcreteExample);
+        List<Integer> courseList=new ArrayList<Integer>();
+        for (int i=0;i<studentCourses.size();i++){
+            courseList.add(studentCourses.get(i).getCourseConcreteId());
+        }
+        TbCourseConcreteExample courseConcreteExample=new TbCourseConcreteExample();
+        TbCourseConcreteExample.Criteria criteria2=courseConcreteExample.createCriteria();
+        criteria2.andCourseConcreteIdIn(courseList);
+        return courseConcreteMapper.selectByExample(courseConcreteExample);
+
     }
 
+    //补全课程信息
+    @Override
+    public List<CourseShowModel> geCourseInfo(List<TbCourseConcrete> courses){
+        List<CourseShowModel> courseInfos=new ArrayList<>();
+        for(int i=0;i<courses.size();i++){
+            CourseShowModel courseModel=new CourseShowModel();
+            courseModel.setCourseConcreteClassroom(courses.get(i).getCourseConcreteClassroom());
+            courseModel.setCourseConcreteCredit(courses.get(i).getCourseConcreteCredit());
+            courseModel.setCourseConcreteInformation(courses.get(i).getCourseConcreteInformation());
+            courseModel.setCourseConcreteRequest(courses.get(i).getCourseConcreteRequest());
+            courseModel.setCourseConcreteTime(courses.get(i).getCourseConcreteTime());
+            TbCourse course=courseMapper.selectByPrimaryKey(courses.get(0).getCourseId());
+            courseModel.setCourseEncoding(course.getCourseEncoding());
+            courseModel.setCourseName(course.getCourseName());
+            courseModel.setTeacherName(getTeacherNameBy(courses.get(0).getCourseConcreteId()));
+            courseInfos.add(courseModel);
+
+        }
+        return courseInfos;
+    }
+
+
+    public String getTeacherNameBy(Integer courseConcreteId){
+        TbTeacherCourseConcreteExample tbTeacherCourseConcreteExample=new TbTeacherCourseConcreteExample();
+        TbTeacherCourseConcreteExample.Criteria criteria=tbTeacherCourseConcreteExample.createCriteria();
+        criteria.andCourseConcreteIdEqualTo(courseConcreteId);
+        List<TbTeacherCourseConcrete> teacherCourseConcretes=teacherCourseConcreteMapper.selectByExample(tbTeacherCourseConcreteExample);
+        TbTeacher teacher=tbTeacherMapper.selectByPrimaryKey(teacherCourseConcretes.get(0).getTeacherId());
+        return teacher.getTeacherName();
+
+    }
     @Override
     public List<TbCourse> getCourseBySemester(Integer id,String semester){
         TbStudentCourseConcreteExample studentCourseConcreteExample=new TbStudentCourseConcreteExample();
