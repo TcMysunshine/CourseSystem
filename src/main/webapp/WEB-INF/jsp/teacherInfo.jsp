@@ -128,6 +128,24 @@
                                         <a href="#"><small>${teacherInfo.teacherEmail}</small></a>
                                     </h4>
                                 </div>
+                                <div class="author">
+                                    <img class="avatar border-white" id="avatar" src="assets/img/faces/face-2.jpg"
+                                         alt="..." onclick="changeAvatar(this)" style="cursor: pointer"/>
+                                    <h4 class="title">${student.studentName}<br />
+                                        <a href="#"><small>${student.studentEmail}</small></a>
+                                    </h4>
+                                </div>
+                                <div class="mask"></div>
+                                <form class="ImgPanel" style="display:none;" id="ImgForm" action="ImageUpload"
+                                      method="post" enctype="multipart/form-data">
+                                    <span id="msg"></span>
+                                    <input type="hidden" name="lx" value="1">
+                                    <a class="form-control" style="margin-bottom: 5px;text-align: center;">
+                                        <input style="opacity: 0;position:absolute;" type="file" name="file"/>选择图片
+                                    </a>
+                                    <input type="submit" value="头像上传" class="form-control" id="uploadImg"/>
+                                    <input id="cancel" type="button" class="form-control" value="取消"/>
+                                </form>
                                 <p class="description text-center">
                                     ${teacherInfo.teacherName}
                                 </p>
@@ -319,7 +337,24 @@
 <script src="assets/js/bootstrap-notify.js"></script>
 <script src="assets/js/paper-dashboard.js"></script>
 <script src="assets/js/demo.js"></script>
+<script src="assets/js/jquery.form.js"></script>
 <script type="text/javascript">
+    $(function () {
+        getImgStr();
+    });
+
+    function getImgStr(){
+        $.ajax({
+            url:'getAvatar',
+            method:'post',
+            data:{
+                lx:1
+            },
+            success:function (res) {
+                $('#avatar')[0].src = res;
+            }
+        })
+    }
     $(".btn-editInfo").click(function () {
         sex=1;
         if ($("input[name='teacherSex']").val()=="女"){
@@ -350,6 +385,24 @@
             }
         })
     })
+
+    $('#cancel').click(function () {
+        $('.mask').hide();
+        $('#ImgForm').hide();
+    });
+
+    $('#uploadImg').submit(function () {
+        var options = {
+            target:'#msg'
+        };
+        $(this).ajaxSubmit(options);
+    });
+
+    function changeAvatar(obj){
+        $('.mask').show();
+        $('#ImgForm').show();
+        getImgStr();
+    }
 </script>
 </html>
 

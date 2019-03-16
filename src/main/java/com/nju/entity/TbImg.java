@@ -5,9 +5,9 @@ import java.util.Date;
 public class TbImg {
     private Integer imgId;
 
-    private String imgAddr;
+    private String imgAddr = "";
 
-    private String imgDesc;
+    private String imgDesc = "";
 
     private Date createTime;
 

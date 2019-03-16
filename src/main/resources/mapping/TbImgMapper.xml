@@ -98,7 +98,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.nju.entity.TbImg" >
+  <insert id="insert" parameterType="com.nju.entity.TbImg" useGeneratedKeys="true" keyProperty="imgId">
     insert into tb_img (img_id, img_addr, img_desc, 
       create_time)
     values (#{imgId,jdbcType=INTEGER}, #{imgAddr,jdbcType=VARCHAR}, #{imgDesc,jdbcType=VARCHAR}, 
