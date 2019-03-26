@@ -27,4 +27,6 @@ public interface TbCourseConcreteMapper {
     int updateByPrimaryKeySelective(TbCourseConcrete record);
 
     int updateByPrimaryKey(TbCourseConcrete record);
+
+    int getMaxid();
 }

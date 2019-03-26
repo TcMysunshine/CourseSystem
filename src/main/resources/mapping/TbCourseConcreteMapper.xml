@@ -291,4 +291,7 @@
       week_id = #{weekId,jdbcType=INTEGER}
     where course_concrete_id = #{courseConcreteId,jdbcType=INTEGER}
   </update>
+  <select id="getMaxid" resultType="java.lang.Integer">
+    select max(course_concrete_id) from tb_course_concrete
+  </select>
 </mapper>

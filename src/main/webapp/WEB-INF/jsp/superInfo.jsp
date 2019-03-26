@@ -55,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="courseInfo">
+                    <a href="courseManage">
                         <i class="ti-view-list-alt"></i>
                         <p>课程管理</p>
                     </a>

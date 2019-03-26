@@ -383,4 +383,10 @@
       course_time = #{courseTime,jdbcType=VARCHAR}
     where course_id = #{courseId,jdbcType=INTEGER}
   </update>
+
+  <select id="getCourse" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_course
+  </select>
 </mapper>

@@ -481,4 +481,10 @@
       teacher_img = #{teacherImg,jdbcType=INTEGER}
     where teacher_id = #{teacherId,jdbcType=INTEGER}
   </update>
+
+  <select id="getTeachersAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_teacher
+  </select>
 </mapper>

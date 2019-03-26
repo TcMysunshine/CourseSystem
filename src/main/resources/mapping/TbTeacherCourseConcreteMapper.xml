@@ -178,4 +178,7 @@
       course_concrete_id = #{courseConcreteId,jdbcType=INTEGER}
     where TCid = #{tcid,jdbcType=INTEGER}
   </update>
+  <select id="getMaxid" resultType="java.lang.Integer">
+    select max(TCid) from tb_teacher_course_concrete
+  </select>
 </mapper>

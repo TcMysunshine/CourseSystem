@@ -27,4 +27,6 @@ public interface TbCourseMapper {
     int updateByPrimaryKeySelective(TbCourse record);
 
     int updateByPrimaryKey(TbCourse record);
+
+    List<TbCourse> getCourse();
 }

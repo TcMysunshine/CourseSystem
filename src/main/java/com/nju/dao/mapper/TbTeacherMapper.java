@@ -27,4 +27,6 @@ public interface TbTeacherMapper {
     int updateByPrimaryKeySelective(TbTeacher record);
 
     int updateByPrimaryKey(TbTeacher record);
+
+    List<TbTeacher> getTeachersAll();
 }
