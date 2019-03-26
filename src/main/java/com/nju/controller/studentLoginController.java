@@ -79,4 +79,27 @@ public class studentLoginController {
         else
             return null;
     }
+    @ResponseBody
+    @RequestMapping(value = "/student/updatePassword")
+    public boolean updatePassword(HttpServletRequest request,
+                                  @RequestParam("oldPass") String oldPass,
+                                  @RequestParam("newPass") String newPass){
+        HttpSession session=request.getSession();
+        TbStudent student=(TbStudent) session.getAttribute("user");
+        if(student.getStudentPassword().equals(oldPass)){
+            student.setStudentPassword(newPass);
+            if(studentService.editStudentInfo(student)){
+                return true;
+            }
+            return false;
+        }
+        else{
+            return false;
+        }
+    }
+    @RequestMapping(value = "/student/logout")
+    public String studentlogout(HttpServletRequest request){
+        request.getSession().removeAttribute("user");
+        return "redirect:login";
+    }
 }

@@ -195,6 +195,7 @@
         window.location.href = "superInfo?studentName="+studentName+"&&studentCount="+studentCount;
 
     })
+
     $(".btn-addStudent").click(function (){
         var studentNum=$("input[name='studentNum']").val();
         data1={studentNum:studentNum};

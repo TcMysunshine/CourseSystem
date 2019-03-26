@@ -47,7 +47,8 @@ public class FileController {
         String fileName = file.getOriginalFilename();
         Date date = new Date();
         String dataForm =DateUtil.format(date,DateUtil.shortFormat);
-        String filePath = "D:/上传文件/Files/"+dataForm+"/";
+//        String filePath = "D:/上传文件/Files/"+dataForm+"/";
+        String filePath="image/"+dataForm+"/";
         String destName = filePath + System.currentTimeMillis()
                 +fileName.substring(fileName.lastIndexOf("."),fileName.length());
         File f = new File(filePath);
