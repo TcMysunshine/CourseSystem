@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -64,5 +65,28 @@ public class TeacherController {
         else{
             return new ResultModel(0,ResultModel.FAIL,null);
         }
+    }
+    @ResponseBody
+    @RequestMapping(value = "/teacher/updatePassword")
+    public boolean updatePassword(HttpServletRequest request,
+                                  @RequestParam("oldPass") String oldPass,
+                                  @RequestParam("newPass") String newPass){
+        HttpSession session=request.getSession();
+        TbTeacher teacher=(TbTeacher) session.getAttribute("user");
+        if(teacher.getTeacherPassword().equals(oldPass)){
+            teacher.setTeacherPassword(newPass);
+            if(teacherService.editTeacherInfo(teacher)){
+                return true;
+            }
+            return false;
+        }
+        else{
+            return false;
+        }
+    }
+    @RequestMapping(value = "/teacher/logout")
+    public String teacherlogout(HttpServletRequest request){
+        request.getSession().removeAttribute("user");
+        return "redirect:login";
     }
 }
