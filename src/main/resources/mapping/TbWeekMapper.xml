@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.nju.dao.mapper.TbTccHomeworkMapper" >
-  <resultMap id="BaseResultMap" type="com.nju.entity.TbTccHomework" >
-    <id column="tcch_id" property="tcchId" jdbcType="INTEGER" />
-    <result column="course_concrete_id" property="courseConcreteId" jdbcType="INTEGER" />
-    <result column="homework_id" property="homeworkId" jdbcType="INTEGER" />
+<mapper namespace="com.nju.dao.mapper.TbWeekMapper" >
+  <resultMap id="BaseResultMap" type="com.nju.entity.TbWeek" >
+    <id column="week_id" property="weekId" jdbcType="INTEGER" />
+    <result column="week_day" property="weekDay" jdbcType="VARCHAR" />
+    <result column="week_order" property="weekOrder" jdbcType="VARCHAR" />
+    <result column="week_time" property="weekTime" jdbcType="VARCHAR" />
+    <result column="week_season" property="weekSeason" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    tcch_id, course_concrete_id, homework_id
+    week_id, week_day, week_order, week_time, week_season
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nju.entity.TbTccHomeworkExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.nju.entity.TbWeekExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tb_tcc_homework
+    from tb_week
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,67 +86,85 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from tb_tcc_homework
-    where tcch_id = #{tcchId,jdbcType=INTEGER}
+    from tb_week
+    where week_id = #{weekId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from tb_tcc_homework
-    where tcch_id = #{tcchId,jdbcType=INTEGER}
+    delete from tb_week
+    where week_id = #{weekId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.nju.entity.TbTccHomeworkExample" >
-    delete from tb_tcc_homework
+  <delete id="deleteByExample" parameterType="com.nju.entity.TbWeekExample" >
+    delete from tb_week
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.nju.entity.TbTccHomework" >
-    insert into tb_tcc_homework (tcch_id, course_concrete_id, homework_id
-      )
-    values (#{tcchId,jdbcType=INTEGER}, #{courseConcreteId,jdbcType=INTEGER}, #{homeworkId,jdbcType=INTEGER}
-      )
+  <insert id="insert" parameterType="com.nju.entity.TbWeek" >
+    insert into tb_week (week_id, week_day, week_order, 
+      week_time, week_season)
+    values (#{weekId,jdbcType=INTEGER}, #{weekDay,jdbcType=VARCHAR}, #{weekOrder,jdbcType=VARCHAR}, 
+      #{weekTime,jdbcType=VARCHAR}, #{weekSeason,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.nju.entity.TbTccHomework" >
-    insert into tb_tcc_homework
+  <insert id="insertSelective" parameterType="com.nju.entity.TbWeek" >
+    insert into tb_week
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="tcchId != null" >
-        tcch_id,
+      <if test="weekId != null" >
+        week_id,
       </if>
-      <if test="courseConcreteId != null" >
-        course_concrete_id,
+      <if test="weekDay != null" >
+        week_day,
       </if>
-      <if test="homeworkId != null" >
-        homework_id,
+      <if test="weekOrder != null" >
+        week_order,
+      </if>
+      <if test="weekTime != null" >
+        week_time,
+      </if>
+      <if test="weekSeason != null" >
+        week_season,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="tcchId != null" >
-        #{tcchId,jdbcType=INTEGER},
+      <if test="weekId != null" >
+        #{weekId,jdbcType=INTEGER},
       </if>
-      <if test="courseConcreteId != null" >
-        #{courseConcreteId,jdbcType=INTEGER},
+      <if test="weekDay != null" >
+        #{weekDay,jdbcType=VARCHAR},
       </if>
-      <if test="homeworkId != null" >
-        #{homeworkId,jdbcType=INTEGER},
+      <if test="weekOrder != null" >
+        #{weekOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="weekTime != null" >
+        #{weekTime,jdbcType=VARCHAR},
+      </if>
+      <if test="weekSeason != null" >
+        #{weekSeason,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.nju.entity.TbTccHomeworkExample" resultType="java.lang.Integer" >
-    select count(*) from tb_tcc_homework
+  <select id="countByExample" parameterType="com.nju.entity.TbWeekExample" resultType="java.lang.Integer" >
+    select count(*) from tb_week
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update tb_tcc_homework
+    update tb_week
     <set >
-      <if test="record.tcchId != null" >
-        tcch_id = #{record.tcchId,jdbcType=INTEGER},
+      <if test="record.weekId != null" >
+        week_id = #{record.weekId,jdbcType=INTEGER},
       </if>
-      <if test="record.courseConcreteId != null" >
-        course_concrete_id = #{record.courseConcreteId,jdbcType=INTEGER},
+      <if test="record.weekDay != null" >
+        week_day = #{record.weekDay,jdbcType=VARCHAR},
       </if>
-      <if test="record.homeworkId != null" >
-        homework_id = #{record.homeworkId,jdbcType=INTEGER},
+      <if test="record.weekOrder != null" >
+        week_order = #{record.weekOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weekTime != null" >
+        week_time = #{record.weekTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weekSeason != null" >
+        week_season = #{record.weekSeason,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -152,33 +172,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update tb_tcc_homework
-    set tcch_id = #{record.tcchId,jdbcType=INTEGER},
-      course_concrete_id = #{record.courseConcreteId,jdbcType=INTEGER},
-      homework_id = #{record.homeworkId,jdbcType=INTEGER}
+    update tb_week
+    set week_id = #{record.weekId,jdbcType=INTEGER},
+      week_day = #{record.weekDay,jdbcType=VARCHAR},
+      week_order = #{record.weekOrder,jdbcType=VARCHAR},
+      week_time = #{record.weekTime,jdbcType=VARCHAR},
+      week_season = #{record.weekSeason,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.nju.entity.TbTccHomework" >
-    update tb_tcc_homework
+  <update id="updateByPrimaryKeySelective" parameterType="com.nju.entity.TbWeek" >
+    update tb_week
     <set >
-      <if test="courseConcreteId != null" >
-        course_concrete_id = #{courseConcreteId,jdbcType=INTEGER},
+      <if test="weekDay != null" >
+        week_day = #{weekDay,jdbcType=VARCHAR},
       </if>
-      <if test="homeworkId != null" >
-        homework_id = #{homeworkId,jdbcType=INTEGER},
+      <if test="weekOrder != null" >
+        week_order = #{weekOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="weekTime != null" >
+        week_time = #{weekTime,jdbcType=VARCHAR},
+      </if>
+      <if test="weekSeason != null" >
+        week_season = #{weekSeason,jdbcType=VARCHAR},
       </if>
     </set>
-    where tcch_id = #{tcchId,jdbcType=INTEGER}
+    where week_id = #{weekId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.nju.entity.TbTccHomework" >
-    update tb_tcc_homework
-    set course_concrete_id = #{courseConcreteId,jdbcType=INTEGER},
-      homework_id = #{homeworkId,jdbcType=INTEGER}
-    where tcch_id = #{tcchId,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.nju.entity.TbWeek" >
+    update tb_week
+    set week_day = #{weekDay,jdbcType=VARCHAR},
+      week_order = #{weekOrder,jdbcType=VARCHAR},
+      week_time = #{weekTime,jdbcType=VARCHAR},
+      week_season = #{weekSeason,jdbcType=VARCHAR}
+    where week_id = #{weekId,jdbcType=INTEGER}
   </update>
-  <select id="getMaxid" resultType="java.lang.Integer">
-    select max(tcch_id) from tb_tcc_homework
-  </select>
 </mapper>

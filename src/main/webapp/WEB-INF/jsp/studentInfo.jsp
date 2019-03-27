@@ -116,14 +116,7 @@
                                 <li><a href="#" onclick="logout()">退出登录</a></li>
                             </ul>
                         </li>
-                        <%--<li>--%>
-                        <%--<a href="#">--%>
-                        <%--<i class="ti-settings"></i>--%>
-                        <%--<p>Settings</p>--%>
-                        <%--</a>--%>
-                        <%--</li>--%>
                     </ul>
-
                 </div>
             </div>
         </nav>

@@ -126,7 +126,6 @@
 <script src="assets/js/layer.js" type="text/javascript"></script>
 <script type="text/javascript">
     $('.btn-addCourseInfo').on('click', function () {
-
         $.ajax({
             url: "showAddCourse",
             type: "get",
@@ -143,9 +142,7 @@
             error: function () {
             }
         })
-
     });
-
 </script>
 
 </html>

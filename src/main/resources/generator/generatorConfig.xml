@@ -73,8 +73,8 @@
         <!--<table tableName="tb_homework"></table>-->
         <!-- <table tableName="tb_course"></table>
          <table tableName="tb_course_concrete"></table>-->
-        <table tableName="tb_student_course_concrete"></table>
-        <table tableName="tb_teacher_course_concrete"></table>
+        <!--<table tableName="tb_student_course_concrete"></table>-->
+        <!--<table tableName="tb_teacher_course_concrete"></table>-->
         <!-- ****************************************************************************************** -->
         <!-- ****************************************************************************************** -->
     </context>

@@ -1,21 +1,25 @@
 package com.nju.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nju.Enum.CourseTimeEnum;
 import com.nju.Model.CourseShowModel;
 import com.nju.dao.mapper.TbCourseConcreteMapper;
 import com.nju.dao.mapper.TbCourseMapper;
+import com.nju.dao.mapper.TbHomeworkMapper;
 import com.nju.entity.*;
-import com.nju.entity.vo.CourseInfoVo;
-import com.nju.entity.vo.TeacherCourseInfoVo;
+import com.nju.entity.vo.*;
 import com.nju.service.CourseService;
+import com.nju.service.HomeworkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
@@ -31,6 +35,7 @@ public class courseController {
     TbCourseConcreteMapper courseConcreteMapper;
     @Autowired
     TbCourseMapper courseMapper;
+
     
     //显示课程界面
     @RequestMapping("/showCourse")
@@ -128,4 +133,25 @@ public class courseController {
         modelAndView.setViewName("teacherCourseManage");
         return modelAndView;
     }
+    
+    @ResponseBody
+    @RequestMapping("/CourseEditInfo")
+    public TbCourseConcrete CourseEditInfo(HttpServletRequest request, HttpServletResponse response)throws Exception{
+        ObjectMapper mapper=new ObjectMapper();
+        CourseEditInfoVo courseEditInfoVo=mapper.readValue(request.getInputStream(),CourseEditInfoVo.class);
+        TbCourseConcrete tbCourseConcrete=courseConcreteMapper.selectByPrimaryKey(courseEditInfoVo.getCourseId());
+        tbCourseConcrete.setCourseConcreteId(tbCourseConcrete.getCourseConcreteId());
+        tbCourseConcrete.setCourseConcreteInformation(courseEditInfoVo.getCourseInfo());
+        tbCourseConcrete.setCourseConcreteClassroom(courseEditInfoVo.getCourseRoom());
+        tbCourseConcrete.setCourseConcreteTime(courseEditInfoVo.getCourseTime());
+        tbCourseConcrete.setCourseConcreteRequest(courseEditInfoVo.getCourseRequest());
+        Boolean flag=courseService.updateCourseConcrete(tbCourseConcrete);
+        if(flag){
+            return tbCourseConcrete;
+        }
+        else
+            return null;
+    }
+	
+	
 }

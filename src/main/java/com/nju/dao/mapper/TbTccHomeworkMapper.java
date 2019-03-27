@@ -27,4 +27,6 @@ public interface TbTccHomeworkMapper {
     int updateByPrimaryKeySelective(TbTccHomework record);
 
     int updateByPrimaryKey(TbTccHomework record);
+    
+    int getMaxid();
 }

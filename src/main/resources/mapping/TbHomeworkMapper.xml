@@ -273,4 +273,7 @@
       homework_remark = #{homeworkRemark,jdbcType=VARCHAR}
     where homework_id = #{homeworkId,jdbcType=INTEGER}
   </update>
+  <select id="getMaxid" resultType="java.lang.Integer">
+    select max(homework_id) from tb_homework
+  </select>
 </mapper>

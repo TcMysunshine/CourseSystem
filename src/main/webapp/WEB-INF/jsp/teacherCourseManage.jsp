@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="layDate/laydate/laydate.js"></script>
 </head>
 <body>
 <!-- 模态框（Modal） -->
@@ -47,24 +48,62 @@
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-lable">课程详情</label>
-                            <input class="col-sm-10" type="text" name="CourseInfo" id="CourseInfo">
+                            <input class="col-sm-10" type="text" name="CourseInfomation" id="CourseInfomation" value="${courseInfo.courseConcreteInformation}">
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-lable">课程要求</label>
-                            <input class="col-sm-10" type="text" name="CourseRequest" id="CourseRequest">
+                            <input class="col-sm-10" type="text" name="CourseRequest" id="CourseRequest"value="${courseInfo.courseConcreteRequest}">
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-lable">上课教室</label>
-                            <input class="col-sm-10" type="text" name="ClassRoom" id="ClassRoom">
+                            <input class="col-sm-10" type="text" name="CourseRoom" id="CourseRoom"value="${courseInfo.courseConcreteClassroom}">
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-lable">上课时间</label>
-                            <input class="col-sm-10" type="text" name="ClassTime" id="ClassTime">
+                            <input class="col-sm-10" type="text" name="CourseTime" id="CourseTime"value="${courseInfo.courseConcreteTime}">
                         </div>
                     </form>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button type="button" class="btn btn-primary btn-info">提交更改</button>
+                        <button type="button" class="btn btn-primary btn-info" id="btn-course-editInfo">提交更改</button>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+<div class="modal fade" id="InsertHomeworkInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myHomeworkLabel">作业信息</h4>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-lable">作业标题</label>
+                            <input class="col-sm-10" type="text"  name="Homework_title" id="homework_title">
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-lable">作业内容</label>
+                            <input class="col-sm-10" type="text"  name="Homework_content" id="homework_content">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-lable">备注</label>
+                            <input class="col-sm-10" type="text" name="Homework_remark" id="homework_remark">
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-lable">开始时间</label>
+                            <input class="col-sm-10" type="text" name="Homework_start_time" id="homework_start_time">
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-lable">结束时间</label>
+                            <input class="col-sm-10" type="text" name="Homework_end_time" id="homework_end_time">
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary btn-info" id="btn-homework-InsertInfo">提交更改</button>
                     </div>
                 </div>
             </div><!-- /.modal-content -->
@@ -92,12 +131,6 @@
                         <p>课程信息</p>
                     </a>
                 </li>
-                <%--<li class="active">--%>
-                <%--<a href="teacherCourseInfo">--%>
-                <%--<i class="ti-view-list-alt"></i>--%>
-                <%--<p>文件信息</p>--%>
-                <%--</a>--%>
-                <%--</li>--%>
             </ul>
         </div>
     </div>
@@ -155,26 +188,26 @@
                                 <div style="border-bottom: 1px ridge #777;height: auto">
                                     <h4 class="title" style="padding-top: 28px">课程详情</h4>
                                     <div class="content table-responsive table-full-width">
-                                        <table class="table table-striped">
+                                        <table class="table table-striped"  id="ShowCourseInfo">
                                             <tr>
                                                 <td>课程名称</td>
                                                 <td><c:out value="${course.courseName}"></c:out></td>
                                             </tr>
                                             <tr>
                                                 <td>课程详情</td>
-                                                <td><c:out value="${courseInfo.courseConcreteInformation}"></c:out></td>
+                                                <td class="courseInfo"><c:out value="${courseInfo.courseConcreteInformation}"></c:out></td>
                                             </tr>
                                             <tr>
                                                 <td>课程要求</td>
-                                                <td><c:out value="${courseInfo.courseConcreteRequest}"></c:out></td>
+                                                <td class="courseRequest"><c:out value="${courseInfo.courseConcreteRequest}"></c:out></td>
                                             </tr>
                                             <tr>
                                                 <td>上课教室</td>
-                                                <td><c:out value="${courseInfo.courseConcreteClassroom}"></c:out></td>
+                                                <td class="courseRoom"><c:out value="${courseInfo.courseConcreteClassroom}"></c:out></td>
                                             </tr>
                                             <tr>
                                                 <td>上课时间</td>
-                                                <td><c:out value="${courseInfo.courseConcreteTime}"></c:out></td>
+                                                <td class="courseTime"><c:out value="${courseInfo.courseConcreteTime}"></c:out></td>
                                             </tr>
                                             <tr>
                                                 <td>上课周时</td>
@@ -188,7 +221,6 @@
                                                 <td>
                                                     <!-- 按钮触发模态框 -->
                                                     <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#EditCourseInfo">修改课程信息</button>
-                                                    <%--<input type="button" class="btn btn-primary" data-toggle="model" data-target="#EditCourseInfo" value="修改课程信息">--%>
                                                 </td>
                                             </tr>
                                         </table>
@@ -199,6 +231,7 @@
                                 </div>
                                 <div style="border-bottom: 1px ridge #777;height: auto">
                                     <h4 class="title" style="padding-top: 28px">作业</h4>
+                                    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#InsertHomeworkInfo">添加作业信息</button>
                                     <div class="content table-responsive table-full-width">
                                         <table class="table table-striped">
                                             <thead>
@@ -251,13 +284,74 @@
 <script src="assets/js/paper-dashboard.js"></script>
 <script src="assets/js/demo.js"></script>
 <script type="text/javascript">
+    laydate.render({
+        elem: '#homework_start_time',
+        type: 'datetime'
+    });
+    laydate.render({
+        elem:'#Homework_end_time',
+        type: 'datetime'
+    });
     //触发模态框的同时调用此方法
-    <%--$('#EditCourseInfo').on('show.bs.model',function(){--%>
-        <%--var modal = $(this)--%>
-        <%--modal.find('#CourseRequest').value(${courseInfo.courseConcreteRequest})--%>
-        <%--$('#CourseInfo').val(${courseInfo.courseConcreteInformation});--%>
-    <%--})--%>
-    //模态框提交更改信息时触发的方法
+    $("#btn-course-editInfo").click(function () {
+        var CourseEditInfo = {
+            courseId:${courseInfo.courseId},
+            courseInfo: $("input[name='CourseInfomation']").val(),
+            courseRequest: $("input[name='CourseRequest']").val(),
+            courseRoom: $("input[name='CourseRoom']").val(),
+            courseTime: $("input[name='CourseTime']").val(),
+        }
+        $.ajax({
+            url: "CourseEditInfo",
+            contentType: "application/json;charset=utf-8",
+            processData: true,
+            type: "post",
+            data: JSON.stringify(CourseEditInfo),
+            dataType: "json",
+            success: function (json) {
+                $("#EditCourseInfo").modal('hide');
+                location.reload();
+            },
+            error: function () {
+                alert("信息未更改");
+                $("#EditCourseInfo").modal('hide');
+                location.reload();
+            }
+
+        })
+    });
+    $("#btn-homework-InsertInfo").click(function () {
+        var HomeworkInsertInfo = {
+            courseId:${courseInfo.courseId},
+            homeworkTitle:$("input[name='Homework_title']").val(),
+            homeworkContent:$("input[name='Homework_content']").val(),
+            homeworkRemark:$("input[name='Homework_remark']").val(),
+            homeworkStartTime:$("input[name='Homework_start_time']").val(),
+            homeworkEndTime:$("input[name='Homework_end_time']").val(),
+        }
+        $.ajax({
+            url: "HomeworkInsertInfo",
+            contentType: "application/json;charset=utf-8",
+            processData: true,
+            type: "post",
+            data: JSON.stringify(HomeworkInsertInfo),
+            dataType: "json",
+            success: function (json) {
+                $("#InsertHomeworkInfo").modal('hide');
+                location.reload();
+            },
+            error: function () {
+                $("#InsertHomeworkInfo").modal('hide');
+                location.reload();
+            }
+
+        })
+    });
+    //模态框提交更息时触发的方法
+    $(function () { $('#EditCourseInfo').on('hide.bs.modal', function () {
+
+        })
+    });
 </script>
 </html>
 
