@@ -6,6 +6,7 @@ import com.nju.dao.mapper.TbTeacherMapper;
 import com.nju.entity.TbTeacher;
 import com.nju.entity.TbTeacherCourseConcrete;
 import com.nju.entity.TbTeacherExample;
+import org.apache.el.parser.BooleanNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -75,6 +76,16 @@ public class TeacherServiceImpl {
     public void insertTeacherCourseConcrete(TbTeacherCourseConcrete teacherCourseConcrete) {
         teacherCourseConcreteMapper.insert(teacherCourseConcrete);
     }
+
+    public Boolean insertTeacher(TbTeacher teacher){
+        if (tbTeacherMapper.insert(teacher)>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
 
 
 

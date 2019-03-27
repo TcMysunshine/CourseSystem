@@ -136,6 +136,37 @@ public class superController {
     }
 
     @ResponseBody
+    @RequestMapping("addTeacher")
+    public ResultModel addTeacher(HttpServletRequest request, ModelMap model,
+                                  @RequestParam(value = "teacherName", required = false) String teacherName,
+                                  @RequestParam(value = "department", required = false) String department,
+                                  @RequestParam(value = "teacherSex", required = false) String teacherSex,
+                                  @RequestParam(value = "teacherPhone", required = false) String teacherPhone,
+                                  @RequestParam(value = "teacherEmail", required = false) String teacherEmail,
+                                  @RequestParam(value = "teacherAddress", required = false) String teacherAddress,
+                                  @RequestParam(value = "teacherAge", required = false) String teacherAge
+                                  ) {
+        Integer sex=Integer.parseInt(teacherSex);
+        Integer age=Integer.parseInt(teacherAge);
+        TbTeacher teacher=new TbTeacher();
+        teacher.setTeacherCount(teacherName);
+        teacher.setTeacherPassword("123456");
+        teacher.setTeacherName(teacherName);
+        teacher.setTeacherSex(sex);
+        teacher.setTeacherAge(age);
+        teacher.setTeacherDepartment(department);
+        teacher.setTeacherImg(1);
+        teacher.setTeacherAddress(teacherAddress);
+        teacher.setTeacherEmail(teacherEmail);
+        teacher.setTeacherPhone(teacherPhone);
+        if (teacherService.insertTeacher(teacher)) {
+            return new ResultModel(1, ResultModel.SUCCESS, null);
+        }
+        return new ResultModel(0, ResultModel.FAIL, null);
+
+    }
+
+    @ResponseBody
     @RequestMapping("/addStudents")
     public ResultModel addStudents(HttpServletRequest request,
                                    @RequestParam(value = "studentNum", required = false) String studentNum) {
